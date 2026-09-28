@@ -1,0 +1,191 @@
+/*
+ * Hero (Dark) integration styles
+ * Extracted only the rules actually used by the hero-style4 / intro-style2
+ * markup ported from Glitch_Dark.html — NOT the full Dark theme stylesheet,
+ * to avoid clashing with clean's own style.css.
+ * Utility classes already present in clean's style.css (opacity-7, underline,
+ * min-vh-md-100, min-vh-75, container-xxl) are intentionally left out here.
+ */
+
+/* Hero style 4 */
+.hero-style4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 100px 0;
+  position: relative;
+  background-color: var(--bs-gray-400);
+  color: #002FF0;
+}
+.hero-style4 a {
+  color: inherit;
+}
+.hero-style4 .container {
+  position: relative;
+  /* Just needs to sit above .hero-trail (z-index: 2) so the heading/links
+     stay clickable over the mouse-trail images. The original Dark markup
+     used z-index: 9999999 here, tuned for Dark's own stacking setup — but
+     clean's header dropdown only uses z-index: 399 (#header-wrap: 299), so
+     9999999 buried the open mega-menu underneath this section's heading.
+     Confirmed the menu now stacks correctly above the hero at this value. */
+  z-index: 3;
+  /* Keeps Bootstrap's normal stepped max-width + gutters (this is what
+     gives the hero its inset spacing on all four sides, matching the
+     original Dark reference) — NOT fluid/edge-to-edge like an earlier
+     version of this file did. See the h1 rule below for how the heading
+     still avoids wrapping without needing the container to go full-bleed. */
+  container-type: inline-size;
+}
+.hero-style4 h2,
+.hero-style4 h6 {
+  /* clean's own theme sets an explicit (non-inherited) heading color via
+     `h1, h2, ... h6 { color: var(--cnvs-heading-color) }`, which otherwise
+     wins over the inherited blue from .hero-style4 above — this bit us on
+     the h6 tagline earlier (came out theme-dark instead of blue/70%). */
+  color: #002FF0;
+}
+.hero-style4 h1 {
+  /* Same specificity issue as h2/h6 above, but the big "Glitch毛刺" heading
+     is its own brand color rather than the surrounding small-text blue. */
+  color: #CFF273;
+  /* vw sizes the heading relative to the VIEWPORT, but the container above
+     only tracks the viewport in steps (720px/960px/1140px...), so at
+     viewport widths where the container's step lags behind the viewport,
+     vw-sized text outgrows the container and wraps — confirmed empirically
+     at 900/1920/2560px viewports. cqw sizes it relative to the CONTAINER's
+     own current width instead (via `container-type: inline-size` above),
+     so it always matches the space actually available, at every step.
+     The vw-based clamp stays first as a fallback for browsers without
+     container query support — an invalid cqw value is dropped entirely,
+     leaving that declaration in effect instead. */
+  font-size: clamp(2.5rem, 17.5vw, 15rem);
+  font-size: clamp(2.5rem, 17.5cqw, 15rem);
+  white-space: nowrap;
+}
+.hero-style4 h6 {
+  font-size: 22px;
+}
+.hero-style4 .tags a {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  margin: 5px 5px 5px 0;
+  transition: all 0.4s;
+}
+.hero-style4 .tags a:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Mouse-trail images (img-revel) */
+.content__img {
+  width: 225px;
+  height: 170px;
+  position: absolute;
+  top: 170px;
+  left: 0px;
+  opacity: 0;
+  overflow: hidden;
+  will-change: transform, filter;
+}
+.content__img-inner {
+  background-position: 50% 50%;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-size: cover;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+/* Shared utility classes not already defined in clean's style.css */
+.fw-400 {
+  font-weight: 400 !important;
+}
+.fw-800 {
+  font-weight: 800 !important;
+}
+.mt-30px {
+  margin-top: 30px !important;
+}
+.text-align-right {
+  text-align: right;
+}
+.fs-14 {
+  font-size: 14px !important;
+}
+.z-index-2 {
+  z-index: 2;
+}
+.o-hidden {
+  overflow: hidden;
+}
+.bg-img {
+  background-size: cover !important;
+}
+.background-position-center {
+  background-position: center;
+}
+.h-700px {
+  height: 700px !important;
+}
+.h-800px {
+  height: 800px !important;
+}
+
+/* Not present in Dark's own stylesheet either (dead class in the source
+   markup) — added so the intro image block actually gets rounded corners. */
+.border-radius-80px {
+  border-radius: 80px;
+  overflow: hidden;
+}
+
+/* Bottom blur-gradient overlay, ported verbatim from Dark's assets/css/style.css
+   (`body .blur-div`). Dark places this at the body root — not scoped to the
+   hero — so it's a permanent fixed strip at the bottom of the viewport at
+   any scroll position, not just something that shows over the hero. */
+.blur-div {
+  backdrop-filter: blur(10px);
+  bottom: 0;
+  flex: none;
+  height: 100px;
+  left: 0;
+  mask: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%) add;
+  overflow: visible;
+  position: fixed;
+  right: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+@media screen and (max-width: 768px) {
+  .blur-div {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sm-mb30 {
+    margin-bottom: 30px;
+  }
+  .sm-order-1 {
+    order: 1 !important;
+  }
+  .sm-order-2 {
+    order: 2 !important;
+  }
+  .sm-hide {
+    display: none !important;
+  }
+  .hero-style4 h1,
+  .hero-style4 h2 {
+    font-size: 50px !important;
+    font-weight: 600 !important;
+  }
+  .hero-style4 {
+    padding-bottom: 20px;
+  }
+  .hero-style4 .justify-content-end {
+    display: block !important;
+  }
+}

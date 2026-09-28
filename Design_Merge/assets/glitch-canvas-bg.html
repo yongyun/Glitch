@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remix of CHAOS</title>
+  <meta name="brik:tool-uuid" content="e1650ebe-db86-468b-a67d-c0c1c76c2eb9">
+  <meta name="brik:export-id" content="a8da0404-fea3-4d98-96f5-d6567460013b">
+  <script>(function(){if(navigator.doNotTrack==='1'||navigator.doNotTrack==='yes')return;try{var c=(function(){var n=function(u){try{var x=new URL(u);return x.protocol+'//'+x.hostname.replace(/^www\./,'')+(x.port?':'+x.port:'')}catch(e){return''}};if(self===window.top)return{u:location.href,h:n(location.href),f:'',s:'direct'};var a=[];try{a=Array.prototype.slice.call(location.ancestorOrigins||[])}catch(e){}var r=document.referrer||'';var t=a.length?n(a[a.length-1]):n(r);if(!a.length&&t){try{if(/(^|\.)(filesusr|wixstatic|parastorage|googleusercontent)\.com$/.test(new URL(t).hostname))return{u:'',h:'',f:r,s:'unknown'}}catch(e){}}var e2='';try{var q=new URL(r);if(n(r)===t&&(q.pathname!=='/'||q.search))e2=r}catch(e){}return{u:e2,h:t,f:n(location.href)!==t?location.href:'',s:e2?'direct':(t?(a.length?'ancestor':'referrer'):'unknown')}})();var b='https://frog.wix.com/brik?src=207&evid=57&export_id='+encodeURIComponent('a8da0404-fea3-4d98-96f5-d6567460013b')+'&tool_id='+encodeURIComponent('6a8ed0a58a3af39fe5653a2d')+(c.u?'&page_url='+encodeURIComponent(c.u):'')+(c.h?'&page_host='+encodeURIComponent(c.h):'')+'&source=beacon&_='+Date.now();fetch(b,{credentials:'omit',keepalive:!0}).catch(function(){});var p=JSON.stringify({api_key:'phc_ApQuUzthC9YPBTcn2V6vGB2hGb4TSNHHz3xzgtPZfhwL',event:'export_sighted',distinct_id:'a8da0404-fea3-4d98-96f5-d6567460013b',properties:{export_id:'a8da0404-fea3-4d98-96f5-d6567460013b',tool_id:'6a8ed0a58a3af39fe5653a2d',tool_uuid:'e1650ebe-db86-468b-a67d-c0c1c76c2eb9',page_url:c.u||null,page_host:c.h||null,frame_url:c.f||null,url_resolution:c.s,source:'beacon'}});fetch('https://eu.i.posthog.com/i/v0/e/',{method:'POST',credentials:'omit',keepalive:!0,body:p}).catch(function(){});}catch(e){}})();</script>
+
+
+  <style>
+
+@font-face{font-family:fbchamblue;font-style:normal;font-weight:400;src:url(https://static.parastorage.com/fonts/v2/f5fe4b11-eb1b-4f25-a6e8-fe9c9e469bba/v1/fbchamblue.other.woff2) format("woff2");unicode-range:U+02C7,U+02D0,U+02D8-02D9,U+02DB,U+02DD,U+2015,U+2021,U+2025,U+2030,U+203B,U+207F,U+2081-2084,U+2103,U+2109,U+2121,U+2126,U+212B,U+2153-2154,U+215B-215E,U+2500-2503,U+250C-254B,U+2592,U+3000-3003,U+3008-3011,U+3013-3015,U+3041-3093,U+30A1-30F6,U+3131-318E,U+3200-321C,U+3260-327B,U+327F,U+3380-3384,U+3388-33CA,U+33CF-33D0,U+33D3,U+33D6,U+33D8,U+33DB-33DD,U+AC00-AC01,U+AC04,U+AC07-AC0A,U+AC10-AC17,U+AC19-AC1D,U+AC20,U+AC24,U+AC2C-AC2D,U+AC2F-AC31,U+AC38-AC39,U+AC3C,U+AC40,U+AC4B,U+AC4D,U+AC54,U+AC58,U+AC5C,U+AC70-AC71,U+AC74,U+AC77-AC78,U+AC7A,U+AC80-AC81,U+AC83-AC86,U+AC89-AC8C,U+AC90,U+AC94,U+AC9C-AC9D,U+AC9F-ACA1,U+ACA8-ACAA,U+ACAC,U+ACAF-ACB0,U+ACB8-ACB9,U+ACBB-ACBD,U+ACC1,U+ACC4,U+ACC8,U+ACCC,U+ACD5,U+ACD7,U+ACE0-ACE1,U+ACE4,U+ACE7-ACE8,U+ACEA,U+ACEC,U+ACEF-ACF1,U+ACF3,U+ACF5-ACF6,U+ACFC-ACFD,U+AD00,U+AD04,U+AD06,U+AD0C-AD0D,U+AD0F,U+AD11,U+AD18,U+AD1C,U+AD20,U+AD29,U+AD2C-AD2D,U+AD34-AD35,U+AD38,U+AD3C,U+AD44-AD45,U+AD47,U+AD49,U+AD50,U+AD54,U+AD58,U+AD61,U+AD63,U+AD6C-AD6D,U+AD70,U+AD73-AD76,U+AD7B-AD7D,U+AD7F,U+AD81-AD82,U+AD88-AD89,U+AD8C,U+AD90,U+AD9C-AD9D,U+ADA4,U+ADB7,U+ADC0-ADC1,U+ADC4,U+ADC8,U+ADD0-ADD1,U+ADD3,U+ADDC,U+ADE0,U+ADE4,U+ADF8-ADF9,U+ADFC,U+ADFF-AE01,U+AE08-AE09,U+AE0B,U+AE0D,U+AE14,U+AE30-AE31,U+AE34,U+AE37-AE38,U+AE3A,U+AE40-AE41,U+AE43,U+AE45-AE46,U+AE4A,U+AE4C-AE4E,U+AE50,U+AE54,U+AE56,U+AE5C-AE5D,U+AE5F-AE61,U+AE65,U+AE68-AE69,U+AE6C,U+AE70,U+AE78-AE79,U+AE7B-AE7D,U+AE84-AE85,U+AE8C,U+AEBC-AEBE,U+AEC0,U+AEC4,U+AECC-AECD,U+AECF-AED1,U+AED8-AED9,U+AEDC,U+AEE8,U+AEEB,U+AEED,U+AEF4,U+AEF8,U+AEFC,U+AF07-AF08,U+AF0D,U+AF10,U+AF2C-AF2D,U+AF30,U+AF32,U+AF34,U+AF3C-AF3D,U+AF3F,U+AF41-AF43,U+AF48-AF49,U+AF50,U+AF5C-AF5D,U+AF64-AF65,U+AF79,U+AF80,U+AF84,U+AF88,U+AF90-AF91,U+AF95,U+AF9C,U+AFB8-AFB9,U+AFBC,U+AFC0,U+AFC7-AFC9,U+AFCB,U+AFCD-AFCE,U+AFD4,U+AFDC,U+AFE8-AFE9,U+AFF0-AFF1,U+AFF4,U+AFF8,U+B000-B001,U+B004,U+B00C,U+B010,U+B014,U+B01C-B01D,U+B028,U+B044-B045,U+B048,U+B04A,U+B04C,U+B04E,U+B053-B055,U+B057,U+B059,U+B05D,U+B07C-B07D,U+B080,U+B084,U+B08C-B08D,U+B08F,U+B091,U+B098-B09A,U+B09C,U+B09F-B0A2,U+B0A8-B0A9,U+B0AB-B0AF,U+B0B1,U+B0B3-B0B5,U+B0B8,U+B0BC,U+B0C4-B0C5,U+B0C7-B0C9,U+B0D0-B0D1,U+B0D4,U+B0D8,U+B0E0,U+B0E5,U+B108-B109,U+B10B-B10C,U+B110,U+B112-B113,U+B118-B119,U+B11B-B11D,U+B123-B125,U+B128,U+B12C,U+B134-B135,U+B137-B139,U+B140-B141,U+B144,U+B148,U+B150-B151,U+B154-B155,U+B158,U+B15C,U+B160,U+B178-B179,U+B17C,U+B180,U+B182,U+B188-B189,U+B18B,U+B18D,U+B192-B194,U+B198,U+B19C,U+B1A8,U+B1CC,U+B1D0,U+B1D4,U+B1DC-B1DD,U+B1DF,U+B1E8-B1E9,U+B1EC,U+B1F0,U+B1F9,U+B1FB,U+B1FD,U+B204-B205,U+B208,U+B20B-B20C,U+B214-B215,U+B217,U+B219,U+B220,U+B234,U+B23C,U+B258,U+B25C,U+B260,U+B268-B269,U+B274-B275,U+B27C,U+B284-B285,U+B289,U+B290-B291,U+B294,U+B298-B29A,U+B2A0-B2A1,U+B2A3,U+B2A5-B2A6,U+B2AA,U+B2AC,U+B2B0,U+B2B4,U+B2C8-B2C9,U+B2CC,U+B2D0,U+B2D2,U+B2D8-B2D9,U+B2DB,U+B2DD,U+B2E2,U+B2E4-B2E6,U+B2E8,U+B2EB-B2EF,U+B2F3-B2F5,U+B2F7-B2FB,U+B2FF-B301,U+B304,U+B308,U+B310-B311,U+B313-B315,U+B31C,U+B354-B356,U+B358,U+B35B-B35C,U+B35E-B35F,U+B364-B365,U+B367,U+B369,U+B36B,U+B36E,U+B370-B371,U+B374,U+B378,U+B380-B381,U+B383-B385,U+B38C,U+B390,U+B394,U+B3A0-B3A1,U+B3A8,U+B3AC,U+B3C4-B3C5,U+B3C8,U+B3CB-B3CC,U+B3CE,U+B3D0,U+B3D4-B3D5,U+B3D7,U+B3D9,U+B3DB,U+B3DD,U+B3E0,U+B3E4,U+B3E8,U+B3FC,U+B410,U+B418,U+B41C,U+B420,U+B428-B429,U+B42B,U+B434,U+B450-B451,U+B454,U+B458,U+B460-B461,U+B463,U+B465,U+B46C,U+B480,U+B488,U+B49D,U+B4A4,U+B4A8,U+B4AC,U+B4B5,U+B4B7,U+B4B9,U+B4C0,U+B4C4,U+B4C8,U+B4D0,U+B4D5,U+B4DC-B4DD,U+B4E0,U+B4E3-B4E4,U+B4E6,U+B4EC-B4ED,U+B4EF,U+B4F1,U+B4F8,U+B514-B515,U+B518,U+B51B-B51C,U+B524-B525,U+B527-B52A,U+B530-B531,U+B534,U+B538,U+B540-B541,U+B543-B545,U+B54B-B54D,U+B550,U+B554,U+B55C-B55D,U+B55F-B561,U+B5A0-B5A1,U+B5A4,U+B5A8,U+B5AA-B5AB,U+B5B0-B5B1,U+B5B3-B5B5,U+B5BB-B5BD,U+B5C0,U+B5C4,U+B5CC-B5CD,U+B5CF-B5D1,U+B5D8,U+B5EC,U+B610-B611,U+B614,U+B618,U+B625,U+B62C,U+B634,U+B648,U+B664,U+B668,U+B69C-B69D,U+B6A0,U+B6A4,U+B6AB-B6AC,U+B6B1,U+B6D4,U+B6F0,U+B6F4,U+B6F8,U+B700-B701,U+B705,U+B728-B729,U+B72C,U+B72F-B730,U+B738-B739,U+B73B,U+B744,U+B748,U+B74C,U+B754-B755,U+B760,U+B764,U+B768,U+B770-B771,U+B773,U+B775,U+B77C-B77D,U+B780,U+B784,U+B78C-B78D,U+B78F-B792,U+B796-B799,U+B79C,U+B7A0,U+B7A8-B7A9,U+B7AB-B7AD,U+B7B4-B7B5,U+B7B8,U+B7C7,U+B7C9,U+B7EC-B7ED,U+B7F0,U+B7F4,U+B7FC-B7FD,U+B7FF-B801,U+B807-B809,U+B80C,U+B810,U+B818-B819,U+B81B,U+B81D,U+B824-B825,U+B828,U+B82C,U+B834-B835,U+B837-B839,U+B840,U+B844,U+B851,U+B853,U+B85C-B85D,U+B860,U+B864,U+B86C-B86D,U+B86F,U+B871,U+B878,U+B87C,U+B88D,U+B8A8,U+B8B0,U+B8B4,U+B8B8,U+B8C0-B8C1,U+B8C3,U+B8C5,U+B8CC,U+B8D0,U+B8D4,U+B8DD,U+B8DF,U+B8E1,U+B8E8-B8E9,U+B8EC,U+B8F0,U+B8F8-B8F9,U+B8FB,U+B8FD,U+B904,U+B918,U+B920,U+B93C-B93D,U+B940,U+B944,U+B94C,U+B94F,U+B951,U+B958-B959,U+B95C,U+B960,U+B968-B969,U+B96B,U+B96D,U+B974-B975,U+B978,U+B97C,U+B984-B985,U+B987,U+B989-B98A,U+B98D-B98E,U+B9AC-B9AD,U+B9B0,U+B9B4,U+B9BC-B9BD,U+B9BF,U+B9C1,U+B9C8-B9C9,U+B9CC,U+B9CE-B9D2,U+B9D8-B9D9,U+B9DB,U+B9DD-B9DE,U+B9E1,U+B9E3-B9E5,U+B9E8,U+B9EC,U+B9F4-B9F5,U+B9F7-B9FA,U+BA00-BA01,U+BA08,U+BA15,U+BA38-BA39,U+BA3C,U+BA40,U+BA42,U+BA48-BA49,U+BA4B,U+BA4D-BA4E,U+BA53-BA55,U+BA58,U+BA5C,U+BA64-BA65,U+BA67-BA69,U+BA70-BA71,U+BA74,U+BA78,U+BA83-BA85,U+BA87,U+BA8C,U+BAA8-BAA9,U+BAAB-BAAC,U+BAB0,U+BAB2,U+BAB8-BAB9,U+BABB,U+BABD,U+BAC4,U+BAC8,U+BAD8-BAD9,U+BAFC,U+BB00,U+BB04,U+BB0D,U+BB0F,U+BB11,U+BB18,U+BB1C,U+BB20,U+BB29,U+BB2B,U+BB34-BB36,U+BB38,U+BB3B-BB3E,U+BB44-BB45,U+BB47,U+BB49,U+BB4D,U+BB4F-BB50,U+BB54,U+BB58,U+BB61,U+BB63,U+BB6C,U+BB88,U+BB8C,U+BB90,U+BBA4,U+BBA8,U+BBAC,U+BBB4,U+BBB7,U+BBC0,U+BBC4,U+BBC8,U+BBD0,U+BBD3,U+BBF8-BBF9,U+BBFC,U+BBFF-BC00,U+BC02,U+BC08-BC09,U+BC0B-BC0D,U+BC0F,U+BC11,U+BC14-BC18,U+BC1B-BC1F,U+BC24-BC25,U+BC27,U+BC29,U+BC2D,U+BC30-BC31,U+BC34,U+BC38,U+BC40-BC41,U+BC43-BC45,U+BC49,U+BC4C-BC4D,U+BC50,U+BC5D,U+BC84-BC85,U+BC88,U+BC8B-BC8C,U+BC8E,U+BC94-BC95,U+BC97,U+BC99-BC9A,U+BCA0-BCA1,U+BCA4,U+BCA7-BCA8,U+BCB0-BCB1,U+BCB3-BCB5,U+BCBC-BCBD,U+BCC0,U+BCC4,U+BCCD,U+BCCF-BCD1,U+BCD5,U+BCD8,U+BCDC,U+BCF4-BCF6,U+BCF8,U+BCFC,U+BD04-BD05,U+BD07,U+BD09,U+BD10,U+BD14,U+BD24,U+BD2C,U+BD40,U+BD48-BD49,U+BD4C,U+BD50,U+BD58-BD59,U+BD64,U+BD68,U+BD80-BD81,U+BD84,U+BD87-BD8A,U+BD90-BD91,U+BD93,U+BD95,U+BD99-BD9A,U+BD9C,U+BDA4,U+BDB0,U+BDB8,U+BDD4-BDD5,U+BDD8,U+BDDC,U+BDE9,U+BDF0,U+BDF4,U+BDF8,U+BE00,U+BE03,U+BE05,U+BE0C-BE0D,U+BE10,U+BE14,U+BE1C-BE1D,U+BE1F,U+BE44-BE45,U+BE48,U+BE4C,U+BE4E,U+BE54-BE55,U+BE57,U+BE59-BE5B,U+BE60-BE61,U+BE64,U+BE68,U+BE6A,U+BE70-BE71,U+BE73-BE75,U+BE7B-BE7D,U+BE80,U+BE84,U+BE8C-BE8D,U+BE8F-BE91,U+BE98-BE99,U+BEA8,U+BED0-BED1,U+BED4,U+BED7-BED8,U+BEE0,U+BEE3-BEE5,U+BEEC,U+BF01,U+BF08-BF09,U+BF18-BF19,U+BF1B-BF1D,U+BF40-BF41,U+BF44,U+BF48,U+BF50-BF51,U+BF55,U+BF94,U+BFB0,U+BFC5,U+BFCC-BFCD,U+BFD0,U+BFD4,U+BFDC,U+BFDF,U+BFE1,U+C03C,U+C051,U+C058,U+C05C,U+C060,U+C068-C069,U+C090-C091,U+C094,U+C098,U+C0A0-C0A1,U+C0A3,U+C0A5,U+C0AC-C0AD,U+C0AF-C0B0,U+C0B3-C0B6,U+C0BC-C0BD,U+C0BF-C0C1,U+C0C5,U+C0C8-C0C9,U+C0CC,U+C0D0,U+C0D8-C0D9,U+C0DB-C0DD,U+C0E4-C0E5,U+C0E8,U+C0EC,U+C0F4-C0F5,U+C0F7,U+C0F9,U+C100,U+C104,U+C108,U+C110,U+C115,U+C11C-C120,U+C123-C124,U+C126-C127,U+C12C-C12D,U+C12F-C131,U+C136,U+C138-C139,U+C13C,U+C140,U+C148-C149,U+C14B-C14D,U+C154-C155,U+C158,U+C15C,U+C164-C165,U+C167-C169,U+C170,U+C174,U+C178,U+C185,U+C18C-C18E,U+C190,U+C194,U+C196,U+C19C-C19D,U+C19F,U+C1A1,U+C1A5,U+C1A8-C1A9,U+C1AC,U+C1B0,U+C1BD,U+C1C4,U+C1C8,U+C1CC,U+C1D4,U+C1D7-C1D8,U+C1E0,U+C1E4,U+C1E8,U+C1F0-C1F1,U+C1F3,U+C1FC-C1FD,U+C200,U+C204,U+C20C-C20D,U+C20F,U+C211,U+C218-C219,U+C21C,U+C21F-C220,U+C228-C229,U+C22B,U+C22D,U+C22F,U+C231-C232,U+C234,U+C248,U+C250-C251,U+C254,U+C258,U+C260,U+C265,U+C26C-C26D,U+C270,U+C274,U+C27C-C27D,U+C27F,U+C281,U+C288-C289,U+C290,U+C298,U+C29B,U+C29D,U+C2A4-C2A5,U+C2A8,U+C2AC-C2AD,U+C2B4-C2B5,U+C2B7,U+C2B9,U+C2DC-C2DD,U+C2E0,U+C2E3-C2E4,U+C2EB-C2ED,U+C2EF,U+C2F1,U+C2F6,U+C2F8-C2F9,U+C2FB-C2FC,U+C300,U+C308-C309,U+C30C-C30D,U+C313-C315,U+C318,U+C31C,U+C324-C325,U+C328-C329,U+C345,U+C368-C369,U+C36C,U+C370,U+C372,U+C378-C379,U+C37C-C37D,U+C384,U+C388,U+C38C,U+C3C0,U+C3D8-C3D9,U+C3DC,U+C3DF-C3E0,U+C3E2,U+C3E8-C3E9,U+C3ED,U+C3F4-C3F5,U+C3F8,U+C408,U+C410,U+C424,U+C42C,U+C430,U+C434,U+C43C-C43D,U+C448,U+C464-C465,U+C468,U+C46C,U+C474-C475,U+C479,U+C480,U+C494,U+C49C,U+C4B8,U+C4BC,U+C4E9,U+C4F0-C4F1,U+C4F4,U+C4F8,U+C4FA,U+C4FF-C501,U+C50C,U+C510,U+C514,U+C51C,U+C528-C529,U+C52C,U+C530,U+C538-C539,U+C53B,U+C53D,U+C544-C545,U+C548-C54A,U+C54C-C54E,U+C553-C555,U+C557-C559,U+C55D-C55E,U+C560-C561,U+C564,U+C568,U+C570-C571,U+C573-C575,U+C57C-C57D,U+C580,U+C584,U+C587,U+C58C-C58D,U+C58F,U+C591,U+C595,U+C597-C598,U+C59C,U+C5A0,U+C5A9,U+C5B4-C5B5,U+C5B8-C5B9,U+C5BB-C5BE,U+C5C4-C5CA,U+C5CC,U+C5CE,U+C5D0-C5D1,U+C5D4,U+C5D8,U+C5E0-C5E1,U+C5E3,U+C5E5,U+C5EC-C5EE,U+C5F0,U+C5F4,U+C5F6-C5F7,U+C5FC-C601,U+C605-C608,U+C60C,U+C610,U+C618-C619,U+C61B-C61C,U+C624-C625,U+C628,U+C62C-C62E,U+C630,U+C633-C635,U+C637,U+C639,U+C63B,U+C640-C641,U+C644,U+C648,U+C650-C651,U+C653-C655,U+C65C-C65D,U+C660,U+C66C,U+C66F,U+C671,U+C678-C679,U+C67C,U+C680,U+C688-C689,U+C68B,U+C68D,U+C694-C695,U+C698,U+C69C,U+C6A4-C6A5,U+C6A7,U+C6A9,U+C6B0-C6B1,U+C6B4,U+C6B8-C6BA,U+C6C0-C6C1,U+C6C3,U+C6C5,U+C6CC-C6CD,U+C6D0,U+C6D4,U+C6DC-C6DD,U+C6E0-C6E1,U+C6E8-C6E9,U+C6EC,U+C6F0,U+C6F8-C6F9,U+C6FD,U+C704-C705,U+C708,U+C70C,U+C714-C715,U+C717,U+C719,U+C720-C721,U+C724,U+C728,U+C730-C731,U+C733,U+C735,U+C737,U+C73C-C73D,U+C740,U+C744,U+C74A,U+C74C-C74D,U+C74F,U+C751-C758,U+C75C,U+C760,U+C768,U+C76B,U+C774-C775,U+C778,U+C77C-C77E,U+C783-C785,U+C787-C78A,U+C78E,U+C790-C791,U+C794,U+C796-C798,U+C79A,U+C7A0-C7A1,U+C7A3-C7A6,U+C7AC-C7AD,U+C7B0,U+C7B4,U+C7BC-C7BD,U+C7BF-C7C1,U+C7C8-C7C9,U+C7CC,U+C7CE,U+C7D0,U+C7D8,U+C7DD,U+C7E4,U+C7E8,U+C7EC,U+C800-C801,U+C804,U+C808,U+C80A,U+C810-C811,U+C813,U+C815-C816,U+C81C-C81D,U+C820,U+C824,U+C82C-C82D,U+C82F,U+C831,U+C838,U+C83C,U+C840,U+C848-C849,U+C84C-C84D,U+C854,U+C870-C871,U+C874,U+C878,U+C87A,U+C880-C881,U+C883,U+C885-C887,U+C88B-C88D,U+C894,U+C89D,U+C89F,U+C8A1,U+C8A8,U+C8BC-C8BD,U+C8C4,U+C8C8,U+C8CC,U+C8D4-C8D5,U+C8D7,U+C8D9,U+C8E0-C8E1,U+C8E4,U+C8F5,U+C8FC-C8FD,U+C900,U+C904-C906,U+C90C-C90D,U+C90F,U+C911,U+C918,U+C92C,U+C934,U+C950-C951,U+C954,U+C958,U+C960-C961,U+C963,U+C96C,U+C970,U+C974,U+C97C,U+C988-C989,U+C98C,U+C990,U+C998-C999,U+C99B,U+C99D,U+C9C0-C9C1,U+C9C4,U+C9C7-C9C8,U+C9CA,U+C9D0-C9D1,U+C9D3,U+C9D5-C9D6,U+C9D9-C9DA,U+C9DC-C9DD,U+C9E0,U+C9E2,U+C9E4,U+C9E7,U+C9EC-C9ED,U+C9EF-C9F1,U+C9F8-C9F9,U+C9FC,U+CA00,U+CA08-CA09,U+CA0B-CA0D,U+CA14,U+CA18,U+CA29,U+CA4C-CA4D,U+CA50,U+CA54,U+CA5C-CA5D,U+CA5F-CA61,U+CA68,U+CA7D,U+CA84,U+CA98,U+CABC-CABD,U+CAC0,U+CAC4,U+CACC-CACD,U+CACF,U+CAD1,U+CAD3,U+CAD8-CAD9,U+CAE0,U+CAEC,U+CAF4,U+CB08,U+CB10,U+CB14,U+CB18,U+CB20-CB21,U+CB41,U+CB48-CB49,U+CB4C,U+CB50,U+CB58-CB59,U+CB5D,U+CB64,U+CB78-CB79,U+CB9C,U+CBB8,U+CBD4,U+CBE4,U+CBE7,U+CBE9,U+CC0C-CC0D,U+CC10,U+CC14,U+CC1C-CC1D,U+CC21-CC22,U+CC27-CC29,U+CC2C,U+CC2E,U+CC30,U+CC38-CC39,U+CC3B-CC3E,U+CC44-CC45,U+CC48,U+CC4C,U+CC54-CC55,U+CC57-CC59,U+CC60,U+CC64,U+CC66,U+CC68,U+CC70,U+CC75,U+CC98-CC99,U+CC9C,U+CCA0,U+CCA8-CCA9,U+CCAB-CCAD,U+CCB4-CCB5,U+CCB8,U+CCBC,U+CCC4-CCC5,U+CCC7,U+CCC9,U+CCD0,U+CCD4,U+CCE4,U+CCEC,U+CCF0,U+CD01,U+CD08-CD09,U+CD0C,U+CD10,U+CD18-CD19,U+CD1B,U+CD1D,U+CD24,U+CD28,U+CD2C,U+CD39,U+CD5C,U+CD60,U+CD64,U+CD6C-CD6D,U+CD6F,U+CD71,U+CD78,U+CD88,U+CD94-CD95,U+CD98,U+CD9C,U+CDA4-CDA5,U+CDA7,U+CDA9,U+CDB0,U+CDC4,U+CDCC,U+CDD0,U+CDE8,U+CDEC,U+CDF0,U+CDF8-CDF9,U+CDFB,U+CDFD,U+CE04,U+CE08,U+CE0C,U+CE14,U+CE19,U+CE20-CE21,U+CE24,U+CE28,U+CE30-CE31,U+CE33,U+CE35,U+CE58-CE59,U+CE5C,U+CE5F-CE61,U+CE68-CE69,U+CE6B,U+CE6D,U+CE74-CE75,U+CE78,U+CE7C,U+CE84-CE85,U+CE87,U+CE89,U+CE90-CE91,U+CE94,U+CE98,U+CEA0-CEA1,U+CEA3-CEA5,U+CEAC-CEAD,U+CEC1,U+CEE4-CEE5,U+CEE8,U+CEEB-CEEC,U+CEF4-CEF5,U+CEF7-CEF9,U+CF00-CF01,U+CF04,U+CF08,U+CF10-CF11,U+CF13,U+CF15,U+CF1C,U+CF20,U+CF24,U+CF2C-CF2D,U+CF2F-CF31,U+CF38,U+CF54-CF55,U+CF58,U+CF5C,U+CF64-CF65,U+CF67,U+CF69,U+CF70-CF71,U+CF74,U+CF78,U+CF80,U+CF85,U+CF8C,U+CFA1,U+CFA8,U+CFB0,U+CFC4,U+CFE0-CFE1,U+CFE4,U+CFE8,U+CFF0-CFF1,U+CFF3,U+CFF5,U+CFFC,U+D000,U+D004,U+D011,U+D018,U+D02D,U+D034-D035,U+D038,U+D03C,U+D044-D045,U+D047,U+D049,U+D050,U+D054,U+D058,U+D060,U+D06C-D06D,U+D070,U+D074,U+D07C-D07D,U+D081,U+D0A4-D0A5,U+D0A8,U+D0AC,U+D0B4-D0B5,U+D0B7,U+D0B9,U+D0C0-D0C1,U+D0C4,U+D0C8-D0C9,U+D0D0-D0D1,U+D0D3-D0D5,U+D0DC-D0DD,U+D0E0,U+D0E4,U+D0EC-D0ED,U+D0EF-D0F1,U+D0F8,U+D10D,U+D130-D131,U+D134,U+D138,U+D13A,U+D140-D141,U+D143-D145,U+D14C-D14D,U+D150,U+D154,U+D15C-D15D,U+D15F,U+D161,U+D168,U+D16C,U+D17C,U+D184,U+D188,U+D1A0-D1A1,U+D1A4,U+D1A8,U+D1B0-D1B1,U+D1B3,U+D1B5,U+D1BA,U+D1BC,U+D1C0,U+D1D8,U+D1F4,U+D1F8,U+D207,U+D209,U+D210,U+D22C-D22D,U+D230,U+D234,U+D23C-D23D,U+D23F,U+D241,U+D248,U+D25C,U+D264,U+D280-D281,U+D284,U+D288,U+D290-D291,U+D295,U+D29C,U+D2A0,U+D2A4,U+D2AC,U+D2B1,U+D2B8-D2B9,U+D2BC,U+D2BF-D2C0,U+D2C2,U+D2C8-D2C9,U+D2CB,U+D2D4,U+D2D8,U+D2DC,U+D2E4-D2E5,U+D2F0-D2F1,U+D2F4,U+D2F8,U+D300-D301,U+D303,U+D305,U+D30C-D30E,U+D310,U+D314,U+D316,U+D31C-D31D,U+D31F-D321,U+D325,U+D328-D329,U+D32C,U+D330,U+D338-D339,U+D33B-D33D,U+D344-D345,U+D37C-D37D,U+D380,U+D384,U+D38C-D38D,U+D38F-D391,U+D398-D399,U+D39C,U+D3A0,U+D3A8-D3A9,U+D3AB,U+D3AD,U+D3B4,U+D3B8,U+D3BC,U+D3C4-D3C5,U+D3C8-D3C9,U+D3D0,U+D3D8,U+D3E1,U+D3E3,U+D3EC-D3ED,U+D3F0,U+D3F4,U+D3FC-D3FD,U+D3FF,U+D401,U+D408,U+D41D,U+D440,U+D444,U+D45C,U+D460,U+D464,U+D46D,U+D46F,U+D478-D479,U+D47C,U+D47F-D480,U+D482,U+D488-D489,U+D48B,U+D48D,U+D494,U+D4A9,U+D4CC,U+D4D0,U+D4D4,U+D4DC,U+D4DF,U+D4E8,U+D4EC,U+D4F0,U+D4F8,U+D4FB,U+D4FD,U+D504,U+D508,U+D50C,U+D514-D515,U+D517,U+D53C-D53D,U+D540,U+D544,U+D54C-D54D,U+D54F,U+D551,U+D558-D559,U+D55C,U+D560,U+D565,U+D568-D569,U+D56B,U+D56D,U+D574-D575,U+D578,U+D57C,U+D584-D585,U+D587-D589,U+D590,U+D5A5,U+D5C8-D5C9,U+D5CC,U+D5D0,U+D5D2,U+D5D8-D5D9,U+D5DB,U+D5DD,U+D5E4-D5E5,U+D5E8,U+D5EC,U+D5F4-D5F5,U+D5F7,U+D5F9,U+D600-D601,U+D604,U+D608,U+D610-D611,U+D613-D615,U+D61C,U+D620,U+D624,U+D62D,U+D638-D639,U+D63C,U+D640,U+D645,U+D648-D649,U+D64B,U+D64D,U+D651,U+D654-D655,U+D658,U+D65C,U+D667,U+D669,U+D670-D671,U+D674,U+D683,U+D685,U+D68C-D68D,U+D690,U+D694,U+D69D,U+D69F,U+D6A1,U+D6A8,U+D6AC,U+D6B0,U+D6B9,U+D6BB,U+D6C4-D6C5,U+D6C8,U+D6CC,U+D6D1,U+D6D4,U+D6D7,U+D6D9,U+D6E0,U+D6E4,U+D6E8,U+D6F0,U+D6F5,U+D6FC-D6FD,U+D700,U+D704,U+D711,U+D718-D719,U+D71C,U+D720,U+D728-D729,U+D72B,U+D72D,U+D734-D735,U+D738,U+D73C,U+D744,U+D747,U+D749,U+D750-D751,U+D754,U+D756-D759,U+D760-D761,U+D763,U+D765,U+D769,U+D76C,U+D770,U+D774,U+D77C-D77D,U+D781,U+D788-D789,U+D78C,U+D790,U+D798-D799,U+D79B,U+D79D,U+FF01-FF5A,U+FF5C,U+FF5E,U+FFE0-FFE3,U+FFE5-FFE6}
+@font-face{font-family:fbchamblue;font-style:normal;font-weight:400;src:url(https://static.parastorage.com/fonts/v2/f5fe4b11-eb1b-4f25-a6e8-fe9c9e469bba/v1/fbchamblue.math.woff2) format("woff2");unicode-range:U+0391-03A1,U+03A3-03A9,U+03B1-03C1,U+03C3-03C9,U+2190,U+2192,U+2194-2199,U+21D2,U+21D4,U+2200,U+2202-2203,U+2207-2208,U+220B,U+220F,U+2211,U+221A,U+221D-221E,U+2220,U+2225,U+2227-222C,U+222E,U+2234-2235,U+223C-223D,U+2252,U+2260-2261,U+2264-2265,U+226A-226B,U+2282-2283,U+2286-2287,U+2299,U+22A5,U+2474-2475,U+25B3,U+25B7,U+25BD,U+25C1,U+266D,U+FF5B,U+FF5D}
+@font-face{font-family:fbchamblue;font-style:normal;font-weight:400;src:url(https://static.parastorage.com/fonts/v2/f5fe4b11-eb1b-4f25-a6e8-fe9c9e469bba/v1/fbchamblue.symbols.woff2) format("woff2");unicode-range:U+2160-2169,U+2170-2179,U+2312,U+2460-246E,U+2476-2482,U+249C-24B5,U+24D0-24E9,U+25A0-25A1,U+25A3-25A9,U+25B2,U+25B6,U+25BC,U+25C0,U+25C6-25C8,U+25CB,U+25CE-25D1,U+2605-2606,U+260E-260F,U+261C,U+261E,U+2640,U+2642,U+2660-2661,U+2663-2665,U+2667-266A,U+266C}
+@font-face{font-family:fbchamblue;font-style:normal;font-weight:400;src:url(https://static.parastorage.com/fonts/v2/f5fe4b11-eb1b-4f25-a6e8-fe9c9e469bba/v1/fbchamblue.cyrillic.woff2) format("woff2");unicode-range:U+0401,U+0410-044F,U+0451,U+2116}
+@font-face{font-family:fbchamblue;font-style:normal;font-weight:400;src:url(https://static.parastorage.com/fonts/v2/f5fe4b11-eb1b-4f25-a6e8-fe9c9e469bba/v1/fbchamblue.latin-ext.woff2) format("woff2");unicode-range:U+0111,U+0126-0127,U+0132-0133,U+0138,U+013F-0142,U+0149-014B,U+0166-0167,U+2020,U+2113}
+@font-face{font-family:fbchamblue;font-style:normal;font-weight:400;src:url(https://static.parastorage.com/fonts/v2/f5fe4b11-eb1b-4f25-a6e8-fe9c9e469bba/v1/fbchamblue.latin.woff2) format("woff2");unicode-range:U+0020-007E,U+00A0-00A1,U+00A4,U+00A7-00A8,U+00AA-00AB,U+00AD,U+00B0-00B4,U+00B6-00BF,U+00C6,U+00D0,U+00D7-00D8,U+00DE-00DF,U+00E6,U+00F0,U+00F7-00F8,U+00FE,U+0131,U+0152-0153,U+02DA,U+2018-2019,U+201C-201D,U+2026,U+2032-2033,U+2074,U+2122,U+2191,U+2193}
+
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .tool-canvas-area {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    canvas { display: block; background: transparent; }
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+  </style>
+</head>
+<body>
+  <div class="tool-canvas-area">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+
+    // Mobile perf: cap devicePixelRatio so canvases allocate fewer pixels.
+    (function() {
+      var _isMobile = window.innerWidth <= 768;
+      if (_isMobile) {
+        var _nativeDPR = window.devicePixelRatio || 1;
+        var _cappedDPR = Math.min(1.5, _nativeDPR);
+        Object.defineProperty(window, 'devicePixelRatio', { get: function() { return _cappedDPR; } });
+      }
+    })();
+
+    window.CanvasRuntimeAPI = (function() {
+      var _exportMode = 'auto';
+      var _exportWidth = 0;
+      var _exportHeight = 0;
+      var _bgState = { mode: 'none', color: '#ffffff', imageEl: null, imageDataURL: null, fit: 'cover' };
+
+
+
+      var _canvas = document.getElementById('canvas');
+      var _area = _canvas ? _canvas.parentElement : document.querySelector('.tool-canvas-area');
+      var _resizeRAF = null;
+
+      function _detectCanvas() {
+        var r = window.renderer || window.threeRenderer;
+        if (r && r.domElement) {
+          _canvas = r.domElement;
+          _area = _canvas.parentElement;
+          return;
+        }
+        var area = document.querySelector('.tool-canvas-area');
+        if (area) {
+          var canvases = area.querySelectorAll('canvas');
+          var visible = [];
+          for (var j = 0; j < canvases.length; j++) {
+            if (canvases[j].style.display !== 'none') visible.push(canvases[j]);
+          }
+          if (visible.length >= 1) {
+            var largest = visible[0];
+            for (var i = 1; i < visible.length; i++) {
+              if (visible[i].width * visible[i].height > largest.width * largest.height) {
+                largest = visible[i];
+              }
+            }
+            _canvas = largest;
+            _area = _canvas.parentElement;
+          }
+        }
+      }
+
+
+
+
+      function _applyBgCSS() {
+        _detectCanvas();
+        if (!_canvas) return;
+        if (_bgState.mode === 'none') {
+          _canvas.style.background = '';
+        } else if (_bgState.mode === 'solid') {
+          _canvas.style.background = _bgState.color;
+        } else if (_bgState.mode === 'image') {
+          if (_bgState.imageDataURL) {
+            var fitCss = _bgState.fit === 'fill' ? '100% 100%' : _bgState.fit;
+            _canvas.style.backgroundColor = _bgState.color;
+            _canvas.style.backgroundImage = 'url("' + _bgState.imageDataURL + '")';
+            _canvas.style.backgroundSize = fitCss;
+            _canvas.style.backgroundPosition = 'center';
+            _canvas.style.backgroundRepeat = 'no-repeat';
+          } else {
+            _canvas.style.backgroundImage = '';
+            _canvas.style.backgroundColor = _bgState.color;
+          }
+        }
+      }
+
+      function setBackground(state) {
+        state = state || {};
+        _bgState.mode = state.mode || 'none';
+        _bgState.color = state.color || '#ffffff';
+        _bgState.fit = state.fit || 'cover';
+        if (state.image && state.image !== _bgState.imageDataURL) {
+          _bgState.imageDataURL = state.image;
+          _bgState.imageEl = null;
+          _applyBgCSS();
+          var img = new Image();
+          img.onload = function() {
+            if (_bgState.imageDataURL !== state.image) return;
+            _bgState.imageEl = img;
+          };
+          img.src = state.image;
+        } else if (!state.image) {
+          _bgState.imageEl = null;
+          _bgState.imageDataURL = null;
+        }
+        _applyBgCSS();
+      }
+
+      function getBackground() {
+        return { mode: _bgState.mode, color: _bgState.color, fit: _bgState.fit };
+      }
+
+      function setCanvas(el) {
+        _canvas = el;
+        _area = el ? el.parentElement : document.querySelector('.tool-canvas-area');
+        if (_bgState.mode !== 'none') _applyBgCSS();
+      }
+
+      function setExportDimensions(w, h) {
+        _detectCanvas();
+        _exportMode = 'fixed';
+        _exportWidth = Math.max(1, Math.round(w || 1));
+        _exportHeight = Math.max(1, Math.round(h || 1));
+        if (_canvas) {
+          _canvas.width = _exportWidth;
+          _canvas.height = _exportHeight;
+        }
+        if (window.p5 && typeof window.resizeCanvas === 'function') window.resizeCanvas(_exportWidth, _exportHeight);
+        if (window.renderer && window.renderer.setSize) window.renderer.setSize(_exportWidth, _exportHeight, false);
+        if (window.hydra && window.hydra.setResolution) window.hydra.setResolution(_exportWidth, _exportHeight);
+        window.dispatchEvent(new Event('resize'));
+      }
+
+      function fitToArea() {}
+
+      function getExportDimensions() {
+        if (_exportMode === 'fixed') return { width: _exportWidth, height: _exportHeight, mode: 'fixed' };
+        _detectCanvas();
+        var __cw = _canvas ? _canvas.width : 0;
+        var __ch = _canvas ? _canvas.height : 0;
+        // A canvas still at the HTML default (300x150), or at zero, has never been
+        // sized, so it is not evidence of the export size. Answering from it is
+        // CIRCULAR: a tool that appends its own canvas and then asks is handed its
+        // own default straight back and sizes itself to that. That is how a
+        // 4096x1554 render came out as 300x150 of content on a blank frame -
+        // _detectCanvas skips display:none, so the correctly-sized canvas the tool
+        // had just hidden was passed over in favour of the tool's unsized one.
+        //
+        // The question is "how big is the export", so measure the surface the frame
+        // is captured from, not whichever canvas happens to be findable.
+        if (__cw && __ch && !(__cw === 300 && __ch === 150)) {
+          return { width: __cw, height: __ch, mode: 'auto' };
+        }
+        var __area = _area || document.querySelector('.tool-canvas-area');
+        var __aw = __area ? __area.clientWidth : 0;
+        var __ah = __area ? __area.clientHeight : 0;
+        if (!__aw || !__ah) { __aw = window.innerWidth; __ah = window.innerHeight; }
+        return { width: __aw, height: __ah, mode: 'auto' };
+      }
+
+      function isFixedExportMode() { return _exportMode === 'fixed'; }
+
+      function _onAreaResize() {
+        var r = window.renderer || window.threeRenderer;
+        if (!r || !r.setSize) return;
+        if (_resizeRAF) cancelAnimationFrame(_resizeRAF);
+        _resizeRAF = requestAnimationFrame(function() {
+          _detectCanvas();
+          if (!_area) return;
+          var w = _area.clientWidth;
+          var h = _area.clientHeight;
+          if (w <= 0 || h <= 0) return;
+          r.setSize(w, h);
+          window.dispatchEvent(new Event('resize'));
+        });
+      }
+      if (typeof ResizeObserver !== 'undefined' && _area) {
+        new ResizeObserver(_onAreaResize).observe(_area);
+      }
+      window.addEventListener('resize', _onAreaResize);
+
+      setTimeout(function() {
+        _detectCanvas();
+        if (_bgState.mode !== 'none') _applyBgCSS();
+      }, 500);
+
+      function getMousePos(event) {
+        _detectCanvas();
+        if (!_canvas) return { x: 0, y: 0 };
+        var rect = _canvas.getBoundingClientRect();
+        var scaleX = _canvas.width / rect.width;
+        var scaleY = _canvas.height / rect.height;
+        var touch = event.touches && event.touches[0]
+          ? event.touches[0]
+          : event.changedTouches && event.changedTouches[0]
+          ? event.changedTouches[0]
+          : null;
+        var clientX = touch ? touch.clientX : event.clientX;
+        var clientY = touch ? touch.clientY : event.clientY;
+        return {
+          x: (clientX - rect.left) * scaleX,
+          y: (clientY - rect.top) * scaleY
+        };
+      }
+
+      function drawImage(ctx, img, x, y, w, h, fit) {
+        if (!img || !img.width || !img.height) return;
+        fit = fit || 'cover';
+        var ar = img.width / img.height;
+        var car = w / h;
+        var sx = 0, sy = 0, sw = img.width, sh = img.height;
+        var dx = x, dy = y, dw = w, dh = h;
+
+        if (fit === 'cover') {
+          if (ar > car) { sw = img.height * car; sx = (img.width - sw) / 2; }
+          else { sh = img.width / car; sy = (img.height - sh) / 2; }
+        } else if (fit === 'contain') {
+          if (ar > car) { dh = w / ar; dy = y + (h - dh) / 2; }
+          else { dw = h * ar; dx = x + (w - dw) / 2; }
+        }
+
+        ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
+      }
+
+      return {
+        setCanvas: setCanvas,
+        setBackground: setBackground,
+        getBackground: getBackground,
+        setExportDimensions: setExportDimensions,
+        fitToArea: fitToArea,
+        getExportDimensions: getExportDimensions,
+        isFixedExportMode: isFixedExportMode,
+
+
+        getMousePos: getMousePos,
+        drawImage: drawImage
+      };
+    })();
+
+    window.BrikCanvas = window.CanvasRuntimeAPI;
+    window.BrikControls = window.ControlsAPI;
+
+    (function() {
+      var srcDesc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+      if (srcDesc && srcDesc.set) {
+        Object.defineProperty(HTMLImageElement.prototype, 'src', {
+          get: srcDesc.get,
+          set: function(val) {
+            if (val && typeof val === 'string' && !val.startsWith('data:') && !this.crossOrigin) {
+              this.crossOrigin = 'anonymous';
+            }
+            srcDesc.set.call(this, val);
+          },
+          configurable: true,
+          enumerable: true
+        });
+      }
+    })();
+
+    window.loadImage = function(src, callback) {
+      var img = new Image();
+      if (src && typeof src === 'string' && !src.startsWith('data:')) {
+        img.crossOrigin = 'anonymous';
+      }
+      img.onload = function() { if (callback) callback(img); };
+      img.onerror = function() { console.error('Failed to load image:', src); };
+      img.src = src;
+      return img;
+    };
+
+  </script>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var __ctArea = canvas.parentElement;
+    var __maxDim = (window.innerWidth <= 768) ? 960 : 4096;
+
+    function resizeCanvas() {
+      var cs = getComputedStyle(__ctArea);
+      canvas.width = Math.min(__maxDim, __ctArea.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight));
+      canvas.height = Math.min(__maxDim, __ctArea.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom));
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    var controls = (function() {
+      var _v = {"textContent":"Glitch✸⋯‘·’。‘.。···","fontSize":429,"letterSpacing":0.55,"fontFamily":{"family":"fbchamblue","style":"normal","weight":400,"url":null},"customFont":null,"bgImage":null,"animate":true,"animStyle":"drift","friction":0,"collisionEnabled":true,"floatSpeed":4.1,"rotationSpeed":0.04,"fillColor":"#CFF273","strokeColor":"#002FF0","echoOpacity":100,"fillOpacity":100,"echoDelay":3,"echoCount":38,"breakApart":100,"strokeWidth":1,"echoScale":1,"__sys_bg":{"mode":"none","color":"#000000","image":null,"fit":"cover"}};
+      var _defaults = JSON.parse(JSON.stringify(_v));
+      var _listeners = {};
+      var _anyListeners = [];
+      var _actionListeners = {};
+      function _notify(key, value) {
+        if (_listeners[key]) _listeners[key].forEach(function(fn) { fn(value); });
+        _anyListeners.forEach(function(fn) { fn(key, value); });
+      }
+      function _hexToRgb(hex) {
+        var h = String(hex || '').replace('#', '');
+        if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+        if (h.length !== 6 || !/^[0-9a-fA-F]{6}$/.test(h)) return null;
+        return {
+          r: parseInt(h.slice(0, 2), 16),
+          g: parseInt(h.slice(2, 4), 16),
+          b: parseInt(h.slice(4, 6), 16)
+        };
+      }
+      function _clamp(n, min, max) { return Math.min(max, Math.max(min, n)); }
+      function _hexToRgbaCss(hex, opacity0to100) {
+        var rgb = _hexToRgb(hex);
+        if (!rgb) return 'rgba(0,0,0,1)';
+        var op = opacity0to100 != null && !isNaN(Number(opacity0to100)) ? Number(opacity0to100) : 100;
+        var a = _clamp(op, 0, 100) / 100;
+        return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + a + ')';
+      }
+      var api = {
+        get: function(k) { return _v[k]; },
+        getAll: function() { return Object.assign({}, _v); },
+        getDefaults: function() { return JSON.parse(JSON.stringify(_defaults)); },
+        getColorWithAlpha: function(baseKey) { return _hexToRgbaCss(_v[baseKey], _v[baseKey + '_opacity']); },
+        set: function(k, v) { _v[k] = v; _notify(k, v); },
+        setValues: function(values) {
+          if (!values || typeof values !== 'object') return;
+          Object.keys(values).forEach(function(k) {
+            if (!(k in _v)) return;
+            try { _v[k] = JSON.parse(JSON.stringify(values[k])); }
+            catch (e) { _v[k] = values[k]; }
+            _notify(k, _v[k]);
+          });
+        },
+        setDefaults: function(values) {
+          if (!values || typeof values !== 'object') return;
+          Object.keys(values).forEach(function(k) {
+            try { _defaults[k] = JSON.parse(JSON.stringify(values[k])); }
+            catch (e) { _defaults[k] = values[k]; }
+          });
+        },
+        resetAll: function() {
+          Object.keys(_defaults).forEach(function(k) {
+            try { _v[k] = JSON.parse(JSON.stringify(_defaults[k])); }
+            catch (e) { _v[k] = _defaults[k]; }
+            _notify(k, _v[k]);
+          });
+        },
+        triggerAction: function(k) {
+          if (_actionListeners[k]) _actionListeners[k].forEach(function(fn) { fn(); });
+        },
+        onChange: function(k, cb) {
+          if (!_listeners[k]) _listeners[k] = [];
+          _listeners[k].push(cb);
+        },
+        onAny: function(cb) { _anyListeners.push(cb); },
+        onAction: function(k, cb) {
+          if (!_actionListeners[k]) _actionListeners[k] = [];
+          _actionListeners[k].push(cb);
+        }
+      };
+      window.ControlsAPI = api;
+      window.BrikControls = api;
+      return api;
+    })();
+
+
+
+    // Creative Code
+    {
+      class Letter {
+    constructor(char, x, y, fontSize, offsetX = 0, centerX, centerY) {
+        this.char = char;
+        this.wordX = x;
+        this.wordY = y;
+        // Start at center of canvas
+        this.freeX = centerX !== undefined ? centerX : x;
+        this.freeY = centerY !== undefined ? centerY : y;
+        this.startX = this.freeX;
+        this.startY = this.freeY;
+        this.x = this.freeX;
+        this.y = this.freeY;
+        this.fontSize = fontSize;
+        this.offsetX = offsetX; // Relative to word center
+
+        // Random initial velocity for independent flight
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 5;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+
+        // Rotation
+        this.wordRotation = 0;
+        this.freeRotation = 0;
+        this.rotation = 0;
+        this.va = (Math.random() - 0.5) * 0.15; // Angular velocity
+
+        this.radius = fontSize * 0.3; // Collision radius
+        this.history = [];
+        this.maxHistory = 4000;
+        this.dynamicScale = 1;
+        this.index = 0;
+        this.energy = 1.0; // Global energy factor for decay
+
+        // Animation-specific state
+        this.orbitAngle = 0;
+        this.orbitRadius = 0;
+        this.waveTime = 0;
+        this.vortexAngle = 0;
+        this.vortexRadius = 0;
+        this.shakeIntensity = 0;
+        this.breatheTime = 0;
+    }
+
+
+    update(w, h, speedMult, rotMult, breakFactor, animStyle, time) {
+        const padding = this.fontSize * 0.5;
+        const friction = controls.get('friction') || 0;
+        // Damping factor: 0 friction = 1.0 (no decay), 5 friction = 0.95 (fast decay)
+        const damping = Math.max(0.9, 1.0 - (friction / 100));
+
+        // Apply energy decay
+        this.energy *= damping;
+
+        if (animStyle === 'drift') {
+            this.vx *= damping;
+            this.vy *= damping;
+            this.va *= damping;
+            this.freeX += this.vx * speedMult;
+            this.freeY += this.vy * speedMult;
+            this.freeRotation += this.va * rotMult * 10;
+        } else if (animStyle === 'orbit') {
+            if (!this.orbitAngle) this.orbitAngle = Math.atan2(this.freeY - h/2, this.freeX - w/2);
+            if (!this.orbitRadius) this.orbitRadius = 50 + Math.random() * 150;
+            this.orbitRadius += 0.3 * speedMult * this.energy;
+            this.orbitAngle += (0.008 + this.index * 0.003) * speedMult * this.energy;
+            this.freeX = w/2 + Math.cos(this.orbitAngle) * this.orbitRadius;
+            this.freeY = h/2 + Math.sin(this.orbitAngle) * this.orbitRadius;
+            this.freeRotation += 0.02 * rotMult * 10 * this.energy;
+        } else if (animStyle === 'wave') {
+            this.waveTime = (this.waveTime || 0) + 0.03 * speedMult * this.energy;
+            const spread = Math.min(this.waveTime * 30, w * 0.4);
+            const baseX = w/2 + this.offsetX * (1 + spread / 100);
+            this.freeX += (baseX - this.freeX) * 0.05;
+            this.freeY = h/2 + Math.sin(this.waveTime + this.index * 0.8) * (80 + spread * 0.5) * this.energy;
+            this.freeRotation = Math.sin(this.waveTime + this.index) * 0.3 * this.energy;
+        } else if (animStyle === 'gravity') {
+            this.vy += 0.15 * speedMult * this.energy;
+            this.vx *= damping;
+            this.freeX += this.vx * speedMult;
+            this.freeY += this.vy * speedMult;
+            this.freeRotation += this.va * rotMult * 10 * this.energy;
+            if (this.freeY > h - padding) {
+                this.freeY = h - padding;
+                this.vy *= -0.6;
+                this.vx *= 0.95;
+            }
+        } else if (animStyle === 'vortex') {
+            if (!this.vortexAngle) this.vortexAngle = Math.atan2(this.freeY - h/2, this.freeX - w/2);
+            if (!this.vortexRadius) this.vortexRadius = 30;
+            this.vortexAngle += (0.02 + this.index * 0.005) * speedMult * this.energy;
+            this.vortexRadius += 1.5 * speedMult * this.energy;
+            const pulse = Math.sin(time * 0.5) * 50 * this.energy;
+            this.freeX = w/2 + Math.cos(this.vortexAngle) * (this.vortexRadius + pulse);
+            this.freeY = h/2 + Math.sin(this.vortexAngle) * (this.vortexRadius + pulse);
+            this.freeRotation = this.vortexAngle;
+        } else if (animStyle === 'shake') {
+            if (!this.shakeIntensity) this.shakeIntensity = 40 + Math.random() * 30;
+            this.shakeIntensity *= damping;
+            const shakeX = (Math.random() - 0.5) * this.shakeIntensity * speedMult;
+            const shakeY = (Math.random() - 0.5) * this.shakeIntensity * speedMult;
+            this.freeX += this.vx * 0.3 * speedMult;
+            this.freeY += this.vy * 0.3 * speedMult;
+            this.vx *= damping;
+            this.vy *= damping;
+            this.freeX += shakeX;
+            this.freeY += shakeY;
+            this.freeRotation += (Math.random() - 0.5) * 0.1 * rotMult * this.energy;
+        } else if (animStyle === 'breathe') {
+            this.breatheTime = (this.breatheTime || 0) + 0.015 * speedMult * this.energy;
+            const breatheScale = 1 + Math.sin(this.breatheTime) * 0.8 * this.energy;
+            const targetX = w/2 + this.offsetX * breatheScale * (1 + this.breatheTime * 0.3);
+            const targetY = h/2 + Math.sin(this.breatheTime + this.index * 0.5) * 30 * breatheScale;
+            this.freeX += (targetX - this.freeX) * 0.08;
+            this.freeY += (targetY - this.freeY) * 0.08;
+            this.freeRotation = Math.sin(this.breatheTime * 0.5 + this.index) * 0.15 * this.energy;
+        } else if (animStyle === 'bounce') {
+            this.vx *= damping;
+            this.vy *= damping;
+            this.freeX += this.vx * speedMult * 1.5;
+            this.freeY += this.vy * speedMult * 1.5;
+            this.freeRotation += this.va * rotMult * 10 * this.energy;
+            if (this.freeX < padding) { this.vx = Math.abs(this.vx) * 0.9; this.freeX = padding; }
+            else if (this.freeX > w - padding) { this.vx = -Math.abs(this.vx) * 0.9; this.freeX = w - padding; }
+            if (this.freeY < padding) { this.vy = Math.abs(this.vy) * 0.9; this.freeY = padding; }
+            else if (this.freeY > h - padding) { this.vy = -Math.abs(this.vy) * 0.9; this.freeY = h - padding; }
+        }
+
+        // Turbulence wind force
+        const turbIntensity = controls.get('turbulenceIntensity') || 0;
+        const turbScale = controls.get('turbulenceScale') || 2;
+        if (turbIntensity > 0) {
+            const noiseScale = turbScale * 0.005;
+            const windX = turbulenceNoise(this.freeX * noiseScale, this.freeY * noiseScale + time * 0.5) * turbIntensity;
+            const windY = turbulenceNoise(this.freeX * noiseScale + 100, this.freeY * noiseScale + time * 0.5 + 100) * turbIntensity;
+            this.freeX += windX;
+            this.freeY += windY;
+            this.vx += windX * 0.1;
+            this.vy += windY * 0.1;
+            this.freeRotation += turbulenceNoise(this.freeX * noiseScale + 200, time * 0.3) * turbIntensity * 0.02;
+        }
+
+        // Boundary bounce (for styles that use vx/vy)
+        if (animStyle === 'drift' || animStyle === 'gravity' || animStyle === 'shake') {
+            if (this.freeX < padding) { this.vx = Math.abs(this.vx); this.freeX = padding; }
+            else if (this.freeX > w - padding) { this.vx = -Math.abs(this.vx); this.freeX = w - padding; }
+            if (this.freeY < padding) { this.vy = Math.abs(this.vy); this.freeY = padding; }
+            else if (this.freeY > h - padding) { this.vy = -Math.abs(this.vy); this.freeY = h - padding; }
+        }
+
+        // Boundary clamp for all styles
+        this.freeX = Math.max(padding, Math.min(w - padding, this.freeX));
+        this.freeY = Math.max(padding, Math.min(h - padding, this.freeY));
+
+        // If we are in "Word" mode (breakFactor = 0), keep free position synced to word
+        if (breakFactor === 0) {
+            this.freeX = this.wordX;
+            this.freeY = this.wordY;
+            this.freeRotation = this.wordRotation;
+        }
+
+        // Interpolate between word position and free position
+        this.x = this.wordX + (this.freeX - this.wordX) * breakFactor;
+        this.y = this.wordY + (this.freeY - this.wordY) * breakFactor;
+        this.rotation = this.wordRotation + (this.freeRotation - this.wordRotation) * breakFactor;
+
+        this.history.unshift({ x: this.x, y: this.y, rotation: this.rotation });
+        if (this.history.length > this.maxHistory) {
+            this.history.pop();
+        }
+    }
+
+    draw(ctx, x, y, rotation, scale, fontStr, fillStyle, strokeStyle, strokeWidth) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+        ctx.scale(scale, scale);
+
+        ctx.font = fontStr;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        if (fillStyle) {
+            ctx.fillStyle = fillStyle;
+            ctx.fillText(this.char, 0, 0);
+        }
+
+        if (strokeWidth > 0) {
+            ctx.strokeStyle = strokeStyle;
+            ctx.lineWidth = strokeWidth;
+            ctx.strokeText(this.char, 0, 0);
+        }
+
+        ctx.restore();
+    }
+}
+
+let letters = [];
+let lastText = '';
+let wordPhysics = { x: 0, y: 0, vx: 2, vy: 2, rotation: 0, va: 0.02 };
+let mousePos = { x: 0, y: 0 };
+let globalTime = 0;
+let customFontFamily = null;
+let bgImg = null;
+let bgImgLoaded = false;
+let draggedLetter = null;
+let isDragging = false;
+let letterOffsets = {}; // Per-letter manual offsets keyed by index
+
+// Handle background image upload
+controls.onChange('bgImage', (imgUrl) => {
+    if (!imgUrl) {
+        bgImg = null;
+        bgImgLoaded = false;
+        return;
+    }
+    const img = new Image();
+    img.onload = () => {
+        bgImg = img;
+        bgImgLoaded = true;
+    };
+    img.src = imgUrl;
+});
+
+// Load initial background image if set
+(function() {
+    const initialBg = controls.get('bgImage');
+    if (initialBg) {
+        const img = new Image();
+        img.onload = () => {
+            bgImg = img;
+            bgImgLoaded = true;
+        };
+        img.src = initialBg;
+    }
+})();
+
+// Handle custom font upload
+controls.onChange('customFont', (fontDataUrl) => {
+    if (!fontDataUrl) return;
+    const fontName = 'CustomUploadedFont_' + Date.now();
+    const fontFace = new FontFace(fontName, `url(${fontDataUrl})`);
+    fontFace.load().then((loaded) => {
+        document.fonts.add(loaded);
+        customFontFamily = fontName;
+        initLetters();
+    }).catch(err => {
+        console.warn('Font load failed:', err);
+    });
+});
+
+// When user picks a font from the selector, clear custom font override
+controls.onChange('fontFamily', () => {
+    customFontFamily = null;
+});
+
+function initLetters() {
+    const text = controls.get('textContent') || '';
+    const fontSize = controls.get('fontSize');
+    const spacing = controls.get('letterSpacing') || 0.6;
+    const w = canvas.width;
+    const h = canvas.height;
+
+    if (w === 0 || h === 0) return;
+
+    globalTime = 0; // Reset global time for wave/breathe
+    letters = [];
+    const chars = text.split('');
+    const charWidth = fontSize * spacing;
+    const totalWidth = chars.length * charWidth;
+
+    wordPhysics.x = w / 2;
+    wordPhysics.y = h / 2;
+    wordPhysics.rotation = 0;
+
+    if (wordPhysics.vx === 0) wordPhysics.vx = 2;
+    if (wordPhysics.vy === 0) wordPhysics.vy = 2;
+
+    const centerX = w / 2;
+    const centerY = h / 2;
+
+    chars.forEach((char, i) => {
+        const offsetX = (i * charWidth) - (totalWidth / 2) + (charWidth / 2);
+        const x = wordPhysics.x + offsetX;
+        const y = wordPhysics.y;
+        const startX = centerX + offsetX;
+        const startY = centerY;
+        const l = new Letter(char, x, y, fontSize, offsetX, startX, startY);
+        l.index = i;
+        // Apply stored manual offsets if they exist
+        if (letterOffsets[i]) {
+            l.freeX = startX + letterOffsets[i].x;
+            l.freeY = startY + letterOffsets[i].y;
+            l.x = l.freeX;
+            l.y = l.freeY;
+        }
+        for(let j=0; j<200; j++) l.history.push({ x: l.x, y: l.y, rotation: 0 });
+        letters.push(l);
+    });
+
+    lastText = text;
+}
+
+function resolveCollisions() {
+    for (let i = 0; i < letters.length; i++) {
+        for (let j = i + 1; j < letters.length; j++) {
+            const l1 = letters[i];
+            const l2 = letters[j];
+
+            const dx = l2.freeX - l1.freeX;
+            const dy = l2.freeY - l1.freeY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const minDistance = l1.radius + l2.radius;
+
+            if (distance < minDistance) {
+                const overlap = minDistance - distance;
+                const nx = dx / (distance || 1);
+                const ny = dy / (distance || 1);
+
+                const moveX = nx * overlap * 0.5;
+                const moveY = ny * overlap * 0.5;
+
+                l1.freeX -= moveX;
+                l1.freeY -= moveY;
+                l2.freeX += moveX;
+                l2.freeY += moveY;
+
+                const relativeVx = l2.vx - l1.vx;
+                const relativeVy = l2.vy - l1.vy;
+                const velocityAlongNormal = relativeVx * nx + relativeVy * ny;
+
+                if (velocityAlongNormal < 0) {
+                    const restitution = 0.8;
+                    const impulse = -(1 + restitution) * velocityAlongNormal;
+                    const impulseX = impulse * nx * 0.5;
+                    const impulseY = impulse * ny * 0.5;
+
+                    l1.vx -= impulseX;
+                    l1.vy -= impulseY;
+                    l2.vx += impulseX;
+                    l2.vy += impulseY;
+                }
+            }
+        }
+    }
+}
+
+function updateWord(w, h, speedMult, rotMult, breakFactor, animStyle) {
+    const fontSize = controls.get('fontSize');
+
+    wordPhysics.x += wordPhysics.vx * speedMult;
+    wordPhysics.y += wordPhysics.vy * speedMult;
+    wordPhysics.rotation += wordPhysics.va * rotMult * 10;
+
+    const cos = Math.cos(wordPhysics.rotation);
+    const sin = Math.sin(wordPhysics.rotation);
+
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    const padding = fontSize * 0.5;
+
+    letters.forEach(letter => {
+        const wx = wordPhysics.x + letter.offsetX * cos;
+        const wy = wordPhysics.y + letter.offsetX * sin;
+        letter.wordX = wx;
+        letter.wordY = wy;
+        letter.wordRotation = wordPhysics.rotation;
+
+        minX = Math.min(minX, wx);
+        maxX = Math.max(maxX, wx);
+        minY = Math.min(minY, wy);
+        maxY = Math.max(maxY, wy);
+    });
+
+    if (minX < padding) {
+        wordPhysics.vx = Math.abs(wordPhysics.vx);
+        wordPhysics.x += (padding - minX);
+    } else if (maxX > w - padding) {
+        wordPhysics.vx = -Math.abs(wordPhysics.vx);
+        wordPhysics.x -= (maxX - (w - padding));
+    }
+
+    if (minY < padding) {
+        wordPhysics.vy = Math.abs(wordPhysics.vy);
+        wordPhysics.y += (padding - minY);
+    } else if (maxY > h - padding) {
+        wordPhysics.vy = -Math.abs(wordPhysics.vy);
+        wordPhysics.y -= (maxY - (h - padding));
+    }
+
+    if (breakFactor > 0 && controls.get('collisionEnabled')) {
+        resolveCollisions();
+    }
+
+    letters.forEach(letter => {
+        letter.update(w, h, speedMult, rotMult, breakFactor, animStyle, globalTime);
+    });
+}
+
+function hexToRgba(hex, opacity) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${opacity / 100})`;
+}
+
+let lastFontSize = 0;
+let lastSpacing = 0;
+
+function draw() {
+    const isAnimated = controls.get('animate');
+    const w = canvas.width;
+    const h = canvas.height;
+
+    if (letters.length === 0 && w > 0) {
+        initLetters();
+    }
+
+    const breakFactor = controls.get('breakApart') / 100;
+    const currentFontSize = controls.get('fontSize');
+    const currentSpacing = controls.get('letterSpacing');
+
+
+    if (controls.get('textContent') !== lastText || currentFontSize !== lastFontSize || currentSpacing !== lastSpacing) {
+        lastFontSize = currentFontSize;
+        lastSpacing = currentSpacing;
+        initLetters();
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Draw background image with cover mode (no edges, full bleed)
+    if (bgImgLoaded && bgImg) {
+        CanvasRuntimeAPI.drawImage(ctx, bgImg, 0, 0, w, h, 'cover');
+    }
+
+    const fontObj = controls.get('fontFamily');
+    const fontSize = controls.get('fontSize');
+    const activeFontFamily = customFontFamily || fontObj.family;
+    const fontStr = `${fontObj.weight} ${fontSize}px "${activeFontFamily}", sans-serif`;
+
+    const floatSpeed = controls.get('floatSpeed');
+    const rotSpeed = controls.get('rotationSpeed');
+    const echoCount = controls.get('echoCount');
+    const echoDelay = controls.get('echoDelay');
+    const echoOpacity = controls.get('echoOpacity');
+
+    const fillColor = controls.get('fillColor');
+    const fillOpacity = controls.get('fillOpacity');
+    const strokeColor = controls.get('strokeColor');
+    const strokeWidth = controls.get('strokeWidth');
+
+    const mainFill = hexToRgba(fillColor, fillOpacity);
+    const mainStroke = hexToRgba(strokeColor, 100);
+    const echoFill = hexToRgba(fillColor, echoOpacity);
+    const echoStroke = hexToRgba(strokeColor, echoOpacity);
+
+    const echoScale = controls.get('echoScale') || 1.0;
+
+    const animStyle = controls.get('animStyle') || 'drift';
+
+    if (isAnimated) {
+        globalTime += 0.016;
+        updateWord(w, h, floatSpeed, rotSpeed, breakFactor, animStyle);
+    }
+
+    for (let i = echoCount; i >= 1; i--) {
+        const index = i * echoDelay;
+        const s = Math.pow(echoScale, i);
+
+        letters.forEach(letter => {
+            if (letter.history[index]) {
+                const state = letter.history[index];
+                letter.draw(ctx, state.x, state.y, state.rotation, s, fontStr, echoFill, echoStroke, strokeWidth);
+            }
+        });
+    }
+
+    letters.forEach(letter => {
+        letter.draw(ctx, letter.x, letter.y, letter.rotation, 1, fontStr, mainFill, mainStroke, strokeWidth);
+    });
+
+    requestAnimationFrame(draw);
+}
+
+canvas.addEventListener('mousemove', (e) => {
+    mousePos = CanvasRuntimeAPI.getMousePos(e);
+    if (isDragging && draggedLetter !== null) {
+        const letter = letters[draggedLetter];
+        if (letter) {
+            const idx = draggedLetter;
+            if (!letterOffsets[idx]) letterOffsets[idx] = { x: 0, y: 0 };
+            letter.freeX = mousePos.x;
+            letter.freeY = mousePos.y;
+            letter.x = mousePos.x;
+            letter.y = mousePos.y;
+            letter.vx = 0;
+            letter.vy = 0;
+            letterOffsets[idx].x = mousePos.x - letter.wordX;
+            letterOffsets[idx].y = mousePos.y - letter.wordY;
+        }
+    }
+});
+
+canvas.addEventListener('mousedown', (e) => {
+    const pos = CanvasRuntimeAPI.getMousePos(e);
+    const fontSize = controls.get('fontSize');
+    const hitRadius = fontSize * 0.5;
+    // Find closest letter to click
+    let closestIdx = -1;
+    let closestDist = Infinity;
+    letters.forEach((letter, i) => {
+        const dx = pos.x - letter.x;
+        const dy = pos.y - letter.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < hitRadius && dist < closestDist) {
+            closestDist = dist;
+            closestIdx = i;
+        }
+    });
+    if (closestIdx >= 0) {
+        isDragging = true;
+        draggedLetter = closestIdx;
+        // Pause animation while dragging
+    }
+});
+
+canvas.addEventListener('mouseup', () => {
+    isDragging = false;
+    draggedLetter = null;
+});
+
+canvas.addEventListener('mouseleave', () => {
+    isDragging = false;
+    draggedLetter = null;
+});
+
+// Touch support for dragging letters
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const pos = CanvasRuntimeAPI.getMousePos(e);
+    const fontSize = controls.get('fontSize');
+    const hitRadius = fontSize * 0.5;
+    let closestIdx = -1;
+    let closestDist = Infinity;
+    letters.forEach((letter, i) => {
+        const dx = pos.x - letter.x;
+        const dy = pos.y - letter.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < hitRadius && dist < closestDist) {
+            closestDist = dist;
+            closestIdx = i;
+        }
+    });
+    if (closestIdx >= 0) {
+        isDragging = true;
+        draggedLetter = closestIdx;
+    }
+}, { passive: false });
+
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const pos = CanvasRuntimeAPI.getMousePos(e);
+    mousePos = pos;
+    if (isDragging && draggedLetter !== null) {
+        const letter = letters[draggedLetter];
+        if (letter) {
+            const idx = draggedLetter;
+            if (!letterOffsets[idx]) letterOffsets[idx] = { x: 0, y: 0 };
+            letter.freeX = pos.x;
+            letter.freeY = pos.y;
+            letter.x = pos.x;
+            letter.y = pos.y;
+            letter.vx = 0;
+            letter.vy = 0;
+            letterOffsets[idx].x = pos.x - letter.wordX;
+            letterOffsets[idx].y = pos.y - letter.wordY;
+        }
+    }
+}, { passive: false });
+
+canvas.addEventListener('touchend', () => {
+    isDragging = false;
+    draggedLetter = null;
+});
+
+controls.onAction('backToStart', () => {
+    initLetters();
+    controls.set('animate', false);
+});
+
+controls.onAction('resetAnimation', () => {
+    initLetters();
+    controls.set('breakApart', 0);
+});
+
+initLetters();
+requestAnimationFrame(draw);
+
+window.addEventListener('resize', () => {
+    initLetters();
+});
+
+    }
+
+    // System Background Wiring
+    if (typeof CanvasRuntimeAPI !== 'undefined') {
+      var __sysBgVal = controls.get('__sys_bg');
+      if (__sysBgVal) CanvasRuntimeAPI.setBackground(__sysBgVal);
+    }
+  </script>
+  <script>
+    (function() {
+      if (!document.fonts || !document.fonts.load) return;
+      var _fams = ["fbchamblue"];
+      var _replay = function() {
+        var _api = window.ControlsAPI;
+        if (!_api || !_api.getAll || !_api.set) return;
+        var _all = _api.getAll();
+        Object.keys(_all).forEach(function(k) { _api.set(k, _all[k]); });
+      };
+      Promise.all(_fams.map(function(f) {
+        return document.fonts.load('1em "' + f + '"').catch(function() {});
+      })).then(_replay);
+      // The sheet can still be in flight when the promises settle empty; a late sweep costs
+      // one extra repaint and covers a slow CDN.
+      setTimeout(_replay, 2500);
+    })();
+  </script>
+</body>
+</html>

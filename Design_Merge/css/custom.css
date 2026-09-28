@@ -1,0 +1,378 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+.fw-normal{
+	color: #CFF273 !important;
+}
+
+/* Language Switch Button */
+.lang-switch-link {
+	display: inline-flex;
+	align-items: center;
+	height: 100%;
+	font-size: 0.875rem;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	color: var(--cnvs-header-misc-icons-color, inherit);
+	cursor: pointer;
+}
+.lang-switch-link:hover {
+	color: var(--cnvs-themecolor);
+}
+
+.fw-normal-g {
+	color: #002FF0 !important;
+	font-weight:400;
+}
+
+/* Events Calendar
+-----------------------------------------------------------------*/
+.event-calendar {
+	max-width: 320px;
+}
+
+.event-calendar-tabs {
+	display: flex;
+	gap: 1.25rem;
+	margin-bottom: 1.5rem;
+}
+
+.event-calendar-tab {
+	background: none;
+	border: 0;
+	padding: 0 0 4px;
+	font-size: 0.8125rem;
+	font-weight: 400;
+	color: var(--cnvs-contrast-500);
+	cursor: pointer;
+	border-bottom: 1px solid transparent;
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.event-calendar-tab:hover {
+	color: var(--cnvs-contrast-900);
+}
+
+.event-calendar-tab.active {
+	color: var(--cnvs-contrast-900);
+	font-weight: 600;
+	border-bottom-color: currentColor;
+}
+
+.event-calendar .fc-calendar {
+	width: 100%;
+	background: none;
+}
+
+.event-calendar .fc-head {
+	display: flex;
+	background: none;
+	color: var(--cnvs-contrast-500);
+	box-shadow: none;
+	height: auto;
+	padding: 0;
+	margin-bottom: 0.75rem;
+}
+
+.event-calendar .fc-head > div {
+	width: 20%;
+	text-align: center;
+	font-size: 0.6875rem;
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0;
+	text-shadow: none;
+}
+
+/* Gallery is closed Mon/Tue - hide those two columns entirely */
+.event-calendar .fc-head > div:nth-child(1),
+.event-calendar .fc-head > div:nth-child(2),
+.event-calendar .fc-row > div:nth-child(1),
+.event-calendar .fc-row > div:nth-child(2) {
+	display: none;
+}
+
+.event-calendar .fc-body {
+	border: 0;
+	height: auto;
+	padding: 0;
+}
+
+.event-calendar .fc-row {
+	display: flex;
+	box-shadow: none;
+	border: 0;
+}
+
+.event-calendar .fc-row > div {
+	width: 20%;
+	height: auto;
+	box-shadow: none;
+	border: 0;
+	padding: 0.375rem 0;
+	text-align: center;
+	cursor: pointer;
+}
+
+.event-calendar .fc-row > div > span.fc-weekday {
+	display: none;
+}
+
+.event-calendar .fc-row > div > span.fc-date {
+	position: static;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	margin: 0 auto;
+	font-size: 0.9375rem;
+	font-weight: 400;
+	color: var(--cnvs-contrast-900);
+	text-shadow: none;
+	border-radius: 50%;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.event-calendar .fc-row > div > span.fc-emptydate {
+	color: var(--cnvs-contrast-300);
+}
+
+.event-calendar .fc-row > div:hover > span.fc-date {
+	background-color: var(--cnvs-contrast-100);
+}
+
+.event-calendar .fc-row > div.fc-today > span.fc-date,
+.event-calendar .fc-row > div.fc-today-marker > span.fc-date {
+	color: var(--cnvs-contrast-900);
+	font-weight: 700;
+}
+
+.event-calendar .fc-row > div.fc-selected > span.fc-date {
+	background-color: var(--cnvs-contrast-900);
+	color: var(--cnvs-contrast-0);
+}
+
+.event-calendar .fc-calendar-events {
+	line-height: 1;
+	margin-top: 2px;
+}
+
+.event-calendar .fc-calendar-event {
+	display: inline-block;
+	font-size: 8px;
+	color: var(--cnvs-themecolor);
+}
+
+.event-calendar .fc-row > div.fc-selected .fc-calendar-event {
+	color: var(--cnvs-contrast-0);
+}
+
+.event-calendar-nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+	font-size: 0.8125rem;
+}
+
+.event-calendar-prev,
+.event-calendar-next {
+	background: none;
+	border: 0;
+	padding: 0;
+	font-size: 1.125rem;
+	line-height: 1;
+	color: var(--cnvs-contrast-600);
+	cursor: pointer;
+}
+
+.event-calendar-prev:hover,
+.event-calendar-next:hover {
+	color: var(--cnvs-contrast-900);
+}
+
+.event-calendar-month {
+	min-width: 8rem;
+	text-align: center;
+	color: var(--cnvs-contrast-900);
+}
+
+/* Marquee Ticker
+-----------------------------------------------------------------*/
+.glitch-ticker {
+	height: 60px;
+	background-color: #002FF0;
+	display: flex;
+	align-items: center;
+}
+
+.glitch-ticker .ticker {
+	line-height: 60px;
+}
+
+.glitch-ticker .ticker-item {
+	font-size: 1.375rem;
+	line-height: 60px;
+	color: #CFF273;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+}
+
+/* Mega-menu dropdown — brand blue while the nav item is actually hovered
+   (the theme only makes .mega-menu-content visible on :hover in the first
+   place, via the same selector below, so there's no separate "shown but
+   not hovered" state to worry about).
+-----------------------------------------------------------------*/
+.is-expanded-menu .primary-menu:not(.on-click) .menu-item:hover > .mega-menu-content {
+	/* !important because demos/glitch/glitch.css has an even more specific
+	   rule (`.is-expanded-menu #header .primary-menu:not(.on-click) .mega-menu-content`,
+	   with an ID selector) setting background-color: var(--cnvs-color-secondary) —
+	   that beats a same-specificity selector here regardless of file load order. */
+	background-color: #002FF0 !important;
+}
+/* The nav bar itself turns the same blue while a mega-menu item is hovered
+   open — :has() lets the ancestor (#header-wrap) react to a descendant's
+   :hover state, which plain CSS selectors can't otherwise express. */
+#header-wrap:has(.menu-item.mega-menu:hover) {
+	background-color: #002FF0 !important;
+}
+
+/* Header bar — always the same gray as the hero, not just on scroll/hover,
+   and white nav text so it stays readable on that background.
+-----------------------------------------------------------------*/
+#header-wrap {
+	background-color: var(--bs-gray-400) !important;
+}
+.primary-menu .menu-link,
+.primary-menu .menu-link i,
+#lang-switch-trigger {
+	color: #fff !important;
+}
+/* Mobile hamburger icon bars are drawn with background-color, not color */
+.cnvs-hamburger .cnvs-hamburger-inner,
+.cnvs-hamburger .cnvs-hamburger-inner::before,
+.cnvs-hamburger .cnvs-hamburger-inner::after {
+	background-color: #fff !important;
+}
+
+/* Logo — half the theme's default header-height-driven size */
+#header-wrap #logo img {
+	height: calc(var(--cnvs-header-height) / 2) !important;
+}
+.is-expanded-menu #header.sticky-header-shrink #header-wrap #logo img {
+	height: calc(var(--cnvs-sticky-header-height) / 2) !important;
+}
+
+/* Mega-menu dropdown list items (事件/最新消息/媒體報導 etc.) — brand green,
+   both states (demos/glitch/glitch.css sets rgba(0,0,0,.5)/1 by default). */
+.mega-menu-content .mega-menu-links li a {
+	color: #CFF273 !important;
+}
+.mega-menu-content .mega-menu-links li.target-link-active a,
+.mega-menu-content .mega-menu-links li:hover a {
+	color: #CFF273 !important;
+}
+
+/* 超大形象圖 (intro-style2) — continues the hero's gray instead of
+   dropping to white right after it */
+.intro-style2 {
+	background-color: var(--bs-gray-400);
+}
+/* clean's own .container-xxl caps at 1320px (Bootstrap 5 default) — Dark's
+   caps at 1600px, which is wider than most desktop viewports, so in
+   practice it stays fluid/full-bleed almost all the time and only caps on
+   very large monitors. Scoped to this section only, matching Dark's actual
+   width, not clean's narrower one. */
+.intro-style2 .container-xxl {
+	max-width: 1600px;
+}
+/* The parallax image used to be anchored flush at the box's top edge
+   (top:0) with only 100px of spare height below (800px image in a 700px
+   box) — so translate(±8%) had buffer to swing up, but swinging down even
+   slightly pushed the image's top edge below the box's top edge, opening a
+   gap at the top that showed the section background through. Taller image
+   (1200px) centered in the box via `top` (not touched by skrollr) gives
+   250px of buffer on both sides, so a much bigger ±18% skrollr swing
+   (~216px) stays safely covered in both directions. */
+.intro-style2-img {
+	height: 1200px;
+	top: -250px;
+}
+
+/* Video Section background — a self-contained canvas animation (its own
+   full HTML document under assets/) embedded via iframe rather than pasted
+   inline, so its fonts/scripts/globals (ControlsAPI, #canvas, its own
+   resize listeners, etc.) can't collide with anything on this page.
+   .video-wrap normally gets its height from the <video> it wraps; an
+   iframe has no intrinsic size, so this section needs an explicit height
+   for the iframe (height:100%) to fill. Pointer events are left enabled
+   (the default) so the canvas's own letter-drag interaction still works. */
+/* This section relied on .video-overlay's 10% black tint over the plain
+   white page background to look gray — an accidental, lighter gray than
+   the deliberate one used elsewhere. Giving it the same explicit color.
+   !important because the section also carries clean's own .bg-transparent
+   utility class, which sets background-color: transparent !important. */
+.section:has(> .video-wrap.canvas-bg-wrap) {
+	background-color: var(--bs-gray-400) !important;
+}
+.video-wrap.canvas-bg-wrap {
+	/* No explicit height here — clean's own `.section .video-wrap { position:
+	   absolute; width:100%; height:100% }` already fills the .section (which
+	   has position:relative, so it's the containing block). An earlier
+	   height:70vh override was shorter than the section's own intrinsic
+	   height, leaving a plain gray strip below the canvas before the next
+	   section — same background color, but visually flat/empty next to the
+	   animated area above it, and read as a mismatch/gap. Removing the
+	   override lets the canvas cover the section edge to edge instead.
+	   Left at clean's own z-index:1 (below .container's z-index:2, from
+	   `.section .container + .video-wrap` in style.css) — that's what keeps
+	   the heading visually on top of the canvas animation. Turns out the
+	   animated letters are opaque and cover most of the frame, so an
+	   earlier attempt to raise this above .container so clicks would reach
+	   the iframe also buried the heading behind that artwork. Fixed properly
+	   below instead: make the text container click-through so it stays on
+	   top visually without blocking the drag interaction. */
+}
+.video-wrap.canvas-bg-wrap iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+/* The heading's .container sits in front of the canvas (z-index:2 vs the
+   video-wrap's 1) purely so it reads on top — it has no links or buttons of
+   its own, so making it click-through lets drag interaction on the canvas
+   reach through it undisturbed. */
+.section:has(> .video-wrap.canvas-bg-wrap) > .container {
+	pointer-events: none;
+}
+
+/* EVENTS section (calendar + product carousel) — half of clean's default
+   4rem section padding (measured: 64px padding top/bottom, 48px margin-top
+   at lg+, 64px margin-bottom). !important because both the base .section
+   padding and Bootstrap's .mt-0/.mt-lg-5 margin utilities already use it. */
+.section.bg-transparent.mt-0.mt-lg-5 {
+	padding-top: 32px !important;
+	padding-bottom: 32px !important;
+	margin-bottom: 32px !important;
+}
+@media (min-width: 992px) {
+	.section.bg-transparent.mt-0.mt-lg-5 {
+		margin-top: 24px !important;
+	}
+}
+
+/* Footer link hovers — clean's own template gave each one a different
+   brand color (.h-color-facebook/instagram/twitter/linkedin/dribbble/
+   whatsapp, .h-text-dark, .h-text-primary), all as :hover-only rules with
+   !important. Scoped to #footer (an ID) so it wins over those regardless. */
+#footer a:hover {
+	color: #002FF0 !important;
+}
