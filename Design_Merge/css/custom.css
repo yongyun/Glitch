@@ -376,3 +376,17 @@
 #footer a:hover {
 	color: #002FF0 !important;
 }
+/* Header button — same look as .canvas-button (demos/glitch/glitch.css),
+   sized to fit inside the header like the logo (half the header height). */
+.canvas-button.header-button {
+	--cnvs-canvas-button-padding: 0 1rem;
+	--cnvs-canvas-button-font-size: 0.875rem;
+	display: inline-flex;
+	align-items: center;
+	height: calc(var(--cnvs-header-height) / 2);
+	line-height: 1;
+	white-space: nowrap;
+}
+.is-expanded-menu #header.sticky-header-shrink .canvas-button.header-button {
+	height: calc(var(--cnvs-sticky-header-height) / 2);
+}
