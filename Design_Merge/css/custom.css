@@ -390,3 +390,68 @@
 .is-expanded-menu #header.sticky-header-shrink .canvas-button.header-button {
 	height: calc(var(--cnvs-sticky-header-height) / 2);
 }
+
+/* Mobile menu — full-screen brand blue overlay, like the desktop mega menu.
+   Canvas toggles body.primary-menu-open from the hamburger and only adds
+   .is-expanded-menu at desktop widths, so :not(.is-expanded-menu) = mobile.
+-----------------------------------------------------------------*/
+body.primary-menu-open:not(.is-expanded-menu) {
+	overflow: hidden;
+}
+body.primary-menu-open:not(.is-expanded-menu) #header-wrap {
+	background-color: #002FF0 !important;
+}
+body.primary-menu-open:not(.is-expanded-menu) #header .primary-menu {
+	position: fixed;
+	inset: 0;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	height: 100dvh;
+	padding-top: var(--cnvs-header-height);
+	background-color: #002FF0;
+}
+/* Logo and hamburger stay clickable above the overlay */
+body.primary-menu-open:not(.is-expanded-menu) #logo,
+body.primary-menu-open:not(.is-expanded-menu) .header-misc,
+body.primary-menu-open:not(.is-expanded-menu) .primary-menu-trigger {
+	position: relative;
+	z-index: 2;
+}
+body.primary-menu-open:not(.is-expanded-menu) .mobile-primary-menu {
+	flex: 1;
+	overflow-y: auto;
+	padding: 0 1rem;
+}
+body.primary-menu-open:not(.is-expanded-menu) .mobile-primary-menu .menu-item {
+	border-color: rgba(255, 255, 255, 0.2) !important;
+}
+body.primary-menu-open:not(.is-expanded-menu) .mobile-primary-menu .sub-menu-container .menu-link {
+	color: #CFF273 !important;
+}
+body.primary-menu-open:not(.is-expanded-menu) .mobile-primary-menu .sub-menu-trigger {
+	color: #fff;
+}
+
+/* Bottom of the mobile menu: 中文 + full-width 找我 */
+.mobile-menu-footer {
+	display: none;
+}
+body.primary-menu-open:not(.is-expanded-menu) .mobile-menu-footer {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+	line-height: 1.5;
+}
+.mobile-menu-footer .lang-switch-link {
+	color: #fff !important;
+	height: auto;
+}
+.mobile-menu-footer .canvas-button.header-button {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 3.5rem;
+	--cnvs-canvas-button-font-size: 1rem;
+}

@@ -171,6 +171,10 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 		<a class="menu-link" href="#"><div>觀點</div></a>
 	</li>
 </ul>
+<!-- 手機版選單最下方：中文 + 找我（找我按鈕會自動從下面那段複製過來） -->
+<div class="mobile-menu-footer">
+	<a href="#" class="lang-switch-link" onclick="event.preventDefault(); this.textContent = this.textContent.trim() === '中文' ? 'ENG' : '中文';">中文</a>
+</div>
 
 `;
 
@@ -182,3 +186,8 @@ document.getElementById('site-header-button').innerHTML = /*html*/ `
 <a href="#" class="canvas-button header-button"><span><span>找我</span></span></a>
 
 `;
+
+// 手機版選單最下方也放一顆一樣的「找我」（自動複製上面那顆，不用另外改）
+document.querySelector('.mobile-menu-footer').append(
+	document.querySelector('#site-header-button .header-button').cloneNode(true)
+);
