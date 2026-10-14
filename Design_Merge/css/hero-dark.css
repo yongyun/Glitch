@@ -182,8 +182,14 @@
     font-size: 50px !important;
     font-weight: 600 !important;
   }
+  /* Phones: size the hero to its content instead of a full screen —
+     min-height: 100vh plus vertical centering left a big empty gray
+     band under the text before the next section. Top padding keeps
+     the content clear of the header. */
   .hero-style4 {
-    padding-bottom: 20px;
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 40px;
   }
   .hero-style4 .justify-content-end {
     display: block !important;

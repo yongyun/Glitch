@@ -15,7 +15,7 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 										<a href="#">事件</a>
 									</li>
 									<li data-target="#target-necklace">
-										<a href="#">最新消息</a>
+										<a href="news.html">最新消息</a>
 									</li>
 									<li data-target="#target-bracelets">
 										<a href="#">媒體報導</a>
@@ -93,13 +93,13 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 						<div class="d-flex justify-content-center align-items-md-center py-4">
 							<ul class="mega-menu-links">
 								<li>
-									<a href="#">漫畫倉庫</a>
+									<a href="manga.html">漫畫倉庫</a>
 								</li>
 								<li>
-									<a href="#">毛刺出版品</a>
+									<a href="Publications.html">毛刺出版品</a>
 								</li>
 								<li>
-									<a href="#">周邊商品</a>
+									<a href="goods.html">周邊商品</a>
 								</li>
 							</ul>
 						</div>
@@ -121,7 +121,7 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 				<a href="#" class="menu-link">事件</a>
 			</li>
 			<li class="menu-item">
-				<a href="#" class="menu-link">最新消息</a>
+				<a href="news.html" class="menu-link">最新消息</a>
 			</li>
 			<li class="menu-item">
 				<a href="#" class="menu-link">媒體報導</a>
@@ -157,13 +157,13 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 		<a class="menu-link" href="#"><div>雜貨店 <i class="bi- uil uil-plus"></i></div></a>
 		<ul class="sub-menu-container">
 			<li class="menu-item">
-				<a href="#" class="menu-link">漫畫倉庫</a>
+				<a href="manga.html" class="menu-link">漫畫倉庫</a>
 			</li>
 			<li class="menu-item">
-				<a href="#" class="menu-link">毛刺出版品</a>
+				<a href="Publications.html" class="menu-link">毛刺出版品</a>
 			</li>
 			<li class="menu-item">
-				<a href="#" class="menu-link">周邊商品</a>
+				<a href="goods.html" class="menu-link">周邊商品</a>
 			</li>
 		</ul>
 	</li>
@@ -171,9 +171,9 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 		<a class="menu-link" href="#"><div>觀點</div></a>
 	</li>
 </ul>
-<!-- 手機版選單最下方：中文 + 找我（找我按鈕會自動從下面那段複製過來） -->
+<!-- 手機版選單最下方：找我（自動從下面那段複製過來）+ 中文 -->
 <div class="mobile-menu-footer">
-	<a href="#" class="lang-switch-link" onclick="event.preventDefault(); this.textContent = this.textContent.trim() === '中文' ? 'ENG' : '中文';">中文</a>
+	<a href="#" class="lang-switch-link">ENG</a>
 </div>
 
 `;
@@ -183,11 +183,28 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 // 只改反引號 ` 中間的 HTML。「找我」是按鈕文字，href="#" 是連結
 document.getElementById('site-header-button').innerHTML = /*html*/ `
 
-<a href="#" class="canvas-button header-button"><span><span>找我</span></span></a>
+<a href="#" class="button button-shadow button-shadow-effect border border-width-2 border-dark header-button">找我</a>
 
 `;
 
 // 手機版選單最下方也放一顆一樣的「找我」（自動複製上面那顆，不用另外改）
-document.querySelector('.mobile-menu-footer').append(
+document.querySelector('.mobile-menu-footer').prepend(
 	document.querySelector('#site-header-button .header-button').cloneNode(true)
 );
+
+// ===== 中文 / ENG 切換（按鈕顯示「按了會切去的語言」，預設中文頁面所以顯示 ENG）=====
+// 想在英文模式換字的地方，在 HTML 加上 data-en="英文字" 即可，例如：
+// <div data-en="Drag">拖移</div>
+document.addEventListener('click', function (e) {
+	var link = e.target.closest('.lang-switch-link');
+	if (!link) return;
+	e.preventDefault();
+	var toEnglish = link.textContent.trim() === 'ENG';
+	document.querySelectorAll('.lang-switch-link').forEach(function (el) {
+		el.textContent = toEnglish ? '中文' : 'ENG';
+	});
+	document.querySelectorAll('[data-en]').forEach(function (el) {
+		if (!el.hasAttribute('data-zh')) el.setAttribute('data-zh', el.textContent);
+		el.textContent = toEnglish ? el.getAttribute('data-en') : el.getAttribute('data-zh');
+	});
+});

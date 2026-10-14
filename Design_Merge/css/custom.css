@@ -225,6 +225,18 @@
 	white-space: nowrap;
 }
 
+/* Hover: swap text and background colors */
+.glitch-ticker,
+.glitch-ticker .ticker-item {
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+.glitch-ticker:hover {
+	background-color: #CFF273;
+}
+.glitch-ticker:hover .ticker-item {
+	color: #002FF0;
+}
+
 /* Mega-menu dropdown — brand blue while the nav item is actually hovered
    (the theme only makes .mega-menu-content visible on :hover in the first
    place, via the same selector below, so there's no separate "shown but
@@ -376,18 +388,31 @@
 #footer a:hover {
 	color: #002FF0 !important;
 }
-/* Header button — same look as .canvas-button (demos/glitch/glitch.css),
-   sized to fit inside the header like the logo (half the header height). */
-.canvas-button.header-button {
-	--cnvs-canvas-button-padding: 0 1rem;
-	--cnvs-canvas-button-font-size: 0.875rem;
+/* Header button 找我 — Canvas "Shadow Button" (.button-shadow): brand
+   yellow-green, square corners, solid black shadow; on hover it slides
+   into its shadow (.button-shadow-effect) and stays yellow instead of
+   Canvas's default dark hover. Sized to half the header height like the logo. */
+.button.header-button {
+	--cnvs-btn-color: #CFF273;
+	--cnvs-btn-color-dark: #CFF273;
+	--cnvs-btn-shadow-color: #000;
+	--cnvs-btn-fontsize: 0.875rem;
+	--cnvs-btn-padding-x: 1rem;
+	--cnvs-btn-padding-y: 0;
 	display: inline-flex;
 	align-items: center;
 	height: calc(var(--cnvs-header-height) / 2);
+	margin: 0;
+	border-radius: 0;
+	color: #000;
+	font-weight: 700;
 	line-height: 1;
 	white-space: nowrap;
 }
-.is-expanded-menu #header.sticky-header-shrink .canvas-button.header-button {
+.button.header-button:hover {
+	color: #000;
+}
+.is-expanded-menu #header.sticky-header-shrink .button.header-button {
 	height: calc(var(--cnvs-sticky-header-height) / 2);
 }
 
@@ -433,25 +458,425 @@ body.primary-menu-open:not(.is-expanded-menu) .mobile-primary-menu .sub-menu-tri
 	color: #fff;
 }
 
-/* Bottom of the mobile menu: 中文 + full-width 找我 */
+/* Bottom of the mobile menu: 找我 as wide as the menu list lines above
+   (same 1rem side padding as .mobile-primary-menu), 中文 centered below it */
 .mobile-menu-footer {
 	display: none;
 }
 body.primary-menu-open:not(.is-expanded-menu) .mobile-menu-footer {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	/* .primary-menu centers its children (style.css), so stretch explicitly */
+	width: 100%;
 	gap: 0.75rem;
-	padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+	padding: 0 1rem calc(1rem + env(safe-area-inset-bottom));
 	line-height: 1.5;
 }
 .mobile-menu-footer .lang-switch-link {
 	color: #fff !important;
 	height: auto;
 }
-.mobile-menu-footer .canvas-button.header-button {
+.mobile-menu-footer .button.header-button {
+	--cnvs-btn-fontsize: 1rem;
 	display: flex;
 	justify-content: center;
+	align-self: stretch;
 	width: 100%;
 	height: 3.5rem;
-	--cnvs-canvas-button-font-size: 1rem;
+}
+
+/* Mobile logo — smaller and left-aligned (desktop keeps half the header height) */
+body:not(.is-expanded-menu) #logo {
+	justify-content: flex-start;
+}
+body:not(.is-expanded-menu) #header-wrap #logo img {
+	height: 28px !important;
+	margin-left: 0;
+}
+
+/* EVENTS on phones — js/event-calendar.js skips the carousel below 768px,
+   so the cards are a plain vertical list (max 5); space them out. */
+@media (max-width: 767.98px) {
+	#oc-product > .product + .product {
+		margin-top: 2.5rem;
+	}
+}
+/* Phones: a quarter of the space between the EVENTS list and the next section
+   (events padding/margin-bottom 32px → 8px, next section's .mt-6 80px → 20px) */
+@media (max-width: 767.98px) {
+	.section.bg-transparent.mt-0.mt-lg-5 {
+		padding-bottom: 8px !important;
+		margin-bottom: 8px !important;
+	}
+	.section.bg-transparent.mt-6.mb-0 {
+		margin-top: 20px !important;
+	}
+}
+/* Phones: the "毛刺 Glitch 為一專注於…" section holds its heading in a
+   75vh-tall box, vertically centered, which left big empty bands above
+   and below the text. Let the heading set the height instead; the
+   section's own padding still leaves room for the canvas animation. */
+@media (max-width: 767.98px) {
+	.section:has(> .video-wrap.canvas-bg-wrap) .min-vh-75 {
+		min-height: auto !important;
+	}
+}
+
+/* Stop sideways scrolling on phones. Canvas's .ticker-wrap is width:100%
+   PLUS padding-left:100% (content-box), i.e. twice the screen wide, which
+   widened the whole page and revealed a blank strip when swiping right.
+   `clip` (unlike `hidden`) doesn't create a scroll container, so sticky
+   header behaviour is untouched; `hidden` is the fallback for old browsers. */
+#wrapper {
+	overflow-x: hidden;
+	overflow-x: clip;
+}
+
+/* 漫畫倉庫 (manga.html) — portrait covers (3:4) instead of the template's
+   landscape thumbnails, cropped to fill so every card lines up. */
+.manga-grid .portfolio-image img {
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
+	width: 100%;
+}
+
+/* 漫畫倉庫 封面 — animated canvas (assets/manga-hero-canvas.html) fills the
+   box behind the title. The title ignores pointer events so the letters
+   underneath can still be dragged. */
+.manga-hero {
+	overflow: hidden;
+	background-color: #002FF0;
+}
+.manga-hero .manga-hero-canvas {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+.manga-hero h3 {
+	position: relative;
+	z-index: 1;
+	color: #fff;
+	pointer-events: none;
+}
+
+/* 漫畫內頁 (manga-item.html) — portrait cover in the left half of the
+   main column, all text in the right half (stacks on phones). */
+.manga-item-cover img {
+	width: 100%;
+	height: auto;
+}
+/* Right sidebar box — brand yellow-green */
+.manga-item-sidebar {
+	background-color: #CFF273;
+	padding: 1.5rem;
+	border-radius: 0.25rem;
+}
+.manga-item-sidebar .widget:last-child {
+	margin-bottom: 0;
+}
+/* Hashtag (tagcloud) borders match their text color, so they stay
+   visible on the yellow box instead of the theme's faint gray */
+.manga-item-sidebar .tagcloud a {
+	border-color: currentColor;
+}
+
+/* 毛刺出版品 (Publications.html) 封面 — colors flipped from 漫畫倉庫:
+   yellow-green background; the title stays white like 漫畫倉庫 */
+.manga-hero.publications-hero {
+	background-color: #CFF273;
+}
+
+/* 周邊商品 (goods.html) — placeholder photos come in mixed sizes, so crop
+   every product image to the same square to keep the grid rows even. */
+.goods-grid .product-image img {
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	width: 100%;
+}
+/* goods.html ticker — red background, yellow-green text; hover swaps them
+   (same idea as the blue/green ticker on index/about) */
+.glitch-ticker.goods-ticker {
+	background-color: #dc3545;
+}
+.glitch-ticker.goods-ticker .ticker-item {
+	color: #CFF273;
+}
+.glitch-ticker.goods-ticker:hover {
+	background-color: #CFF273;
+}
+.glitch-ticker.goods-ticker:hover .ticker-item {
+	color: #dc3545;
+}
+
+/* 最新消息 (news.html) — placeholder images are tall posters; crop them to
+   one landscape ratio so both timeline columns line up evenly. */
+.news-timeline .entry-image img {
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	width: 100%;
+}
+/* news.html timeline — black dashed lines, brand yellow-green dots */
+.news-timeline-wrap .timeline-border {
+	border-left-color: #000;
+	border-left-width: 1px;
+}
+.news-timeline .entry-timeline,
+.news-timeline .entry:hover .entry-timeline {
+	border-color: #000;
+	border-width: 1px;
+	background-color: #CFF273;
+}
+.news-timeline .entry-timeline .timeline-divider,
+.news-timeline .entry:hover .timeline-divider {
+	border-top-color: #000;
+	border-top-width: 1px;
+}
+/* news.html month labels — 1px black border, yellow-green fill, black text */
+.news-timeline .entry.entry-date-section span {
+	border: 1px solid #000;
+	background-color: #CFF273;
+	color: #000;
+	/* 150px text; the box sizes itself to the text instead of the theme's
+	   fixed 250px × 50px. Scales down on narrow screens so it fits. */
+	width: auto;
+	max-width: 100%;
+	font-size: min(150px, 11vw);
+	line-height: 1.1;
+	padding: 0.1em 0.3em;
+}
+
+/* Footer "Email Us" button — Shadow Button like the header 找我, but brand
+   blue with white text (sits on the yellow footer panel) */
+.button.footer-email-button {
+	--cnvs-btn-color: #002FF0;
+	--cnvs-btn-color-dark: #002FF0;
+	--cnvs-btn-shadow-color: #000;
+	margin: 0;
+	border-radius: 0;
+	color: #fff;
+}
+.button.footer-email-button:hover {
+	color: #fff;
+}
+
+/* Footer yellow-green panel — as wide as the page content's .container
+   (the footer text itself stays in the narrower .mw-md container inside) */
+#footer .footer-panel {
+	background-color: #CFF273;
+}
+
+/* 事件 section nav (事件 ✸ 最新消息 ✸ 媒體報導) in the page-title spot —
+   breadcrumb styling, with ✸ instead of "/" between items */
+.breadcrumb.event-nav {
+	--bs-breadcrumb-divider: "✸";
+}
+.breadcrumb.event-nav .breadcrumb-item.active {
+	font-weight: 700;
+}
+
+/* news.html — zoom the photo when hovering it. The link clips the enlarged
+   image; the ease-out curve starts fast and settles slowly (non-linear). */
+.news-timeline .entry-image > a {
+	overflow: hidden;
+	border-radius: var(--cnvs-post-image-rounded);
+}
+.news-timeline .entry-image > a img {
+	transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.news-timeline .entry-image > a:hover img {
+	transform: scale(1.08);
+}
+@media (prefers-reduced-motion: reduce) {
+	.news-timeline .entry-image > a img {
+		transition: none;
+	}
+}
+
+/* news.html — run the timeline's center line all the way down to the
+   yellow footer: the content area's bottom padding is removed in the HTML
+   (.content-wrap.pb-0), and the -50px that .col-mb-50 puts under the list
+   is dropped so the line's box ends exactly where the footer starts. */
+.news-timeline-wrap .post-timeline {
+	margin-bottom: 0;
+}
+
+/* Page title with a flowing multi-point gradient (news.html) — four large,
+   heavily blurred color blobs (brand blue ×2, brand yellow-green ×2, gray)
+   each drift and scale on their own path and timing with ease-in-out
+   curves, so the colors keep blending into each other non-linearly. */
+.page-title.mesh-title {
+	position: relative;
+	overflow: hidden;
+	background-color: var(--bs-gray-400);
+}
+.page-title.mesh-title > .container {
+	position: relative;
+	z-index: 1;
+}
+.mesh-bg {
+	position: absolute;
+	inset: 0;
+	filter: blur(60px);
+	transform: translateZ(0);
+}
+.mesh-blob {
+	position: absolute;
+	width: 70vmax;
+	height: 70vmax;
+	border-radius: 50%;
+	will-change: transform;
+	animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+.mesh-blue {
+	background: radial-gradient(circle, #002FF0 0%, rgba(0, 47, 240, 0) 65%);
+	top: -40vmax;
+	right: -20vmax;
+	animation-name: mesh-drift-a;
+	animation-duration: 8s;
+}
+.mesh-yellow {
+	width: 90vmax;
+	height: 90vmax;
+	background: radial-gradient(circle, #CFF273 0%, #CFF273 20%, rgba(207, 242, 115, 0) 70%);
+	bottom: -55vmax;
+	left: -20vmax;
+	animation-name: mesh-drift-b;
+	animation-duration: 10s;
+}
+.mesh-yellow-2 {
+	background: radial-gradient(circle, #CFF273 0%, rgba(207, 242, 115, 0) 65%);
+	top: -35vmax;
+	left: 25vw;
+	animation-name: mesh-drift-e;
+	animation-duration: 9s;
+}
+.mesh-gray {
+	background: radial-gradient(circle, #ced4da 0%, rgba(206, 212, 218, 0) 65%);
+	top: -30vmax;
+	left: -25vmax;
+	animation-name: mesh-drift-c;
+	animation-duration: 11s;
+}
+.mesh-blue-2 {
+	width: 45vmax;
+	height: 45vmax;
+	background: radial-gradient(circle, #002FF0 0%, rgba(0, 47, 240, 0) 65%);
+	bottom: -30vmax;
+	right: 10vmax;
+	animation-name: mesh-drift-d;
+	animation-duration: 12s;
+}
+@keyframes mesh-drift-a {
+	0%   { transform: translate(0, 0) scale(1); }
+	50%  { transform: translate(-25vw, 10vh) scale(1.25); }
+	100% { transform: translate(-10vw, 25vh) scale(0.9); }
+}
+@keyframes mesh-drift-b {
+	0%   { transform: translate(0, 0) scale(1); }
+	50%  { transform: translate(30vw, -15vh) scale(0.85); }
+	100% { transform: translate(15vw, -5vh) scale(1.2); }
+}
+@keyframes mesh-drift-c {
+	0%   { transform: translate(0, 0) scale(1.1); }
+	50%  { transform: translate(20vw, 20vh) scale(0.9); }
+	100% { transform: translate(40vw, 5vh) scale(1.15); }
+}
+@keyframes mesh-drift-d {
+	0%   { transform: translate(0, 0) scale(1); }
+	50%  { transform: translate(-30vw, -10vh) scale(1.3); }
+	100% { transform: translate(-15vw, -20vh) scale(0.8); }
+}
+@keyframes mesh-drift-e {
+	0%   { transform: translate(0, 0) scale(0.9); }
+	50%  { transform: translate(-20vw, 15vh) scale(1.2); }
+	100% { transform: translate(15vw, 20vh) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.mesh-blob {
+		animation: none;
+	}
+}
+
+/* 雜貨店 section nav (漫畫倉庫 ✸ 毛刺出版品 ✸ 周邊商品) under each page's
+   title — same ✸ breadcrumb as .event-nav, but links, the current item and
+   the ✸ all take the title's own color. */
+.breadcrumb.title-nav {
+	--bs-breadcrumb-divider-color: currentColor;
+	--bs-breadcrumb-item-active-color: currentColor;
+	margin: 1rem 0 0;
+	color: inherit;
+}
+.breadcrumb.title-nav a {
+	color: inherit;
+}
+/* manga / Publications hero: title + nav stacked and centered over the
+   animation; the wrapper lets clicks fall through to the draggable letters
+   except on the nav links themselves. */
+.manga-hero .manga-hero-title {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	color: #fff;
+	pointer-events: none;
+}
+.manga-hero .manga-hero-title .breadcrumb {
+	pointer-events: auto;
+}
+
+/* 周邊商品 (goods.html) 封面 — same layout as 毛刺出版品, gray background
+   matching the header bar; blue GOODS letters set in the animation file */
+.manga-hero.goods-hero {
+	background-color: var(--bs-gray-400);
+}
+
+/* Small boxed label above the 雜貨店 page titles (manga / Publications /
+   goods) — thin border in the title's own color */
+.section-label {
+	display: inline-block;
+	margin-bottom: 1rem;
+	padding: 0.25rem 0.875rem;
+	border: 1px solid currentColor;
+	font-size: 0.875rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	line-height: 1.5;
+}
+
+/* 雜貨店 nav items — on hover a black block (blue for the current page) fills the text box, sweeping
+   left → right; on leave it keeps going and exits to the right. */
+.breadcrumb.title-nav a,
+.breadcrumb.title-nav .active > span {
+	display: inline-block;
+	padding: 0.15em 0.4em;
+	background-image: linear-gradient(#000, #000);
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: 0% 100%;
+	transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.breadcrumb.title-nav a:hover,
+.breadcrumb.title-nav a:focus-visible {
+	background-position: left center;
+	background-size: 100% 100%;
+	color: #fff;
+}
+/* Current page item: same sweep, in brand blue */
+.breadcrumb.title-nav .active > span {
+	background-image: linear-gradient(#002FF0, #002FF0);
+}
+.breadcrumb.title-nav .active > span:hover {
+	background-position: left center;
+	background-size: 100% 100%;
+	color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+	.breadcrumb.title-nav a,
+	.breadcrumb.title-nav .active > span {
+		transition: none;
+	}
 }

@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remix of CHAOS</title>
+  <!-- 漫畫倉庫 (manga.html) 封面背景動畫，用 iframe 嵌入。
+       與原始匯出檔的差異：
+       1. 移除匯出工具的追蹤程式（會把頁面網址傳到 Wix / PostHog）
+       2. 手機觸控只在按到字母時才攔截，其他時候可以正常捲動頁面 -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .tool-canvas-area {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    canvas { display: block; background: transparent; }
+  </style>
+</head>
+<body>
+  <div class="tool-canvas-area">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+
+    // Mobile perf: cap devicePixelRatio so canvases allocate fewer pixels.
+    (function() {
+      var _isMobile = window.innerWidth <= 768;
+      if (_isMobile) {
+        var _nativeDPR = window.devicePixelRatio || 1;
+        var _cappedDPR = Math.min(1.5, _nativeDPR);
+        Object.defineProperty(window, 'devicePixelRatio', { get: function() { return _cappedDPR; } });
+      }
+    })();
+
+    window.CanvasRuntimeAPI = (function() {
+      var _exportMode = 'auto';
+      var _exportWidth = 0;
+      var _exportHeight = 0;
+      var _bgState = { mode: 'none', color: '#ffffff', imageEl: null, imageDataURL: null, fit: 'cover' };
+
+      var _canvas = document.getElementById('canvas');
+      var _area = _canvas ? _canvas.parentElement : document.querySelector('.tool-canvas-area');
+      var _resizeRAF = null;
+
+      function _detectCanvas() {
+        var r = window.renderer || window.threeRenderer;
+        if (r && r.domElement) {
+          _canvas = r.domElement;
+          _area = _canvas.parentElement;
+          return;
+        }
+        var area = document.querySelector('.tool-canvas-area');
+        if (area) {
+          var canvases = area.querySelectorAll('canvas');
+          var visible = [];
+          for (var j = 0; j < canvases.length; j++) {
+            if (canvases[j].style.display !== 'none') visible.push(canvases[j]);
+          }
+          if (visible.length >= 1) {
+            var largest = visible[0];
+            for (var i = 1; i < visible.length; i++) {
+              if (visible[i].width * visible[i].height > largest.width * largest.height) {
+                largest = visible[i];
+              }
+            }
+            _canvas = largest;
+            _area = _canvas.parentElement;
+          }
+        }
+      }
+
+      var _bgPainted = null;
+      function _applyBgCSS() {
+        _detectCanvas();
+        // Pure-DOM tools (and ones that opt out of canvas-managed background, e.g. Three.js
+        // scenes) have no canvas for _detectCanvas to find — paint the tool's host wrapper
+        // instead so the Background control isn't a silent no-op.
+        var target = _canvas || _area;
+        if (!target) return;
+        // Only ever undo our own paint: the wrapper may carry a background the tool set itself,
+        // so None (or a switch to the canvas) clears what the runtime wrote and nothing else.
+        if (_bgPainted && (_bgPainted !== target || _bgState.mode === 'none')) {
+          _bgPainted.style.background = '';
+          _bgPainted.style.backgroundImage = '';
+          _bgPainted = null;
+        }
+        if (_bgState.mode === 'none') {
+          // The canvas itself keeps its long-standing reset; the wrapper fallback is left alone.
+          if (target === _canvas) target.style.background = '';
+          return;
+        }
+        _bgPainted = target;
+        if (_bgState.mode === 'solid') {
+          target.style.background = _bgState.color;
+        } else if (_bgState.mode === 'image') {
+          if (_bgState.imageDataURL) {
+            var fitCss = _bgState.fit === 'fill' ? '100% 100%' : _bgState.fit;
+            target.style.backgroundColor = _bgState.color;
+            target.style.backgroundImage = 'url("' + _bgState.imageDataURL + '")';
+            target.style.backgroundSize = fitCss;
+            target.style.backgroundPosition = 'center';
+            target.style.backgroundRepeat = 'no-repeat';
+          } else {
+            target.style.backgroundImage = '';
+            target.style.backgroundColor = _bgState.color;
+          }
+        }
+      }
+
+      function setBackground(state) {
+        state = state || {};
+        _bgState.mode = state.mode || 'none';
+        _bgState.color = state.color || '#ffffff';
+        _bgState.fit = state.fit || 'cover';
+        if (state.image && state.image !== _bgState.imageDataURL) {
+          _bgState.imageDataURL = state.image;
+          _bgState.imageEl = null;
+          _applyBgCSS();
+          var img = new Image();
+          img.onload = function() {
+            if (_bgState.imageDataURL !== state.image) return;
+            _bgState.imageEl = img;
+          };
+          img.src = state.image;
+        } else if (!state.image) {
+          _bgState.imageEl = null;
+          _bgState.imageDataURL = null;
+        }
+        _applyBgCSS();
+      }
+
+      function getBackground() {
+        return { mode: _bgState.mode, color: _bgState.color, fit: _bgState.fit };
+      }
+
+      function setCanvas(el) {
+        _canvas = el;
+        _area = el ? el.parentElement : document.querySelector('.tool-canvas-area');
+        if (_bgState.mode !== 'none') _applyBgCSS();
+      }
+
+      function setExportDimensions(w, h) {
+        _detectCanvas();
+        _exportMode = 'fixed';
+        _exportWidth = Math.max(1, Math.round(w || 1));
+        _exportHeight = Math.max(1, Math.round(h || 1));
+        if (_canvas) {
+          _canvas.width = _exportWidth;
+          _canvas.height = _exportHeight;
+        }
+        if (window.p5 && typeof window.resizeCanvas === 'function') window.resizeCanvas(_exportWidth, _exportHeight);
+        if (window.renderer && window.renderer.setSize) window.renderer.setSize(_exportWidth, _exportHeight, false);
+        if (window.hydra && window.hydra.setResolution) window.hydra.setResolution(_exportWidth, _exportHeight);
+        window.dispatchEvent(new Event('resize'));
+      }
+
+      function fitToArea() {}
+
+      function getExportDimensions() {
+        if (_exportMode === 'fixed') return { width: _exportWidth, height: _exportHeight, mode: 'fixed' };
+        _detectCanvas();
+        var __cw = _canvas ? _canvas.width : 0;
+        var __ch = _canvas ? _canvas.height : 0;
+        if (__cw && __ch && !(__cw === 300 && __ch === 150)) {
+          return { width: __cw, height: __ch, mode: 'auto' };
+        }
+        var __area = _area || document.querySelector('.tool-canvas-area');
+        var __aw = __area ? __area.clientWidth : 0;
+        var __ah = __area ? __area.clientHeight : 0;
+        if (!__aw || !__ah) { __aw = window.innerWidth; __ah = window.innerHeight; }
+        return { width: __aw, height: __ah, mode: 'auto' };
+      }
+
+      function isFixedExportMode() { return _exportMode === 'fixed'; }
+
+      function _onAreaResize() {
+        var r = window.renderer || window.threeRenderer;
+        if (!r || !r.setSize) return;
+        if (_resizeRAF) cancelAnimationFrame(_resizeRAF);
+        _resizeRAF = requestAnimationFrame(function() {
+          _detectCanvas();
+          if (!_area) return;
+          var w = _area.clientWidth;
+          var h = _area.clientHeight;
+          if (w <= 0 || h <= 0) return;
+          r.setSize(w, h);
+          window.dispatchEvent(new Event('resize'));
+        });
+      }
+      if (typeof ResizeObserver !== 'undefined' && _area) {
+        new ResizeObserver(_onAreaResize).observe(_area);
+      }
+      window.addEventListener('resize', _onAreaResize);
+
+      setTimeout(function() {
+        _detectCanvas();
+        if (_bgState.mode !== 'none') _applyBgCSS();
+      }, 500);
+
+      function getMousePos(event) {
+        _detectCanvas();
+        if (!_canvas) return { x: 0, y: 0 };
+        var rect = _canvas.getBoundingClientRect();
+        var scaleX = _canvas.width / rect.width;
+        var scaleY = _canvas.height / rect.height;
+        var touch = event.touches && event.touches[0]
+          ? event.touches[0]
+          : event.changedTouches && event.changedTouches[0]
+          ? event.changedTouches[0]
+          : null;
+        var clientX = touch ? touch.clientX : event.clientX;
+        var clientY = touch ? touch.clientY : event.clientY;
+        return {
+          x: (clientX - rect.left) * scaleX,
+          y: (clientY - rect.top) * scaleY
+        };
+      }
+
+      function drawImage(ctx, img, x, y, w, h, fit) {
+        if (!img || !img.width || !img.height) return;
+        fit = fit || 'cover';
+        var ar = img.width / img.height;
+        var car = w / h;
+        var sx = 0, sy = 0, sw = img.width, sh = img.height;
+        var dx = x, dy = y, dw = w, dh = h;
+
+        if (fit === 'cover') {
+          if (ar > car) { sw = img.height * car; sx = (img.width - sw) / 2; }
+          else { sh = img.width / car; sy = (img.height - sh) / 2; }
+        } else if (fit === 'contain') {
+          if (ar > car) { dh = w / ar; dy = y + (h - dh) / 2; }
+          else { dw = h * ar; dx = x + (w - dw) / 2; }
+        }
+
+        ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
+      }
+
+      return {
+        setCanvas: setCanvas,
+        setBackground: setBackground,
+        getBackground: getBackground,
+        setExportDimensions: setExportDimensions,
+        fitToArea: fitToArea,
+        getExportDimensions: getExportDimensions,
+        isFixedExportMode: isFixedExportMode,
+        getMousePos: getMousePos,
+        drawImage: drawImage
+      };
+    })();
+
+    window.BrikCanvas = window.CanvasRuntimeAPI;
+    window.BrikControls = window.ControlsAPI;
+
+    (function() {
+      var srcDesc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+      if (srcDesc && srcDesc.set) {
+        Object.defineProperty(HTMLImageElement.prototype, 'src', {
+          get: srcDesc.get,
+          set: function(val) {
+            if (val && typeof val === 'string' && !val.startsWith('data:') && !this.crossOrigin) {
+              this.crossOrigin = 'anonymous';
+            }
+            srcDesc.set.call(this, val);
+          },
+          configurable: true,
+          enumerable: true
+        });
+      }
+    })();
+
+    window.loadImage = function(src, callback) {
+      var img = new Image();
+      if (src && typeof src === 'string' && !src.startsWith('data:')) {
+        img.crossOrigin = 'anonymous';
+      }
+      img.onload = function() { if (callback) callback(img); };
+      img.onerror = function() { console.error('Failed to load image:', src); };
+      img.src = src;
+      return img;
+    };
+
+  </script>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var __ctArea = canvas.parentElement;
+    var __maxDim = (window.innerWidth <= 768) ? 960 : 4096;
+
+    function resizeCanvas() {
+      var cs = getComputedStyle(__ctArea);
+      canvas.width = Math.min(__maxDim, __ctArea.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight));
+      canvas.height = Math.min(__maxDim, __ctArea.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom));
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    var controls = (function() {
+      // 動畫設定：textContent 是文字，fillColor 字色，__sys_bg.color 背景色
+      var _v = {"textContent":"漫 MANGA 画","fontSize":429,"letterSpacing":0.55,"fontFamily":{"family":"Arial","style":"normal","weight":400,"url":null},"customFont":null,"bgImage":null,"animate":true,"animStyle":"drift","friction":0,"collisionEnabled":true,"floatSpeed":4.1,"rotationSpeed":0.005,"fillColor":"#CFF273","strokeColor":"#575757","echoOpacity":100,"fillOpacity":100,"echoDelay":3,"echoCount":38,"breakApart":100,"strokeWidth":1,"echoScale":1,"__sys_bg":{"mode":"solid","color":"#002FF0","image":null,"fit":"cover"}};
+      var _defaults = JSON.parse(JSON.stringify(_v));
+      var _listeners = {};
+      var _anyListeners = [];
+      var _actionListeners = {};
+      function _notify(key, value) {
+        if (_listeners[key]) _listeners[key].forEach(function(fn) { fn(value); });
+        _anyListeners.forEach(function(fn) { fn(key, value); });
+      }
+      function _hexToRgb(hex) {
+        var h = String(hex || '').replace('#', '');
+        if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+        if (h.length !== 6 || !/^[0-9a-fA-F]{6}$/.test(h)) return null;
+        return {
+          r: parseInt(h.slice(0, 2), 16),
+          g: parseInt(h.slice(2, 4), 16),
+          b: parseInt(h.slice(4, 6), 16)
+        };
+      }
+      function _clamp(n, min, max) { return Math.min(max, Math.max(min, n)); }
+      function _hexToRgbaCss(hex, opacity0to100) {
+        var rgb = _hexToRgb(hex);
+        if (!rgb) return 'rgba(0,0,0,1)';
+        var op = opacity0to100 != null && !isNaN(Number(opacity0to100)) ? Number(opacity0to100) : 100;
+        var a = _clamp(op, 0, 100) / 100;
+        return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + a + ')';
+      }
+      var api = {
+        get: function(k) { return _v[k]; },
+        getAll: function() { return Object.assign({}, _v); },
+        getDefaults: function() { return JSON.parse(JSON.stringify(_defaults)); },
+        getColorWithAlpha: function(baseKey) { return _hexToRgbaCss(_v[baseKey], _v[baseKey + '_opacity']); },
+        set: function(k, v) { _v[k] = v; _notify(k, v); },
+        setValues: function(values) {
+          if (!values || typeof values !== 'object') return;
+          Object.keys(values).forEach(function(k) {
+            if (!(k in _v)) return;
+            try { _v[k] = JSON.parse(JSON.stringify(values[k])); }
+            catch (e) { _v[k] = values[k]; }
+            _notify(k, _v[k]);
+          });
+        },
+        setDefaults: function(values) {
+          if (!values || typeof values !== 'object') return;
+          Object.keys(values).forEach(function(k) {
+            try { _defaults[k] = JSON.parse(JSON.stringify(values[k])); }
+            catch (e) { _defaults[k] = values[k]; }
+          });
+        },
+        resetAll: function() {
+          Object.keys(_defaults).forEach(function(k) {
+            try { _v[k] = JSON.parse(JSON.stringify(_defaults[k])); }
+            catch (e) { _v[k] = _defaults[k]; }
+            _notify(k, _v[k]);
+          });
+        },
+        triggerAction: function(k) {
+          if (_actionListeners[k]) _actionListeners[k].forEach(function(fn) { fn(); });
+        },
+        onChange: function(k, cb) {
+          if (!_listeners[k]) _listeners[k] = [];
+          _listeners[k].push(cb);
+        },
+        onAny: function(cb) { _anyListeners.push(cb); },
+        onAction: function(k, cb) {
+          if (!_actionListeners[k]) _actionListeners[k] = [];
+          _actionListeners[k].push(cb);
+        }
+      };
+      window.ControlsAPI = api;
+      window.BrikControls = api;
+
+      return api;
+    })();
+
+    // Creative Code
+    {
+      class Letter {
+    constructor(char, x, y, fontSize, offsetX = 0, centerX, centerY) {
+        this.char = char;
+        this.wordX = x;
+        this.wordY = y;
+        // Start at center of canvas
+        this.freeX = centerX !== undefined ? centerX : x;
+        this.freeY = centerY !== undefined ? centerY : y;
+        this.startX = this.freeX;
+        this.startY = this.freeY;
+        this.x = this.freeX;
+        this.y = this.freeY;
+        this.fontSize = fontSize;
+        this.offsetX = offsetX; // Relative to word center
+
+        // Random initial velocity for independent flight
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 5;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+
+        // Rotation
+        this.wordRotation = 0;
+        this.freeRotation = 0;
+        this.rotation = 0;
+        this.va = (Math.random() - 0.5) * 0.15; // Angular velocity
+
+        this.radius = fontSize * 0.3; // Collision radius
+        this.history = [];
+        this.maxHistory = 4000;
+        this.dynamicScale = 1;
+        this.index = 0;
+        this.energy = 1.0; // Global energy factor for decay
+
+        // Animation-specific state
+        this.orbitAngle = 0;
+        this.orbitRadius = 0;
+        this.waveTime = 0;
+        this.vortexAngle = 0;
+        this.vortexRadius = 0;
+        this.shakeIntensity = 0;
+        this.breatheTime = 0;
+    }
+
+    update(w, h, speedMult, rotMult, breakFactor, animStyle, time) {
+        const padding = this.fontSize * 0.5;
+        const friction = controls.get('friction') || 0;
+        // Damping factor: 0 friction = 1.0 (no decay), 5 friction = 0.95 (fast decay)
+        const damping = Math.max(0.9, 1.0 - (friction / 100));
+
+        // Apply energy decay
+        this.energy *= damping;
+
+        if (animStyle === 'drift') {
+            this.vx *= damping;
+            this.vy *= damping;
+            this.va *= damping;
+            this.freeX += this.vx * speedMult;
+            this.freeY += this.vy * speedMult;
+            this.freeRotation += this.va * rotMult * 10;
+        } else if (animStyle === 'orbit') {
+            if (!this.orbitAngle) this.orbitAngle = Math.atan2(this.freeY - h/2, this.freeX - w/2);
+            if (!this.orbitRadius) this.orbitRadius = 50 + Math.random() * 150;
+            this.orbitRadius += 0.3 * speedMult * this.energy;
+            this.orbitAngle += (0.008 + this.index * 0.003) * speedMult * this.energy;
+            this.freeX = w/2 + Math.cos(this.orbitAngle) * this.orbitRadius;
+            this.freeY = h/2 + Math.sin(this.orbitAngle) * this.orbitRadius;
+            this.freeRotation += 0.02 * rotMult * 10 * this.energy;
+        } else if (animStyle === 'wave') {
+            this.waveTime = (this.waveTime || 0) + 0.03 * speedMult * this.energy;
+            const spread = Math.min(this.waveTime * 30, w * 0.4);
+            const baseX = w/2 + this.offsetX * (1 + spread / 100);
+            this.freeX += (baseX - this.freeX) * 0.05;
+            this.freeY = h/2 + Math.sin(this.waveTime + this.index * 0.8) * (80 + spread * 0.5) * this.energy;
+            this.freeRotation = Math.sin(this.waveTime + this.index) * 0.3 * this.energy;
+        } else if (animStyle === 'gravity') {
+            this.vy += 0.15 * speedMult * this.energy;
+            this.vx *= damping;
+            this.freeX += this.vx * speedMult;
+            this.freeY += this.vy * speedMult;
+            this.freeRotation += this.va * rotMult * 10 * this.energy;
+            if (this.freeY > h - padding) {
+                this.freeY = h - padding;
+                this.vy *= -0.6;
+                this.vx *= 0.95;
+            }
+        } else if (animStyle === 'vortex') {
+            if (!this.vortexAngle) this.vortexAngle = Math.atan2(this.freeY - h/2, this.freeX - w/2);
+            if (!this.vortexRadius) this.vortexRadius = 30;
+            this.vortexAngle += (0.02 + this.index * 0.005) * speedMult * this.energy;
+            this.vortexRadius += 1.5 * speedMult * this.energy;
+            const pulse = Math.sin(time * 0.5) * 50 * this.energy;
+            this.freeX = w/2 + Math.cos(this.vortexAngle) * (this.vortexRadius + pulse);
+            this.freeY = h/2 + Math.sin(this.vortexAngle) * (this.vortexRadius + pulse);
+            this.freeRotation = this.vortexAngle;
+        } else if (animStyle === 'shake') {
+            if (!this.shakeIntensity) this.shakeIntensity = 40 + Math.random() * 30;
+            this.shakeIntensity *= damping;
+            const shakeX = (Math.random() - 0.5) * this.shakeIntensity * speedMult;
+            const shakeY = (Math.random() - 0.5) * this.shakeIntensity * speedMult;
+            this.freeX += this.vx * 0.3 * speedMult;
+            this.freeY += this.vy * 0.3 * speedMult;
+            this.vx *= damping;
+            this.vy *= damping;
+            this.freeX += shakeX;
+            this.freeY += shakeY;
+            this.freeRotation += (Math.random() - 0.5) * 0.1 * rotMult * this.energy;
+        } else if (animStyle === 'breathe') {
+            this.breatheTime = (this.breatheTime || 0) + 0.015 * speedMult * this.energy;
+            const breatheScale = 1 + Math.sin(this.breatheTime) * 0.8 * this.energy;
+            const targetX = w/2 + this.offsetX * breatheScale * (1 + this.breatheTime * 0.3);
+            const targetY = h/2 + Math.sin(this.breatheTime + this.index * 0.5) * 30 * breatheScale;
+            this.freeX += (targetX - this.freeX) * 0.08;
+            this.freeY += (targetY - this.freeY) * 0.08;
+            this.freeRotation = Math.sin(this.breatheTime * 0.5 + this.index) * 0.15 * this.energy;
+        } else if (animStyle === 'bounce') {
+            this.vx *= damping;
+            this.vy *= damping;
+            this.freeX += this.vx * speedMult * 1.5;
+            this.freeY += this.vy * speedMult * 1.5;
+            this.freeRotation += this.va * rotMult * 10 * this.energy;
+            if (this.freeX < padding) { this.vx = Math.abs(this.vx) * 0.9; this.freeX = padding; }
+            else if (this.freeX > w - padding) { this.vx = -Math.abs(this.vx) * 0.9; this.freeX = w - padding; }
+            if (this.freeY < padding) { this.vy = Math.abs(this.vy) * 0.9; this.freeY = padding; }
+            else if (this.freeY > h - padding) { this.vy = -Math.abs(this.vy) * 0.9; this.freeY = h - padding; }
+        }
+
+        // Turbulence wind force
+        const turbIntensity = controls.get('turbulenceIntensity') || 0;
+        const turbScale = controls.get('turbulenceScale') || 2;
+        if (turbIntensity > 0) {
+            const noiseScale = turbScale * 0.005;
+            const windX = turbulenceNoise(this.freeX * noiseScale, this.freeY * noiseScale + time * 0.5) * turbIntensity;
+            const windY = turbulenceNoise(this.freeX * noiseScale + 100, this.freeY * noiseScale + time * 0.5 + 100) * turbIntensity;
+            this.freeX += windX;
+            this.freeY += windY;
+            this.vx += windX * 0.1;
+            this.vy += windY * 0.1;
+            this.freeRotation += turbulenceNoise(this.freeX * noiseScale + 200, time * 0.3) * turbIntensity * 0.02;
+        }
+
+        // Boundary bounce (for styles that use vx/vy)
+        if (animStyle === 'drift' || animStyle === 'gravity' || animStyle === 'shake') {
+            if (this.freeX < padding) { this.vx = Math.abs(this.vx); this.freeX = padding; }
+            else if (this.freeX > w - padding) { this.vx = -Math.abs(this.vx); this.freeX = w - padding; }
+            if (this.freeY < padding) { this.vy = Math.abs(this.vy); this.freeY = padding; }
+            else if (this.freeY > h - padding) { this.vy = -Math.abs(this.vy); this.freeY = h - padding; }
+        }
+
+        // Boundary clamp for all styles
+        this.freeX = Math.max(padding, Math.min(w - padding, this.freeX));
+        this.freeY = Math.max(padding, Math.min(h - padding, this.freeY));
+
+        // If we are in "Word" mode (breakFactor = 0), keep free position synced to word
+        if (breakFactor === 0) {
+            this.freeX = this.wordX;
+            this.freeY = this.wordY;
+            this.freeRotation = this.wordRotation;
+        }
+
+        // Interpolate between word position and free position
+        this.x = this.wordX + (this.freeX - this.wordX) * breakFactor;
+        this.y = this.wordY + (this.freeY - this.wordY) * breakFactor;
+        this.rotation = this.wordRotation + (this.freeRotation - this.wordRotation) * breakFactor;
+
+        this.history.unshift({ x: this.x, y: this.y, rotation: this.rotation });
+        if (this.history.length > this.maxHistory) {
+            this.history.pop();
+        }
+    }
+
+    draw(ctx, x, y, rotation, scale, fontStr, fillStyle, strokeStyle, strokeWidth) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+        ctx.scale(scale, scale);
+
+        ctx.font = fontStr;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        if (fillStyle) {
+            ctx.fillStyle = fillStyle;
+            ctx.fillText(this.char, 0, 0);
+        }
+
+        if (strokeWidth > 0) {
+            ctx.strokeStyle = strokeStyle;
+            ctx.lineWidth = strokeWidth;
+            ctx.strokeText(this.char, 0, 0);
+        }
+
+        ctx.restore();
+    }
+}
+
+let letters = [];
+let lastText = '';
+let wordPhysics = { x: 0, y: 0, vx: 2, vy: 2, rotation: 0, va: 0.02 };
+let mousePos = { x: 0, y: 0 };
+let globalTime = 0;
+let customFontFamily = null;
+let bgImg = null;
+let bgImgLoaded = false;
+let draggedLetter = null;
+let isDragging = false;
+let letterOffsets = {}; // Per-letter manual offsets keyed by index
+
+// Handle background image upload
+controls.onChange('bgImage', (imgUrl) => {
+    if (!imgUrl) {
+        bgImg = null;
+        bgImgLoaded = false;
+        return;
+    }
+    const img = new Image();
+    img.onload = () => {
+        bgImg = img;
+        bgImgLoaded = true;
+    };
+    img.src = imgUrl;
+});
+
+// Load initial background image if set
+(function() {
+    const initialBg = controls.get('bgImage');
+    if (initialBg) {
+        const img = new Image();
+        img.onload = () => {
+            bgImg = img;
+            bgImgLoaded = true;
+        };
+        img.src = initialBg;
+    }
+})();
+
+// Handle custom font upload
+controls.onChange('customFont', (fontDataUrl) => {
+    if (!fontDataUrl) return;
+    const fontName = 'CustomUploadedFont_' + Date.now();
+    const fontFace = new FontFace(fontName, `url(${fontDataUrl})`);
+    fontFace.load().then((loaded) => {
+        document.fonts.add(loaded);
+        customFontFamily = fontName;
+        initLetters();
+    }).catch(err => {
+        console.warn('Font load failed:', err);
+    });
+});
+
+// When user picks a font from the selector, clear custom font override
+controls.onChange('fontFamily', () => {
+    customFontFamily = null;
+});
+
+function initLetters() {
+    const text = controls.get('textContent') || '';
+    const fontSize = controls.get('fontSize');
+    const spacing = controls.get('letterSpacing') || 0.6;
+    const w = canvas.width;
+    const h = canvas.height;
+
+    if (w === 0 || h === 0) return;
+
+    globalTime = 0; // Reset global time for wave/breathe
+    letters = [];
+    const chars = text.split('');
+    const charWidth = fontSize * spacing;
+    const totalWidth = chars.length * charWidth;
+
+    wordPhysics.x = w / 2;
+    wordPhysics.y = h / 2;
+    wordPhysics.rotation = 0;
+
+    if (wordPhysics.vx === 0) wordPhysics.vx = 2;
+    if (wordPhysics.vy === 0) wordPhysics.vy = 2;
+
+    const centerX = w / 2;
+    const centerY = h / 2;
+
+    chars.forEach((char, i) => {
+        const offsetX = (i * charWidth) - (totalWidth / 2) + (charWidth / 2);
+        const x = wordPhysics.x + offsetX;
+        const y = wordPhysics.y;
+        const startX = centerX + offsetX;
+        const startY = centerY;
+        const l = new Letter(char, x, y, fontSize, offsetX, startX, startY);
+        l.index = i;
+        // Apply stored manual offsets if they exist
+        if (letterOffsets[i]) {
+            l.freeX = startX + letterOffsets[i].x;
+            l.freeY = startY + letterOffsets[i].y;
+            l.x = l.freeX;
+            l.y = l.freeY;
+        }
+        for(let j=0; j<200; j++) l.history.push({ x: l.x, y: l.y, rotation: 0 });
+        letters.push(l);
+    });
+
+    lastText = text;
+}
+
+function resolveCollisions() {
+    for (let i = 0; i < letters.length; i++) {
+        for (let j = i + 1; j < letters.length; j++) {
+            const l1 = letters[i];
+            const l2 = letters[j];
+
+            const dx = l2.freeX - l1.freeX;
+            const dy = l2.freeY - l1.freeY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const minDistance = l1.radius + l2.radius;
+
+            if (distance < minDistance) {
+                const overlap = minDistance - distance;
+                const nx = dx / (distance || 1);
+                const ny = dy / (distance || 1);
+
+                const moveX = nx * overlap * 0.5;
+                const moveY = ny * overlap * 0.5;
+
+                l1.freeX -= moveX;
+                l1.freeY -= moveY;
+                l2.freeX += moveX;
+                l2.freeY += moveY;
+
+                const relativeVx = l2.vx - l1.vx;
+                const relativeVy = l2.vy - l1.vy;
+                const velocityAlongNormal = relativeVx * nx + relativeVy * ny;
+
+                if (velocityAlongNormal < 0) {
+                    const restitution = 0.8;
+                    const impulse = -(1 + restitution) * velocityAlongNormal;
+                    const impulseX = impulse * nx * 0.5;
+                    const impulseY = impulse * ny * 0.5;
+
+                    l1.vx -= impulseX;
+                    l1.vy -= impulseY;
+                    l2.vx += impulseX;
+                    l2.vy += impulseY;
+                }
+            }
+        }
+    }
+}
+
+function updateWord(w, h, speedMult, rotMult, breakFactor, animStyle) {
+    const fontSize = controls.get('fontSize');
+
+    wordPhysics.x += wordPhysics.vx * speedMult;
+    wordPhysics.y += wordPhysics.vy * speedMult;
+    wordPhysics.rotation += wordPhysics.va * rotMult * 10;
+
+    const cos = Math.cos(wordPhysics.rotation);
+    const sin = Math.sin(wordPhysics.rotation);
+
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    const padding = fontSize * 0.5;
+
+    letters.forEach(letter => {
+        const wx = wordPhysics.x + letter.offsetX * cos;
+        const wy = wordPhysics.y + letter.offsetX * sin;
+        letter.wordX = wx;
+        letter.wordY = wy;
+        letter.wordRotation = wordPhysics.rotation;
+
+        minX = Math.min(minX, wx);
+        maxX = Math.max(maxX, wx);
+        minY = Math.min(minY, wy);
+        maxY = Math.max(maxY, wy);
+    });
+
+    if (minX < padding) {
+        wordPhysics.vx = Math.abs(wordPhysics.vx);
+        wordPhysics.x += (padding - minX);
+    } else if (maxX > w - padding) {
+        wordPhysics.vx = -Math.abs(wordPhysics.vx);
+        wordPhysics.x -= (maxX - (w - padding));
+    }
+
+    if (minY < padding) {
+        wordPhysics.vy = Math.abs(wordPhysics.vy);
+        wordPhysics.y += (padding - minY);
+    } else if (maxY > h - padding) {
+        wordPhysics.vy = -Math.abs(wordPhysics.vy);
+        wordPhysics.y -= (maxY - (h - padding));
+    }
+
+    if (breakFactor > 0 && controls.get('collisionEnabled')) {
+        resolveCollisions();
+    }
+
+    letters.forEach(letter => {
+        letter.update(w, h, speedMult, rotMult, breakFactor, animStyle, globalTime);
+    });
+}
+
+function hexToRgba(hex, opacity) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${opacity / 100})`;
+}
+
+let lastFontSize = 0;
+let lastSpacing = 0;
+
+function draw() {
+    const isAnimated = controls.get('animate');
+    const w = canvas.width;
+    const h = canvas.height;
+
+    if (letters.length === 0 && w > 0) {
+        initLetters();
+    }
+
+    const breakFactor = controls.get('breakApart') / 100;
+    const currentFontSize = controls.get('fontSize');
+    const currentSpacing = controls.get('letterSpacing');
+
+    if (controls.get('textContent') !== lastText || currentFontSize !== lastFontSize || currentSpacing !== lastSpacing) {
+        lastFontSize = currentFontSize;
+        lastSpacing = currentSpacing;
+        initLetters();
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Draw background image with cover mode (no edges, full bleed)
+    if (bgImgLoaded && bgImg) {
+        CanvasRuntimeAPI.drawImage(ctx, bgImg, 0, 0, w, h, 'cover');
+    }
+
+    const fontObj = controls.get('fontFamily');
+    const fontSize = controls.get('fontSize');
+    const activeFontFamily = customFontFamily || fontObj.family;
+    const fontStr = `${fontObj.weight} ${fontSize}px "${activeFontFamily}", sans-serif`;
+
+    const floatSpeed = controls.get('floatSpeed');
+    const rotSpeed = controls.get('rotationSpeed');
+    const echoCount = controls.get('echoCount');
+    const echoDelay = controls.get('echoDelay');
+    const echoOpacity = controls.get('echoOpacity');
+
+    const fillColor = controls.get('fillColor');
+    const fillOpacity = controls.get('fillOpacity');
+    const strokeColor = controls.get('strokeColor');
+    const strokeWidth = controls.get('strokeWidth');
+
+    const mainFill = hexToRgba(fillColor, fillOpacity);
+    const mainStroke = hexToRgba(strokeColor, 100);
+    const echoFill = hexToRgba(fillColor, echoOpacity);
+    const echoStroke = hexToRgba(strokeColor, echoOpacity);
+
+    const echoScale = controls.get('echoScale') || 1.0;
+
+    const animStyle = controls.get('animStyle') || 'drift';
+
+    if (isAnimated) {
+        globalTime += 0.016;
+        updateWord(w, h, floatSpeed, rotSpeed, breakFactor, animStyle);
+    }
+
+    for (let i = echoCount; i >= 1; i--) {
+        const index = i * echoDelay;
+        const s = Math.pow(echoScale, i);
+
+        letters.forEach(letter => {
+            if (letter.history[index]) {
+                const state = letter.history[index];
+                letter.draw(ctx, state.x, state.y, state.rotation, s, fontStr, echoFill, echoStroke, strokeWidth);
+            }
+        });
+    }
+
+    letters.forEach(letter => {
+        letter.draw(ctx, letter.x, letter.y, letter.rotation, 1, fontStr, mainFill, mainStroke, strokeWidth);
+    });
+
+    requestAnimationFrame(draw);
+}
+
+canvas.addEventListener('mousemove', (e) => {
+    mousePos = CanvasRuntimeAPI.getMousePos(e);
+    if (isDragging && draggedLetter !== null) {
+        const letter = letters[draggedLetter];
+        if (letter) {
+            const idx = draggedLetter;
+            if (!letterOffsets[idx]) letterOffsets[idx] = { x: 0, y: 0 };
+            letter.freeX = mousePos.x;
+            letter.freeY = mousePos.y;
+            letter.x = mousePos.x;
+            letter.y = mousePos.y;
+            letter.vx = 0;
+            letter.vy = 0;
+            letterOffsets[idx].x = mousePos.x - letter.wordX;
+            letterOffsets[idx].y = mousePos.y - letter.wordY;
+        }
+    }
+});
+
+canvas.addEventListener('mousedown', (e) => {
+    const pos = CanvasRuntimeAPI.getMousePos(e);
+    const fontSize = controls.get('fontSize');
+    const hitRadius = fontSize * 0.5;
+    // Find closest letter to click
+    let closestIdx = -1;
+    let closestDist = Infinity;
+    letters.forEach((letter, i) => {
+        const dx = pos.x - letter.x;
+        const dy = pos.y - letter.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < hitRadius && dist < closestDist) {
+            closestDist = dist;
+            closestIdx = i;
+        }
+    });
+    if (closestIdx >= 0) {
+        isDragging = true;
+        draggedLetter = closestIdx;
+        // Pause animation while dragging
+    }
+});
+
+canvas.addEventListener('mouseup', () => {
+    isDragging = false;
+    draggedLetter = null;
+});
+
+canvas.addEventListener('mouseleave', () => {
+    isDragging = false;
+    draggedLetter = null;
+});
+
+// Touch support for dragging letters — only block page scrolling when a
+// letter is actually grabbed, so swiping elsewhere still scrolls the page.
+canvas.addEventListener('touchstart', (e) => {
+    const pos = CanvasRuntimeAPI.getMousePos(e);
+    const fontSize = controls.get('fontSize');
+    const hitRadius = fontSize * 0.5;
+    let closestIdx = -1;
+    let closestDist = Infinity;
+    letters.forEach((letter, i) => {
+        const dx = pos.x - letter.x;
+        const dy = pos.y - letter.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < hitRadius && dist < closestDist) {
+            closestDist = dist;
+            closestIdx = i;
+        }
+    });
+    if (closestIdx >= 0) {
+        e.preventDefault();
+        isDragging = true;
+        draggedLetter = closestIdx;
+    }
+}, { passive: false });
+
+canvas.addEventListener('touchmove', (e) => {
+    const pos = CanvasRuntimeAPI.getMousePos(e);
+    mousePos = pos;
+    if (isDragging && draggedLetter !== null) {
+        e.preventDefault();
+        const letter = letters[draggedLetter];
+        if (letter) {
+            const idx = draggedLetter;
+            if (!letterOffsets[idx]) letterOffsets[idx] = { x: 0, y: 0 };
+            letter.freeX = pos.x;
+            letter.freeY = pos.y;
+            letter.x = pos.x;
+            letter.y = pos.y;
+            letter.vx = 0;
+            letter.vy = 0;
+            letterOffsets[idx].x = pos.x - letter.wordX;
+            letterOffsets[idx].y = pos.y - letter.wordY;
+        }
+    }
+}, { passive: false });
+
+canvas.addEventListener('touchend', () => {
+    isDragging = false;
+    draggedLetter = null;
+});
+
+controls.onAction('backToStart', () => {
+    initLetters();
+    controls.set('animate', false);
+});
+
+controls.onAction('resetAnimation', () => {
+    initLetters();
+    controls.set('breakApart', 0);
+});
+
+initLetters();
+requestAnimationFrame(draw);
+
+window.addEventListener('resize', () => {
+    initLetters();
+});
+
+    }
+
+    // System Background Wiring
+    if (typeof CanvasRuntimeAPI !== 'undefined') {
+      var __sysBgVal = controls.get('__sys_bg');
+      if (__sysBgVal) CanvasRuntimeAPI.setBackground(__sysBgVal);
+    }
+  </script>
+  <script>
+    (function() {
+      if (!document.fonts || !document.fonts.load) return;
+      var _fams = ["Arial"];
+      var _replay = function() {
+        var _api = window.ControlsAPI;
+        if (!_api || !_api.getAll || !_api.set) return;
+        var _all = _api.getAll();
+        Object.keys(_all).forEach(function(k) { _api.set(k, _all[k]); });
+      };
+      Promise.all(_fams.map(function(f) {
+        return document.fonts.load('1em "' + f + '"').catch(function() {});
+      })).then(_replay);
+      // The sheet can still be in flight when the promises settle empty; a late sweep costs
+      // one extra repaint and covers a slow CDN.
+      setTimeout(_replay, 2500);
+    })();
+  </script>
+</body>
+</html>

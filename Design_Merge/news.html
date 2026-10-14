@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>最新消息 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+		<!-- Page Title
+		============================================= -->
+		<section class="page-title mesh-title">
+			<!-- 流動漸層背景：5 個模糊色塊（藍 ×2 / 黃綠 ×2 / 灰）各自漂移，顏色在 custom.css 的 .mesh-bg 調整 -->
+			<div class="mesh-bg" aria-hidden="true">
+				<span class="mesh-blob mesh-blue"></span>
+				<span class="mesh-blob mesh-yellow"></span>
+				<span class="mesh-blob mesh-yellow-2"></span>
+				<span class="mesh-blob mesh-gray"></span>
+				<span class="mesh-blob mesh-blue-2"></span>
+			</div>
+			<div class="container">
+				<div class="page-title-row">
+
+					<div class="page-title-content">
+						<h1>最新消息</h1>
+						<span>News</span>
+					</div>
+
+					<!-- 事件分頁：沿用麵包屑的字體樣式，用 ✸ 分隔；目前所在頁加 active -->
+					<nav aria-label="事件分頁">
+						<ol class="breadcrumb event-nav">
+							<li class="breadcrumb-item"><a href="#">事件</a></li>
+							<li class="breadcrumb-item active" aria-current="page">最新消息</li>
+							<li class="breadcrumb-item"><a href="#">媒體報導</a></li>
+						</ol>
+					</nav>
+
+				</div>
+
+			</div>
+		</section><!-- .page-title end -->
+
+		<!-- Content（版型來源：Canvas blog-timeline.html）
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap pb-0">
+				<div class="container">
+
+					<div class="position-relative news-timeline-wrap">
+
+						<div class="timeline-border"></div>
+
+						<!-- 消息列表：月份用 .entry-date-section 分段，一則消息一個 .entry，會自動左右交錯排列
+						============================================= -->
+						<div id="posts" class="post-grid grid-container row post-timeline news-timeline col-mb-50" data-basewidth=".entry:not(.entry-date-section):eq(0)">
+
+							<div class="entry entry-date-section col-12 mb-3"><span>October 2026</span></div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event1.png" alt="消息標題 1"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 1</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.10.12</li>
+											<li><i class="uil uil-folder-open"></i> 展覽</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<!-- 影片消息：換影片時，把 embed/ 後面的 ID 換成新的 YouTube 影片 ID -->
+									<div class="entry-image">
+										<iframe src="https://www.youtube.com/embed/jliTWofO_0k" width="560" height="315" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">An arts and cultural brand based in Taichung, Taiwan, dedicated to supporting subcultures and the visual arts.</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.10.08</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+											<li><i class="uil uil-film"></i></li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放影片消息的摘要。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<!-- 純文字消息（引言） -->
+									<div class="entry-image">
+										<blockquote>
+											<p>An arts and cultural brand based in Taichung, Taiwan, dedicated to supporting subcultures and the visual arts.</p>
+											<footer>毛刺 Glitch</footer>
+										</blockquote>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.10.05</li>
+											<li><i class="uil uil-folder-open"></i> 公告</li>
+											<li><i class="bi-quote"></i></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event4.png" alt="消息標題 4"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 4</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.10.01</li>
+											<li><i class="uil uil-folder-open"></i> 新品</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry entry-date-section col-12 mb-3"><span>September 2026</span></div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event5.png" alt="消息標題 5"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 5</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.09.26</li>
+											<li><i class="uil uil-folder-open"></i> 展覽</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<!-- 純文字消息（文字卡片） -->
+									<div class="entry-image">
+										<div class="card">
+											<div class="card-body">
+												An arts and cultural brand based in Taichung, Taiwan, dedicated to supporting subcultures and the visual arts.
+											</div>
+										</div>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.09.18</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+											<li><i class="uil uil-align-justify"></i></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event7.png" alt="消息標題 7"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 7</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.09.10</li>
+											<li><i class="uil uil-folder-open"></i> 公告</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event8.png" alt="消息標題 8"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 8</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.09.03</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+						</div><!-- #posts end -->
+
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="bg-transparent border-top-0">
+			<!-- 黃色底框：寬度跟上面內容的 container 一樣 -->
+			<div class="container">
+			<div class="footer-panel">
+			<div class="container mw-md">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
+					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
+						<div class="col-md-6">
+							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
+							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
+							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
+							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="#"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="#"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="#"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .footer-widgets-wrap end -->
+
+				<!-- Copyrights
+				============================================= -->
+				<div id="copyrights" class="bg-transparent border-top">
+					<div class="row g-3">
+						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
+							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<div class="copyright-links mt-0">
+								<a href="#">Privacy Policy</a>
+								<a href="#">Terms &amp; Conditions</a>
+							</div>
+						</div>
+					</div>
+				</div><!-- #copyrights end -->
+
+			</div>
+			</div><!-- .footer-panel end -->
+			</div>
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- 時間軸左右對齊：Canvas 7 不會幫右欄的消息加上 .alt，
+	     少了它，右欄的連接虛線會畫在右邊而不是連回中線。
+	     每次版面排好（含視窗縮放）後，依位置自動補上。 -->
+	<script>
+		jQuery('#posts').on('layoutComplete arrangeComplete', function() {
+			jQuery(this).children('.entry:not(.entry-date-section)').each(function() {
+				jQuery(this).toggleClass('alt', parseFloat(this.style.left) > 0);
+			});
+		});
+	</script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>

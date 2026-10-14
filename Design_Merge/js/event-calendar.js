@@ -44,7 +44,16 @@ jQuery(function($) {
 		return n;
 	}
 
+	// Phones: no carousel — cards are simply stacked, at most MOBILE_MAX_CARDS.
+	var mobileQuery = window.matchMedia('(max-width: 767.98px)');
+	var MOBILE_MAX_CARDS = 5;
+
 	function reinitOwlCarousel() {
+		if (mobileQuery.matches) {
+			$carousel.removeClass('owl-carousel carousel-widget owl-loaded owl-drag owl-grab');
+			return;
+		}
+		$carousel.addClass('owl-carousel carousel-widget');
 		if (window.SEMICOLON && SEMICOLON.Modules && typeof SEMICOLON.Modules.carousel === 'function') {
 			SEMICOLON.Modules.carousel('#oc-product');
 		} else if ($.fn.owlCarousel) {
@@ -58,13 +67,18 @@ jQuery(function($) {
 		}
 	}
 
+	var lastMatchFn = null, lastEmptyMessage;
+
 	function renderCarousel(matchFn, emptyMessage) {
+		lastMatchFn = matchFn;
+		lastEmptyMessage = emptyMessage;
 		if ($carousel.hasClass('owl-loaded')) {
 			$carousel.trigger('destroy.owl.carousel');
 		}
 		$carousel.empty();
 		var visible = 0;
 		allCards.forEach(function(card) {
+			if (mobileQuery.matches && visible >= MOBILE_MAX_CARDS) return;
 			if (!matchFn || matchFn(card)) {
 				$carousel.append(card.html);
 				visible++;
@@ -114,6 +128,17 @@ jQuery(function($) {
 		}
 		return caldata;
 	}
+
+	// Phone layout on load, and again whenever the window crosses the breakpoint.
+	// Canvas may build the carousel before or after this runs, so also catch its
+	// "initialized" event and undo it on phones.
+	if (mobileQuery.matches) renderCarousel(null);
+	$carousel.on('initialized.owl.carousel', function() {
+		if (mobileQuery.matches) setTimeout(function() { renderCarousel(lastMatchFn, lastEmptyMessage); }, 0);
+	});
+	mobileQuery.addEventListener('change', function() {
+		renderCarousel(lastMatchFn, lastEmptyMessage);
+	});
 
 	var selectedDate = null;
 	var $grid = $('#event-calendar-grid');

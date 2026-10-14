@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>毛刺出版品 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap pt-0">
+
+				<!-- 1. 封面（動畫背景＋標題）
+				============================================= -->
+				<div class="section bg-transparent py-0 mt-0">
+					<div class="manga-hero publications-hero position-relative vh-75 align-items-center justify-content-center d-flex">
+						<!-- 背景動畫：assets/publications-hero-canvas.html（文字、顏色在那個檔案的 controls 設定裡改） -->
+						<iframe src="assets/publications-hero-canvas.html" title="毛刺出版品 封面動畫" class="manga-hero-canvas"></iframe>
+						<div class="manga-hero-title">
+							<span class="section-label">雜貨店</span>
+							<h3 class="display-4 fw-bold">毛刺出版品</h3>
+							<!-- 雜貨店分頁：顏色跟著標題；目前所在頁加 active -->
+							<nav aria-label="雜貨店分頁">
+								<ol class="breadcrumb event-nav title-nav justify-content-center">
+									<li class="breadcrumb-item"><a href="manga.html">漫畫倉庫</a></li>
+									<li class="breadcrumb-item active" aria-current="page"><span>毛刺出版品</span></li>
+									<li class="breadcrumb-item"><a href="goods.html">周邊商品</a></li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+
+				<!-- 2. 本月精選（來源：Canvas parallax-elements.html）
+				============================================= -->
+				<div class="container">
+
+					<div class="row justify-content-center">
+						<div class="col-md-6 text-center">
+							<h3>本月精選</h3>
+							<div class="grid-inner overflow-visible">
+								<div class="vh-50 position-relative z-1"><img src="img/comic-thumbnail.png" alt="本月精選" class="w-100 h-100 object-fit-cover"></div>
+								<div class="vh-50 w-100 scroll-detect position-absolute top-0 start-0 all-ts" style="background-color: #CFF273; --cnvs-transitions:.2s linear; opacity:calc(var(--cnvs-scroll-percent) * 0.025); transform: translate3d(calc(var(--cnvs-scroll-percent) * 0.5px), calc(var(--cnvs-scroll-percent) * 0.5px), 0);"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="line"></div>
+
+				</div>
+
+				<!-- 3. 出版品列表
+				============================================= -->
+				<div class="container">
+
+					<!-- 分類篩選：data-filter=".pf-xx" 對應下面每本出版品 article 上的 class
+					============================================= -->
+					<div class="grid-filter-wrap">
+						<ul class="grid-filter" data-container="#manga-grid">
+							<li class="activeFilter"><a href="#" data-filter="*">全部</a></li>
+							<li><a href="#" data-filter=".pf-select">毛刺精選</a></li>
+							<li><a href="#" data-filter=".pf-collab">毛刺 x 合作</a></li>
+							<li><a href="#" data-filter=".pf-monthly">毛刺月報</a></li>
+						</ul><!-- .grid-filter end -->
+					</div>
+
+					<!-- 出版品清單：一本一個 <article>，分類寫在 class（可多個），連結先放 #，之後接內頁
+					============================================= -->
+					<div id="manga-grid" class="portfolio manga-grid row grid-container gutter-20" data-layout="fitRows">
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event1.png" alt="出版品標題 1"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 1</a></h3>
+									<span>毛刺精選</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-collab">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event2.png" alt="出版品標題 2"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 2</a></h3>
+									<span>毛刺 x 合作</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-monthly">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event3.png" alt="出版品標題 3"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 3</a></h3>
+									<span>毛刺月報</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select pf-collab">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event4.png" alt="出版品標題 4"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 4</a></h3>
+									<span>毛刺精選、毛刺 x 合作</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-monthly">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event5.png" alt="出版品標題 5"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 5</a></h3>
+									<span>毛刺月報</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event6.png" alt="出版品標題 6"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 6</a></h3>
+									<span>毛刺精選</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-collab">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event7.png" alt="出版品標題 7"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 7</a></h3>
+									<span>毛刺 x 合作</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-monthly">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event8.png" alt="出版品標題 8"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 8</a></h3>
+									<span>毛刺月報</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event9.png" alt="出版品標題 9"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 9</a></h3>
+									<span>毛刺精選</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-collab pf-monthly">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event10.png" alt="出版品標題 10"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 10</a></h3>
+									<span>毛刺 x 合作、毛刺月報</span>
+								</div>
+							</div>
+						</article>
+
+					</div><!-- #manga-grid end -->
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="bg-transparent border-top-0">
+			<!-- 黃色底框：寬度跟上面內容的 container 一樣 -->
+			<div class="container">
+			<div class="footer-panel">
+			<div class="container mw-md">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
+					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
+						<div class="col-md-6">
+							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
+							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
+							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
+							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="#"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="#"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="#"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .footer-widgets-wrap end -->
+
+				<!-- Copyrights
+				============================================= -->
+				<div id="copyrights" class="bg-transparent border-top">
+					<div class="row g-3">
+						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
+							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<div class="copyright-links mt-0">
+								<a href="#">Privacy Policy</a>
+								<a href="#">Terms &amp; Conditions</a>
+							</div>
+						</div>
+					</div>
+				</div><!-- #copyrights end -->
+
+			</div>
+			</div><!-- .footer-panel end -->
+			</div>
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>
