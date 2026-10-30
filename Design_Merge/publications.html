@@ -93,21 +93,21 @@
 						<!-- 背景動畫：assets/publications-hero-canvas.html（文字、顏色在那個檔案的 controls 設定裡改） -->
 						<iframe src="assets/publications-hero-canvas.html" title="毛刺出版品 封面動畫" class="manga-hero-canvas"></iframe>
 						<div class="manga-hero-title">
-							<span class="section-label">雜貨店</span>
-							<h3 class="display-4 fw-bold">毛刺出版品</h3>
-							<!-- 雜貨店分頁：顏色跟著標題；目前所在頁加 active -->
-							<nav aria-label="雜貨店分頁">
+							<span class="section-label">好ㄉ</span>
+							<h3 class="display-4 fw-bold">出版品</h3>
+							<!-- 好ㄉ分頁：顏色跟著標題；目前所在頁加 active -->
+							<nav aria-label="好ㄉ分頁">
 								<ol class="breadcrumb event-nav title-nav justify-content-center">
-									<li class="breadcrumb-item"><a href="manga.html">漫畫倉庫</a></li>
+									<li class="breadcrumb-item"><a href="manga.html">漫畫</a></li>
 									<li class="breadcrumb-item active" aria-current="page"><span>毛刺出版品</span></li>
-									<li class="breadcrumb-item"><a href="goods.html">周邊商品</a></li>
+									<li class="breadcrumb-item"><a href="goods.html">周邊</a></li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
 
-				<!-- 2. 本月精選（來源：Canvas parallax-elements.html）
+				<!-- 2. 本月精選
 				============================================= -->
 				<div class="container">
 
@@ -129,10 +129,10 @@
 				============================================= -->
 				<div class="container">
 
-					<!-- 分類篩選：data-filter=".pf-xx" 對應下面每本出版品 article 上的 class
+					<!-- 分類篩選（跟分頁一起由 js/pagination.js 處理，所以不加 data-container）：data-filter=".pf-xx" 對應下面每本出版品 article 上的 class
 					============================================= -->
 					<div class="grid-filter-wrap">
-						<ul class="grid-filter" data-container="#manga-grid">
+						<ul class="grid-filter" id="publications-filter">
 							<li class="activeFilter"><a href="#" data-filter="*">全部</a></li>
 							<li><a href="#" data-filter=".pf-select">毛刺精選</a></li>
 							<li><a href="#" data-filter=".pf-collab">毛刺 x 合作</a></li>
@@ -147,10 +147,10 @@
 						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select">
 							<div class="grid-inner">
 								<div class="portfolio-image">
-									<a href="#"><img src="img/event1.png" alt="出版品標題 1"></a>
+									<a href="publications-post.html"><img src="img/publications/wc-cover-ronaldo-angle.jpg" alt="The New World世界杯足球賽專刊專輯2026"></a>
 								</div>
 								<div class="portfolio-desc">
-									<h3><a href="#">出版品標題 1</a></h3>
+									<h3><a href="publications-post.html">The New World世界杯足球賽專刊專輯2026</a></h3>
 									<span>毛刺精選</span>
 								</div>
 							</div>
@@ -264,7 +264,87 @@
 							</div>
 						</article>
 
+
+						<!-- ↓↓↓ TEST：示意分頁用的假資料（補到 16 筆），正式資料進來後整段刪除 ↓↓↓ -->
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/publications/wc-cover-ronaldo-angle.jpg" alt="出版品標題 11"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 11</a></h3>
+									<span>毛刺精選</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-collab">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event2.png" alt="出版品標題 12"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 12</a></h3>
+									<span>毛刺 x 合作</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-monthly">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event3.png" alt="出版品標題 13"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 13</a></h3>
+									<span>毛刺月報</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select pf-collab">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event4.png" alt="出版品標題 14"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 14</a></h3>
+									<span>毛刺精選、毛刺 x 合作</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-monthly">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event5.png" alt="出版品標題 15"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 15</a></h3>
+									<span>毛刺月報</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-select">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/event6.png" alt="出版品標題 16"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">出版品標題 16</a></h3>
+									<span>毛刺精選</span>
+								</div>
+							</div>
+						</article>
+						<!-- ↑↑↑ TEST 結束 ↑↑↑ -->
+
 					</div><!-- #manga-grid end -->
+
+					<!-- 分頁選單：每頁 15 本，頁碼由 js/pagination.js 自動產生；只有一頁時不顯示 -->
+					<nav class="list-pagination d-none" aria-label="出版品分頁">
+						<ul class="pagination pagination-inside-transparent pagination-lg mb-0"></ul>
+					</nav>
 
 				</div>
 			</div>
@@ -272,8 +352,8 @@
 
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="bg-transparent border-top-0">
-			<!-- 黃色底框：寬度跟上面內容的 container 一樣 -->
+		<footer id="footer" class="border-top-0 footer-white">
+			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
 			<div class="container">
 			<div class="footer-panel">
 			<div class="container mw-md">
@@ -296,7 +376,7 @@
 											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="#"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 										</ul>
 
 									</div>
@@ -305,10 +385,10 @@
 								<div class="col-6">
 									<div class="widget widget_links widget-li-noicon">
 										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="#"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="#"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 										</ul>
 
 									</div>
@@ -326,12 +406,6 @@
 							Copyrights &copy; 2026 All Rights Reserved by Glitch.
 						</div>
 
-						<div class="col-lg-6 text-center text-lg-end">
-							<div class="copyright-links mt-0">
-								<a href="#">Privacy Policy</a>
-								<a href="#">Terms &amp; Conditions</a>
-							</div>
-						</div>
 					</div>
 				</div><!-- #copyrights end -->
 
@@ -350,6 +424,10 @@
 	============================================= -->
 	<script src="js/plugins.min.js"></script>
 	<script src="js/functions.bundle.js"></script>
+
+	<!-- 類型篩選＋分頁：一頁 15 本（共用 js/pagination.js） -->
+	<script src="js/pagination.js"></script>
+	<script>GlitchPagination('#manga-grid', '.list-pagination', 15, '#publications-filter');</script>
 
 	<!-- Custom Scripts（header 捲動顯示等）
 	============================================= -->

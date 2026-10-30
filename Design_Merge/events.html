@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>事件 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+		<!-- Page Title
+		============================================= -->
+		<section class="page-title mesh-title">
+			<!-- 流動漸層背景：5 個模糊色塊（藍 ×2 / 黃綠 ×2 / 灰）各自漂移，顏色在 custom.css 的 .mesh-bg 調整 -->
+			<div class="mesh-bg" aria-hidden="true">
+				<span class="mesh-blob mesh-blue"></span>
+				<span class="mesh-blob mesh-yellow"></span>
+				<span class="mesh-blob mesh-yellow-2"></span>
+				<span class="mesh-blob mesh-gray"></span>
+				<span class="mesh-blob mesh-blue-2"></span>
+			</div>
+			<div class="container">
+				<div class="page-title-row">
+
+					<div class="page-title-content">
+						<h1>事件</h1>
+						<span>Events</span>
+					</div>
+
+					<!-- 事件分頁（title-nav，hover 有色塊掃過）：用 ✸ 分隔；目前所在頁加 active、文字包 span -->
+					<nav aria-label="事件分頁">
+						<ol class="breadcrumb event-nav title-nav justify-content-center">
+							<li class="breadcrumb-item active" aria-current="page"><span>事件</span></li>
+							<li class="breadcrumb-item"><a href="news.html">最新消息</a></li>
+							<li class="breadcrumb-item"><a href="press.html">媒體報導</a></li>
+						</ol>
+					</nav>
+
+				</div>
+
+			</div>
+		</section><!-- .page-title end -->
+
+		<!-- Content：左邊固定的日曆選擇器，右邊是兩欄瀑布流活動列表；
+		     上方展覽類型 tab 跟日期（點日期／Today／This Week）可以同時篩選（js/events-page.js）。
+		     每則活動用 data-event-start / data-event-end 標出展期（YYYY-MM-DD），日曆依此篩選與標點
+		============================================= -->
+		<section id="content" class="events-content">
+			<div class="content-wrap">
+				<div class="container">
+					<div class="row gx-lg-5">
+
+						<!-- 日曆（桌機捲動時固定在左邊） -->
+						<div class="col-lg-3 mb-5 mb-lg-0">
+							<div class="events-calendar-sticky">
+								<div class="event-calendar" id="event-calendar">
+									<div class="event-calendar-tabs">
+										<button type="button" class="event-calendar-tab" data-quick="today">Today 今天</button>
+										<button type="button" class="event-calendar-tab" data-quick="week">This Week 本週</button>
+										<button type="button" class="event-calendar-tab active" data-quick="all">All Time 近期所有活動</button>
+									</div>
+									<div class="event-calendar-grid" id="event-calendar-grid"></div>
+									<div class="event-calendar-nav">
+										<button type="button" class="event-calendar-prev" aria-label="Previous month">&lsaquo;</button>
+										<span class="event-calendar-month" id="event-calendar-month"></span>
+										<button type="button" class="event-calendar-next" aria-label="Next month">&rsaquo;</button>
+									</div>
+								</div><!-- #event-calendar end -->
+							</div>
+						</div>
+
+						<!-- 活動列表（兩欄瀑布流） -->
+						<div class="col-lg-9">
+							<div class="grid-filter-wrap">
+
+								<!-- 展覽類型篩選：
+								     data-filter 對應活動上的 pf-* class；可以跟左邊日曆同時篩選（js/events-page.js），
+								     所以這裡不加 data-container，不讓 Canvas 自己接管點擊 -->
+								<ul class="grid-filter" id="events-filter">
+									<li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+									<li><a href="#" data-filter=".pf-digital">數位藝術實驗場</a></li>
+									<li><a href="#" data-filter=".pf-act">當代藝術展演場</a></li>
+									<li><a href="#" data-filter=".pf-manga">亞洲漫畫倉庫</a></li>
+									<li><a href="#" data-filter=".pf-program">Talk ／ Workshop</a></li>
+								</ul><!-- .grid-filter end -->
+
+								<div class="grid-shuffle rounded" data-container="#portfolio">
+									<i class="uil uil-sync"></i>
+								</div>
+
+							</div>
+
+							<p class="events-empty d-none" id="events-empty"></p>
+
+							<div id="portfolio" class="portfolio row grid-container gutter-30">
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-digital" data-event-start="2026-10-17" data-event-end="2026-11-22">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="events-post.html"><img src="img/event2.png" alt="共通性：同理 Commonality: Empathy"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.10.17 - 11.22</span>
+										<h3><a href="events-post.html">共通性：同理 Commonality: Empathy</a></h3>
+										<span>數位藝術實驗場　藝術家 Artists｜吳承儒（PB）</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-manga" data-event-start="2026-10-24" data-event-end="2026-10-26">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="events-post-2.html"><img src="img/event4.png" alt="Zine Fair 柳川小誌市集"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.10.24 - 10.26</span>
+										<h3><a href="events-post-2.html">Zine Fair 柳川小誌市集</a></h3>
+										<span>亞洲漫畫倉庫　－</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-act" data-event-start="2026-11-07" data-event-end="2026-12-20">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event6.png" alt="Night Market of Images"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.11.07 - 12.20</span>
+										<h3><a href="#">Night Market of Images</a></h3>
+										<span>當代藝術展演場 act　藝術家 Artists｜群展</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-program" data-event-start="2026-11-28" data-event-end="2026-11-28">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event8.png" alt="Glitch Talks Vol.12"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.11.28</span>
+										<h3><a href="#">Glitch Talks Vol.12</a></h3>
+										<span>Talk　講者｜張文豪 CHANG Wen-Hao</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-act" data-event-start="2026-12-05" data-event-end="2027-01-24">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event10.png" alt="陳曦個展 - 《休息一下 let’s 狗》"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.12.05 - 2027.01.24</span>
+										<h3><a href="#">陳曦個展 - 《休息一下 let’s 狗》</a></h3>
+										<span>當代藝術展演場 act　藝術家 Artist｜陳曦</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-program" data-event-start="2026-12-12" data-event-end="2026-12-13">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event12.png" alt="Risograph 週末工作坊"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.12.12 - 12.13</span>
+										<h3><a href="#">Risograph 週末工作坊</a></h3>
+										<span>Workshop　－</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-act" data-event-start="2026-02-28" data-event-end="2026-04-12">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event1.png" alt="Room in Romm out"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.02.28 - 2026.04.12</span>
+										<h3><a href="#">Room in Romm out</a></h3>
+										<span>當代藝術展演場 act　藝術家 Artists ｜盧卡博納科爾西Luca Bonaccorsi</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-act" data-event-start="2025-09-03" data-event-end="2025-10-12">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event3.png" alt="林珈伃個展 - 《最遠的最短距離》"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2025.09.03 - 10.12</span>
+										<h3><a href="#">林珈伃個展 - 《最遠的最短距離》</a></h3>
+										<span>當代藝術展演場 act　藝術家 Artist ｜林珈伃</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-digital" data-event-start="2025-04-02" data-event-end="2025-05-02">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event5.png" alt="FTK 個展 - 《煉》"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2025.04.02 - 05.02</span>
+										<h3><a href="#">FTK 個展 - 《煉》</a></h3>
+										<span>數位藝術實驗場　藝術家｜FTK</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-manga" data-event-start="2024-11-30" data-event-end="2025-01-19">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event11.png" alt="想要勾著一些書和鳥"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2024.11.30 - 2025.01.19</span>
+										<h3><a href="#">想要勾著一些書和鳥</a></h3>
+										<span>亞洲漫畫倉庫　藝術家 Artist｜李兆起</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-digital" data-event-start="2024-09-21" data-event-end="2024-10-20">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event7.png" alt="🎼 緻密的迴音 𝙏𝙝𝙧𝙚𝙖𝙙𝙞𝙣𝙜 𝙀𝙘𝙝𝙤𝙚𝙨"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2024.09.21 - 10.20</span>
+										<h3><a href="#">🎼 緻密的迴音 𝙏𝙝𝙧𝙚𝙖𝙙𝙞𝙣𝙜 𝙀𝙘𝙝𝙤𝙚𝙨</a></h3>
+										<span>數位藝術實驗場　藝術家 Artists｜王襦萱、施絜晴、邱靖婷</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-manga" data-event-start="2024-08-01" data-event-end="2024-08-31">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event9.png" alt="✶｜2024放牧瀏覽小誌徵件展｜✶"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2024.08.01 - 08.31</span>
+										<h3><a href="#">✶｜2024放牧瀏覽小誌徵件展｜✶</a></h3>
+										<span>亞洲漫畫倉庫　－</span>
+									</div>
+								</div>
+							</article>
+
+
+							<!-- ↓↓↓ TEST：示意分頁用的假資料（補到 16 筆），正式資料進來後整段刪除 ↓↓↓ -->
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-digital" data-event-start="2026-10-17" data-event-end="2026-11-22">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event2.png" alt="共通性：同理 Commonality: Empathy"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.10.17 - 11.22</span>
+										<h3><a href="#">共通性：同理 Commonality: Empathy</a></h3>
+										<span>數位藝術實驗場　藝術家 Artists｜吳承儒（PB）</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-manga" data-event-start="2026-10-24" data-event-end="2026-10-26">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event4.png" alt="Zine Fair 柳川小誌市集"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.10.24 - 10.26</span>
+										<h3><a href="#">Zine Fair 柳川小誌市集</a></h3>
+										<span>亞洲漫畫倉庫　－</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-act" data-event-start="2026-11-07" data-event-end="2026-12-20">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event6.png" alt="Night Market of Images"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.11.07 - 12.20</span>
+										<h3><a href="#">Night Market of Images</a></h3>
+										<span>當代藝術展演場 act　藝術家 Artists｜群展</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="portfolio-item col-md-6 col-xl-4 col-12 pf-program" data-event-start="2026-11-28" data-event-end="2026-11-28">
+								<div class="grid-inner">
+									<div class="portfolio-image">
+										<a href="#"><img src="img/event8.png" alt="Glitch Talks Vol.12"></a>
+									</div>
+									<div class="portfolio-desc">
+										<span class="events-date">2026.11.28</span>
+										<h3><a href="#">Glitch Talks Vol.12</a></h3>
+										<span>Talk　講者｜張文豪 CHANG Wen-Hao</span>
+									</div>
+								</div>
+							</article>
+							<!-- ↑↑↑ TEST 結束 ↑↑↑ -->
+
+							</div><!-- #portfolio end -->
+
+							<!-- 分頁選單：每頁 15 則，頁碼由 js/events-page.js 依篩選後的活動數量產生；只有一頁時不顯示 -->
+							<nav class="list-pagination d-none" aria-label="事件分頁">
+								<ul class="pagination pagination-inside-transparent pagination-lg mb-0"></ul>
+							</nav>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="border-top-0 footer-white">
+			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
+			<div class="container">
+			<div class="footer-panel">
+			<div class="container mw-md">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
+					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
+						<div class="col-md-6">
+							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
+							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
+							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
+							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .footer-widgets-wrap end -->
+
+				<!-- Copyrights
+				============================================= -->
+				<div id="copyrights" class="bg-transparent border-top">
+					<div class="row g-3">
+						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
+							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+						</div>
+
+					</div>
+				</div><!-- #copyrights end -->
+
+			</div>
+			</div><!-- .footer-panel end -->
+			</div>
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/jquery.calendario.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- 日曆篩選活動列表＋分頁（分頁按鈕共用 js/pagination.js） -->
+	<script src="js/pagination.js"></script>
+	<script src="js/events-page.js"></script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>創作者 Creators | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+		<!-- Content：創作者列表（一排 5 位）
+		     上方類型 tab（data-filter 對應創作者上的 pf-* class），
+		     跟分頁一起由 js/pagination.js 處理（所以不加 data-container）；一頁 15 位
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+
+				<!-- 創作者名字跑馬燈（三排：左、右、左），放在頁面最上面；名字點進去是創作者單頁
+				     （目前只有張文豪、賴詩涵有單頁，其他名字先不加連結；有單頁後把 <span> 換成 <a href="…">）
+				     樣式見 custom.css .creators-names
+				============================================= -->
+				<div class="creators-names">
+				<!-- 第 1 排：往左 -->
+				<div class="ticker-wrap creators-names-row pause-on-hover">
+					<div class="ticker">
+						<a href="creators-post.html" class="ticker-item">張文豪</a>
+						<span class="ticker-item">吳承儒（PB）</span>
+						<span class="ticker-item">林珈伃</span>
+						<span class="ticker-item">陳曦</span>
+						<span class="ticker-item">FTK</span>
+						<span class="ticker-item">Luca Bonaccorsi</span>
+						<a href="creators-post-2.html" class="ticker-item">賴詩涵</a>
+						<a href="creators-post.html" class="ticker-item">張文豪</a>
+						<span class="ticker-item">吳承儒（PB）</span>
+						<span class="ticker-item">林珈伃</span>
+						<span class="ticker-item">陳曦</span>
+						<span class="ticker-item">FTK</span>
+						<span class="ticker-item">Luca Bonaccorsi</span>
+						<a href="creators-post-2.html" class="ticker-item">賴詩涵</a>
+						<!-- 同樣內容再一份（無縫循環用），改名字時兩份一起改 -->
+						<a href="creators-post.html" class="ticker-item" aria-hidden="true" tabindex="-1">張文豪</a>
+						<span class="ticker-item" aria-hidden="true">吳承儒（PB）</span>
+						<span class="ticker-item" aria-hidden="true">林珈伃</span>
+						<span class="ticker-item" aria-hidden="true">陳曦</span>
+						<span class="ticker-item" aria-hidden="true">FTK</span>
+						<span class="ticker-item" aria-hidden="true">Luca Bonaccorsi</span>
+						<a href="creators-post-2.html" class="ticker-item" aria-hidden="true" tabindex="-1">賴詩涵</a>
+						<a href="creators-post.html" class="ticker-item" aria-hidden="true" tabindex="-1">張文豪</a>
+						<span class="ticker-item" aria-hidden="true">吳承儒（PB）</span>
+						<span class="ticker-item" aria-hidden="true">林珈伃</span>
+						<span class="ticker-item" aria-hidden="true">陳曦</span>
+						<span class="ticker-item" aria-hidden="true">FTK</span>
+						<span class="ticker-item" aria-hidden="true">Luca Bonaccorsi</span>
+						<a href="creators-post-2.html" class="ticker-item" aria-hidden="true" tabindex="-1">賴詩涵</a>
+					</div>
+				</div>
+
+				<!-- 第 2 排：往右 -->
+				<div class="ticker-wrap creators-names-row pause-on-hover ticker-reverse">
+					<div class="ticker">
+						<span class="ticker-item">李兆起</span>
+						<a href="creators-post.html" class="ticker-item">張文豪</a>
+						<span class="ticker-item">王襦萱</span>
+						<span class="ticker-item">施絜晴</span>
+						<span class="ticker-item">邱靖婷</span>
+						<a href="creators-post-2.html" class="ticker-item">賴詩涵</a>
+						<span class="ticker-item">吳承儒（PB）</span>
+						<span class="ticker-item">李兆起</span>
+						<a href="creators-post.html" class="ticker-item">張文豪</a>
+						<span class="ticker-item">王襦萱</span>
+						<span class="ticker-item">施絜晴</span>
+						<span class="ticker-item">邱靖婷</span>
+						<a href="creators-post-2.html" class="ticker-item">賴詩涵</a>
+						<span class="ticker-item">吳承儒（PB）</span>
+						<!-- 同樣內容再一份（無縫循環用），改名字時兩份一起改 -->
+						<span class="ticker-item" aria-hidden="true">李兆起</span>
+						<a href="creators-post.html" class="ticker-item" aria-hidden="true" tabindex="-1">張文豪</a>
+						<span class="ticker-item" aria-hidden="true">王襦萱</span>
+						<span class="ticker-item" aria-hidden="true">施絜晴</span>
+						<span class="ticker-item" aria-hidden="true">邱靖婷</span>
+						<a href="creators-post-2.html" class="ticker-item" aria-hidden="true" tabindex="-1">賴詩涵</a>
+						<span class="ticker-item" aria-hidden="true">吳承儒（PB）</span>
+						<span class="ticker-item" aria-hidden="true">李兆起</span>
+						<a href="creators-post.html" class="ticker-item" aria-hidden="true" tabindex="-1">張文豪</a>
+						<span class="ticker-item" aria-hidden="true">王襦萱</span>
+						<span class="ticker-item" aria-hidden="true">施絜晴</span>
+						<span class="ticker-item" aria-hidden="true">邱靖婷</span>
+						<a href="creators-post-2.html" class="ticker-item" aria-hidden="true" tabindex="-1">賴詩涵</a>
+						<span class="ticker-item" aria-hidden="true">吳承儒（PB）</span>
+					</div>
+				</div>
+
+				<!-- 第 3 排：往左 -->
+				<div class="ticker-wrap creators-names-row pause-on-hover">
+					<div class="ticker">
+						<span class="ticker-item">陳曦</span>
+						<span class="ticker-item">Luca Bonaccorsi</span>
+						<a href="creators-post.html" class="ticker-item">張文豪</a>
+						<span class="ticker-item">FTK</span>
+						<span class="ticker-item">林珈伃</span>
+						<span class="ticker-item">李兆起</span>
+						<span class="ticker-item">王襦萱</span>
+						<span class="ticker-item">陳曦</span>
+						<span class="ticker-item">Luca Bonaccorsi</span>
+						<a href="creators-post.html" class="ticker-item">張文豪</a>
+						<span class="ticker-item">FTK</span>
+						<span class="ticker-item">林珈伃</span>
+						<span class="ticker-item">李兆起</span>
+						<span class="ticker-item">王襦萱</span>
+						<!-- 同樣內容再一份（無縫循環用），改名字時兩份一起改 -->
+						<span class="ticker-item" aria-hidden="true">陳曦</span>
+						<span class="ticker-item" aria-hidden="true">Luca Bonaccorsi</span>
+						<a href="creators-post.html" class="ticker-item" aria-hidden="true" tabindex="-1">張文豪</a>
+						<span class="ticker-item" aria-hidden="true">FTK</span>
+						<span class="ticker-item" aria-hidden="true">林珈伃</span>
+						<span class="ticker-item" aria-hidden="true">李兆起</span>
+						<span class="ticker-item" aria-hidden="true">王襦萱</span>
+						<span class="ticker-item" aria-hidden="true">陳曦</span>
+						<span class="ticker-item" aria-hidden="true">Luca Bonaccorsi</span>
+						<a href="creators-post.html" class="ticker-item" aria-hidden="true" tabindex="-1">張文豪</a>
+						<span class="ticker-item" aria-hidden="true">FTK</span>
+						<span class="ticker-item" aria-hidden="true">林珈伃</span>
+						<span class="ticker-item" aria-hidden="true">李兆起</span>
+						<span class="ticker-item" aria-hidden="true">王襦萱</span>
+					</div>
+				</div>
+				</div><!-- .creators-names end -->
+
+				<div class="container">
+
+					<div class="grid-filter-wrap">
+
+						<!-- 創作類型篩選 -->
+						<ul class="grid-filter" id="creators-filter">
+							<li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+							<li><a href="#" data-filter=".pf-digital">數位藝術</a></li>
+							<li><a href="#" data-filter=".pf-contemporary">當代藝術</a></li>
+							<li><a href="#" data-filter=".pf-comics">漫畫</a></li>
+							<li><a href="#" data-filter=".pf-illustration">插畫</a></li>
+							<li><a href="#" data-filter=".pf-sound">聲音</a></li>
+						</ul><!-- .grid-filter end -->
+
+						<div class="grid-shuffle rounded" data-container="#portfolio">
+							<i class="uil uil-sync"></i>
+						</div>
+
+					</div>
+
+					<!-- 創作者列表：一位一個 .portfolio-item（照片、名字、創作類型）
+					============================================= -->
+					<div id="portfolio" class="portfolio row grid-container gutter-20 creators-grid" data-layout="fitRows">
+
+						<!-- 張文豪：點進去是創作者單頁 creators-post.html -->
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="creators-post.html"><img src="img/900CC3CB-460A-442C-B10E-FDFC07E25415.webp" alt="張文豪 CHANG Wen-Hao"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="creators-post.html">張文豪</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<!-- 賴詩涵：點進去是創作者單頁 creators-post-2.html（沒有提供照片，用毛刺形象圖） -->
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="creators-post-2.html"><img src="img/creators/creator-default.jpg" alt="賴詩涵 LAI Shih-Han"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="creators-post-2.html">賴詩涵</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-digital">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-1.jpg" alt="吳承儒（PB）"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">吳承儒（PB）</a></h3>
+									<span>數位藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-2.jpg" alt="林珈伃"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">林珈伃</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-3.jpg" alt="陳曦"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">陳曦</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-digital">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-4.jpg" alt="FTK"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">FTK</a></h3>
+									<span>數位藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-comics">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-5.jpg" alt="李兆起"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">李兆起</a></h3>
+									<span>漫畫</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-sound">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-6.jpg" alt="王襦萱"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">王襦萱</a></h3>
+									<span>聲音</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-sound">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-7.jpg" alt="施絜晴"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">施絜晴</a></h3>
+									<span>聲音</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-illustration">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-8.jpg" alt="邱靖婷"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">邱靖婷</a></h3>
+									<span>插畫</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-9.jpg" alt="Luca Bonaccorsi"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Luca Bonaccorsi</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-comics">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-1.jpg" alt="創作者名稱 10"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 10</a></h3>
+									<span>漫畫</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-illustration">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-2.jpg" alt="Artist Name 11"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 11</a></h3>
+									<span>插畫</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-digital">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-3.jpg" alt="創作者名稱 12"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 12</a></h3>
+									<span>數位藝術</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-comics">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-4.jpg" alt="Artist Name 13"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 13</a></h3>
+									<span>漫畫</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-sound">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-5.jpg" alt="創作者名稱 14"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 14</a></h3>
+									<span>聲音</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-illustration">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-6.jpg" alt="Artist Name 15"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 15</a></h3>
+									<span>插畫</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-digital">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-7.jpg" alt="創作者名稱 16"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 16</a></h3>
+									<span>數位藝術</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-8.jpg" alt="Artist Name 17"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 17</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-comics">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-9.jpg" alt="創作者名稱 18"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 18</a></h3>
+									<span>漫畫</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-illustration">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-1.jpg" alt="Artist Name 19"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 19</a></h3>
+									<span>插畫</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-sound">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-2.jpg" alt="創作者名稱 20"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 20</a></h3>
+									<span>聲音</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-digital">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-3.jpg" alt="Artist Name 21"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 21</a></h3>
+									<span>數位藝術</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-4.jpg" alt="創作者名稱 22"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 22</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-comics">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-5.jpg" alt="Artist Name 23"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 23</a></h3>
+									<span>漫畫</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-illustration">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-6.jpg" alt="創作者名稱 24"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 24</a></h3>
+									<span>插畫</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-sound">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-7.jpg" alt="Artist Name 25"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 25</a></h3>
+									<span>聲音</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-8.jpg" alt="創作者名稱 26"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 26</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-digital">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-9.jpg" alt="Artist Name 27"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 27</a></h3>
+									<span>數位藝術</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-comics">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-1.jpg" alt="創作者名稱 28"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 28</a></h3>
+									<span>漫畫</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-illustration">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-2.jpg" alt="Artist Name 29"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">Artist Name 29</a></h3>
+									<span>插畫</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item col-lg-1-5 col-md-4 col-sm-6 col-12 pf-contemporary">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="#"><img src="img/creators/creator-3.jpg" alt="創作者名稱 30"></a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="#">創作者名稱 30</a></h3>
+									<span>當代藝術</span>
+								</div>
+							</div>
+						</article>
+
+					</div><!-- #portfolio end -->
+
+					<!-- 分頁選單：每頁 15 位，頁碼由 js/pagination.js 自動產生；只有一頁時不顯示 -->
+					<nav class="list-pagination d-none" aria-label="創作者分頁">
+						<ul class="pagination pagination-inside-transparent pagination-lg mb-0"></ul>
+					</nav>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="border-top-0 footer-blue">
+			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
+			<div class="container">
+			<div class="footer-panel">
+			<div class="container mw-md">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
+					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
+						<div class="col-md-6">
+							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
+							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
+							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
+							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .footer-widgets-wrap end -->
+
+				<!-- Copyrights
+				============================================= -->
+				<div id="copyrights" class="bg-transparent border-top">
+					<div class="row g-3">
+						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
+							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+						</div>
+
+					</div>
+				</div><!-- #copyrights end -->
+
+			</div>
+			</div><!-- .footer-panel end -->
+			</div>
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- 類型篩選＋分頁：一頁 15 位（共用 js/pagination.js） -->
+	<script src="js/pagination.js"></script>
+	<script>GlitchPagination('#portfolio', '.list-pagination', 15, '#creators-filter');</script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>

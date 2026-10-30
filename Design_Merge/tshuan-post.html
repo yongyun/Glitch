@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>@@川：計畫名稱 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+		<!-- Hero：全螢幕影片開頭
+		     影片換 <source src>（mp4、webm 兩個都要換），poster 是影片載入前的封面圖；文字由上而下：小字英文、大標（上下框線）、說明，依序淡入
+		     樣式見 custom.css .tshuan-hero
+		============================================= -->
+		<section id="slider" class="slider-element min-vh-100 dark include-header tshuan-hero tshuan-stack-sticky">
+			<div class="slider-inner">
+
+				<div class="container">
+					<div class="slider-caption slider-caption-center">
+						<div class="tshuan-hero-caps" data-animate="fadeInUp" data-delay="300">@@ TSHUAN</div>
+						<h1 class="tshuan-hero-title" data-animate="fadeInUp" data-delay="500">計畫名稱</h1>
+						<p class="tshuan-hero-desc" data-animate="fadeInUp" data-delay="700">一段簡短的計畫介紹文字，說明這個計畫在做什麼、在哪裡發生。</p>
+					</div>
+				</div>
+
+				<div class="video-wrap no-placeholder" style="z-index: 1;">
+					<video poster="img/videos/explore-poster.jpg" preload="auto" loop autoplay muted playsinline>
+						<source src="img/videos/explore.mp4" type="video/mp4">
+						<source src="img/videos/explore.webm" type="video/webm">
+					</video>
+					<div class="video-overlay" style="background-color: rgba(0,0,0,0.45);"></div>
+				</div>
+
+			</div>
+		</section><!-- #slider end -->
+
+		<!-- Content
+		============================================= -->
+		<!-- 往下捲時「下一段蓋住上一段」（stacking sections）：加了 .tshuan-stack-sticky 的區塊捲到頂端會停住，
+		     下一段從下面滑上來蓋過去；高過一個畫面的區塊（圖文、輪播）不停住，正常捲動。樣式見 custom.css .tshuan-stack
+		============================================= -->
+		<section id="content" class="event-body tshuan-post-dark post-bg-blue">
+			<div class="content-wrap">
+
+				<!-- 第一段：計畫介紹文字（前半；示意文字，換成正式內容）；佔滿一個畫面高，區塊在正中間、文字齊左 -->
+				<div class="tshuan-stack tshuan-stack-sticky">
+					<div class="container tshuan-post-fulltext">
+						<div class="mw-md mx-auto tshuan-post-text">
+							<h1 class="mb-0 tshuan-post-lead">Dutch contemporary artist Bobbi Essers and Brussels-based artist Robin Wen star in a two-person exhibition at MuseumMORE in Gorssel. The curatorial premise sets two visions of a generation’s nightlife side by side: Essers in oil on canvas, working from analogue photographs of her friends; Wen in hyperrealistic blue ballpoint pen drawings rooted in Free Party and rave culture, where his subjects appear in empty party sites at dawn or as faceless dancing figures.</h1>
+						</div>
+					</div>
+				</div>
+
+				<!-- 第二段：滿版 parallax 圖片（捲動時底圖慢速移動；換圖改 src） -->
+				<div class="section parallax scroll-detect mb-0 tshuan-post-fullimg tshuan-stack-sticky">
+					<img src="img/hero2.jpg" class="parallax-bg" alt="@@川 空間照片">
+				</div>
+
+				<!-- 第三段：左邊圖片一張張往下捲，右邊文字固定不動（桌機）。
+				     手機：文字在上、圖片在下，正常捲動。
+				     sticky 需要內容區不能是 overflow: hidden，所以 section 加了 .event-body（custom.css 改成 overflow: clip）
+				     （示意文字與圖片，換成正式內容） -->
+				<div class="tshuan-stack tshuan-stack-pad">
+					<div class="container">
+						<div class="row gx-lg-5">
+
+							<!-- 右：文字（DOM 放前面，手機會先看到文字；桌機用 order 排到右邊並固定） -->
+							<div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+								<div class="event-body-text tshuan-post-text">
+									<p>《最遠的最短距離》從一個簡單的問題出發：當我們搬進一個新的住處，要花多久，才會真正覺得那裡是「家」？林珈伃以三年間在台中、台北與東京之間搬遷的經驗為起點，收集了每一個住處留下的影像、物件與筆記。</p>
+									<p>展場中散落的小幅照片，記錄的不是房間本身，而是那些還沒被歸位的時刻：剛拆封的紙箱、尚未掛上的窗簾、牆上留下的前任住戶的釘孔。這些畫面被放置在透明壓克力之間，像是被暫時保存、卻還沒有決定去向的記憶。In the work, <em>distance is not measured in kilometres, but in the time it takes for a place to remember you back.</em></p>
+									<p>展覽同時呈現藝術家與觀眾的對話紀錄。開展期間，林珈伃邀請觀眾寫下自己「最遠的最短距離」——也許是一通沒有打出去的電話，也許是住在隔壁卻從未說過話的鄰居。這些回應將持續被加入展場，讓作品在展期中慢慢長大。</p>
+								</div>
+							</div>
+
+							<!-- 左：圖片（往下捲依序出現） -->
+							<div class="col-lg-6 order-lg-1">
+								<div class="event-body-images">
+									<img src="img/about-1.jpg" alt="@@川 活動照片">
+									<img src="img/event9.png" alt="@@川 活動主視覺">
+									<img src="img/about-2.jpg" alt="@@川 空間照片">
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- 第四段：滿版 parallax 圖片＋中間英文標語（捲動時底圖慢速移動）
+				     換圖改 .parallax-bg 的 src；標語改 .tshuan-post-slogan 的文字 -->
+				<div class="section parallax scroll-detect dark mb-0 tshuan-post-parallax tshuan-stack-sticky">
+					<img src="img/about-act.jpg" class="parallax-bg" alt="">
+					<div class="tshuan-post-parallax-overlay"></div>
+					<div class="container">
+						<p class="tshuan-post-slogan">Where the river bends,<br>the city starts to listen.</p>
+					</div>
+				</div>
+
+				<!-- 第五段：第一段文字的後半；同第一段的大字設計（h2 套 h1 大小），佔滿一個畫面高，區塊在正中間、文字齊左 -->
+				<div class="tshuan-stack tshuan-stack-sticky">
+					<div class="container tshuan-post-fulltext">
+						<div class="mw-md mx-auto tshuan-post-text">
+							<h2 class="h1 mb-0 tshuan-post-lead">The museum frames Essers’ contribution around queer positivity, deliberately ambiguous gender and identity, and the rituals of friendship and the after-hours. Works in the show include <em>In a New York State of Mind</em> (2025), <em>Love Ridden (I’ve Looked at You)</em> (2025), and <em>Nothing Makes Me Feel As Good</em> (2025). MuseumMORE had previously included Essers in the group shows <em>Licked by the Waves</em> (2024) and <em>Reality Check</em> (2025). Wen graduated from La Cambre in Brussels in 2018 and won the Woluwe-Saint-Pierre Arts Prize; this is his first appearance in a Dutch museum.</h2>
+						</div>
+					</div>
+				</div>
+
+				<!-- 第六段：圖片輪播（左右箭頭切換；點圖片放大看，可左右切換）
+				     一次顯示：手機 1 張、平板 2 張、桌機 3 張；每 4 秒自動換下一張（data-autoplay，毫秒），滑鼠移上去暫停；要加圖就複製一個 .oc-item -->
+				<div class="tshuan-stack tshuan-stack-pad">
+					<div class="container">
+						<div class="owl-carousel image-carousel carousel-widget tshuan-post-carousel" data-margin="20" data-nav="true" data-pagi="false" data-loop="true" data-autoplay="4000" data-items-xs="1" data-items-sm="2" data-items-md="2" data-items-lg="3" data-items-xl="3" data-lightbox="gallery">
+							<div class="oc-item"><a href="img/about-1.jpg" data-lightbox="gallery-item"><img src="img/about-1.jpg" alt="@@川 活動照片 1"></a></div>
+							<div class="oc-item"><a href="img/about-act.jpg" data-lightbox="gallery-item"><img src="img/about-act.jpg" alt="@@川 展場照片"></a></div>
+							<div class="oc-item"><a href="img/event5.png" data-lightbox="gallery-item"><img src="img/event5.png" alt="@@川 活動主視覺"></a></div>
+							<div class="oc-item"><a href="img/about-manga.jpg" data-lightbox="gallery-item"><img src="img/about-manga.jpg" alt="@@川 空間照片"></a></div>
+							<div class="oc-item"><a href="img/about-4.jpg" data-lightbox="gallery-item"><img src="img/about-4.jpg" alt="@@川 活動照片 2"></a></div>
+							<div class="oc-item"><a href="img/event11.png" data-lightbox="gallery-item"><img src="img/event11.png" alt="@@川 展覽主視覺"></a></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 第七段：專案 Credits（滿版底圖＋暗色覆蓋，中間左欄職稱、右欄名字；換底圖改 img src；一行 = 一組 dt＋dd） -->
+				<div class="tshuan-post-credits">
+					<img src="img/about-digital.jpg" class="tshuan-post-credits-bg" alt="">
+					<div class="container">
+						<dl class="tshuan-post-credits-list">
+							<dt>編輯</dt><dd>許伯崧</dd>
+							<dt>文字</dt><dd>章凱閎</dd>
+							<dt>影片</dt><dd>楊　仁</dd>
+							<dt>攝影</dt><dd>陳焯煇</dd>
+							<dt>設計</dt><dd>郭瑾燁</dd>
+							<dt>工程</dt><dd>Elk Leung</dd>
+							<dt>音樂</dt><dd>RaBBitch</dd>
+						</dl>
+					</div>
+				</div>
+
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="border-top-0 footer-blue">
+			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
+			<div class="container">
+			<div class="footer-panel">
+			<div class="container mw-md">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
+					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
+						<div class="col-md-6">
+							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
+							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
+							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
+							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .footer-widgets-wrap end -->
+
+				<!-- Copyrights
+				============================================= -->
+				<div id="copyrights" class="bg-transparent border-top">
+					<div class="row g-3">
+						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
+							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+						</div>
+
+					</div>
+				</div><!-- #copyrights end -->
+
+			</div>
+			</div><!-- .footer-panel end -->
+			</div>
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>

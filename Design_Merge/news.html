@@ -100,12 +100,12 @@
 						<span>News</span>
 					</div>
 
-					<!-- 事件分頁：沿用麵包屑的字體樣式，用 ✸ 分隔；目前所在頁加 active -->
+					<!-- 事件分頁（title-nav，hover 有色塊掃過）：用 ✸ 分隔；目前所在頁加 active、文字包 span -->
 					<nav aria-label="事件分頁">
-						<ol class="breadcrumb event-nav">
-							<li class="breadcrumb-item"><a href="#">事件</a></li>
-							<li class="breadcrumb-item active" aria-current="page">最新消息</li>
-							<li class="breadcrumb-item"><a href="#">媒體報導</a></li>
+						<ol class="breadcrumb event-nav title-nav justify-content-center">
+							<li class="breadcrumb-item"><a href="events.html">事件</a></li>
+							<li class="breadcrumb-item active" aria-current="page"><span>最新消息</span></li>
+							<li class="breadcrumb-item"><a href="press.html">媒體報導</a></li>
 						</ol>
 					</nav>
 
@@ -114,7 +114,7 @@
 			</div>
 		</section><!-- .page-title end -->
 
-		<!-- Content（版型來源：Canvas blog-timeline.html）
+		<!-- Content：最新消息時間軸
 		============================================= -->
 		<section id="content">
 			<div class="content-wrap pb-0">
@@ -136,10 +136,10 @@
 								</div>
 								<div class="grid-inner">
 									<div class="entry-image">
-										<a href="#"><img src="img/event1.png" alt="消息標題 1"></a>
+										<a href="news-post.html"><img src="img/event1.png" alt="消息標題 1"></a>
 									</div>
 									<div class="entry-title">
-										<h2><a href="#">消息標題 1</a></h2>
+										<h2><a href="news-post.html">消息標題 1</a></h2>
 									</div>
 									<div class="entry-meta">
 										<ul>
@@ -149,7 +149,7 @@
 									</div>
 									<div class="entry-content">
 										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
-										<a href="#" class="more-link">閱讀更多</a>
+										<a href="news-post.html" class="more-link">閱讀更多</a>
 									</div>
 								</div>
 							</div>
@@ -323,9 +323,312 @@
 								</div>
 							</div>
 
+							<!-- ↓↓↓ 測試用假消息（9–20），看分頁效果用，確認後整段刪除 ↓↓↓ -->
+
+							<div class="entry entry-date-section col-12 mb-3"><span>August 2026</span></div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event8.png" alt="消息標題 9"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 9</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.08.28</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event1.png" alt="消息標題 10"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 10</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.08.24</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event4.png" alt="消息標題 11"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 11</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.08.20</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event5.png" alt="消息標題 12"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 12</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.08.16</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event7.png" alt="消息標題 13"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 13</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.08.12</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event8.png" alt="消息標題 14"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 14</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.08.08</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry entry-date-section col-12 mb-3"><span>July 2026</span></div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event1.png" alt="消息標題 15"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 15</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.07.28</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event4.png" alt="消息標題 16"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 16</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.07.24</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event5.png" alt="消息標題 17"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 17</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.07.20</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event7.png" alt="消息標題 18"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 18</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.07.16</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event8.png" alt="消息標題 19"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 19</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.07.12</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="entry col-lg-6 col-12">
+								<div class="entry-timeline">
+									<div class="timeline-divider"></div>
+								</div>
+								<div class="grid-inner">
+									<div class="entry-image">
+										<a href="#"><img src="img/event1.png" alt="消息標題 20"></a>
+									</div>
+									<div class="entry-title">
+										<h2><a href="#">消息標題 20</a></h2>
+									</div>
+									<div class="entry-meta">
+										<ul>
+											<li><i class="uil uil-schedule"></i> 2026.07.08</li>
+											<li><i class="uil uil-folder-open"></i> 活動</li>
+										</ul>
+									</div>
+									<div class="entry-content">
+										<p>這裡放消息的摘要，大約兩三行，說明活動或公告的重點，讓讀者決定要不要點進去看完整內容。</p>
+										<a href="#" class="more-link">閱讀更多</a>
+									</div>
+								</div>
+							</div>
+
+							<!-- ↑↑↑ 測試用假消息結束 ↑↑↑ -->
+
 						</div><!-- #posts end -->
 
 					</div>
+
+					<!-- 分頁選單：
+					     每頁 15 則，頁碼由 js/pagination.js 依消息數量自動產生；只有一頁時不顯示。
+					     放在時間軸外面，中線只畫到分頁框上緣 -->
+					<nav class="list-pagination d-none" aria-label="最新消息分頁">
+						<ul class="pagination pagination-inside-transparent pagination-lg mb-0"></ul>
+					</nav>
 
 				</div>
 			</div>
@@ -333,8 +636,8 @@
 
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="bg-transparent border-top-0">
-			<!-- 黃色底框：寬度跟上面內容的 container 一樣 -->
+		<footer id="footer" class="border-top-0 footer-white">
+			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
 			<div class="container">
 			<div class="footer-panel">
 			<div class="container mw-md">
@@ -357,7 +660,7 @@
 											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="#"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 										</ul>
 
 									</div>
@@ -366,10 +669,10 @@
 								<div class="col-6">
 									<div class="widget widget_links widget-li-noicon">
 										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="#"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="#"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
 										</ul>
 
 									</div>
@@ -387,12 +690,6 @@
 							Copyrights &copy; 2026 All Rights Reserved by Glitch.
 						</div>
 
-						<div class="col-lg-6 text-center text-lg-end">
-							<div class="copyright-links mt-0">
-								<a href="#">Privacy Policy</a>
-								<a href="#">Terms &amp; Conditions</a>
-							</div>
-						</div>
 					</div>
 				</div><!-- #copyrights end -->
 
@@ -422,6 +719,10 @@
 			});
 		});
 	</script>
+
+	<!-- 分頁：一頁 15 則（共用 js/pagination.js） -->
+	<script src="js/pagination.js"></script>
+	<script>GlitchPagination('#posts', '.list-pagination', 15);</script>
 
 	<!-- Custom Scripts（header 捲動顯示等）
 	============================================= -->

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>媒體報導 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+		<!-- Page Title
+		============================================= -->
+		<section class="page-title mesh-title">
+			<!-- 流動漸層背景：5 個模糊色塊（藍 ×2 / 黃綠 ×2 / 灰）各自漂移，顏色在 custom.css 的 .mesh-bg 調整 -->
+			<div class="mesh-bg" aria-hidden="true">
+				<span class="mesh-blob mesh-blue"></span>
+				<span class="mesh-blob mesh-yellow"></span>
+				<span class="mesh-blob mesh-yellow-2"></span>
+				<span class="mesh-blob mesh-gray"></span>
+				<span class="mesh-blob mesh-blue-2"></span>
+			</div>
+			<div class="container">
+				<div class="page-title-row">
+
+					<div class="page-title-content">
+						<h1>媒體報導</h1>
+						<span>Press</span>
+					</div>
+
+					<!-- 事件分頁（title-nav，hover 有色塊掃過）：用 ✸ 分隔；目前所在頁加 active、文字包 span -->
+					<nav aria-label="事件分頁">
+						<ol class="breadcrumb event-nav title-nav justify-content-center">
+							<li class="breadcrumb-item"><a href="events.html">事件</a></li>
+							<li class="breadcrumb-item"><a href="news.html">最新消息</a></li>
+							<li class="breadcrumb-item active" aria-current="page"><span>媒體報導</span></li>
+						</ol>
+					</nav>
+
+				</div>
+
+			</div>
+		</section><!-- .page-title end -->
+
+		<!-- Content：媒體報導列表（每則連到外部報導）
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<!-- 報導列表：一則報導一個 .entry，整塊是一個連結（href 換成報導網址，另開新分頁）
+					     框內：左上報導標題／左下「- 媒體名稱」／右下日期與分類
+					============================================= -->
+					<div id="posts" class="row gutter-30 press-list">
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 1：毛刺 Glitch 開幕專題</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 A</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.10.18</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 專訪</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 2：數位藝術實驗場展覽評論</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 B</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.10.05</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 展評</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 3：亞洲漫畫倉庫與獨立出版</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 C</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.09.22</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 4：當代藝術展演場 act 新展</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 D</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.09.10</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 5：柳川畔的文化實驗基地</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 E</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.30</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 專題</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 6：創辦人對談</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 F</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.12</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 專訪</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- ↓↓↓ 測試用假報導（7–20），看分頁效果用，確認後整段刪除 ↓↓↓ -->
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 7</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 G</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.28</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 8</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 H</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.24</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 9</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 I</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.20</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 10</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 J</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.16</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 11</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 K</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.12</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 12</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 L</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.08</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 13</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 M</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.08.04</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 14</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 N</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.07.28</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 15</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 O</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.07.24</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 16</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 P</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.07.20</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 17</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 Q</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.07.16</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 18</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 R</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.07.12</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 19</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 S</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.07.08</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="entry col-12">
+							<div class="grid-inner">
+								<div class="entry-image">
+									<a href="https://example.com" class="entry-link" target="_blank" rel="noopener">
+										<p class="mb-0">報導標題 20</p>
+										<div class="press-link-bottom">
+											<p class="mb-0">- 媒體名稱 T</p>
+											<div class="entry-meta">
+												<ul>
+													<li><p class="mb-0"><i class="uil uil-schedule"></i> 2026.07.04</p></li>
+													<li><p class="mb-0"><i class="uil uil-folder-open"></i> 報導</p></li>
+												</ul>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- ↑↑↑ 測試用假報導結束 ↑↑↑ -->
+
+					</div><!-- #posts end -->
+
+					<!-- 分頁選單：每頁 15 則，頁碼由 js/pagination.js 自動產生；只有一頁時不顯示 -->
+					<nav class="list-pagination d-none" aria-label="媒體報導分頁">
+						<ul class="pagination pagination-inside-transparent pagination-lg mb-0"></ul>
+					</nav>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="border-top-0 footer-white">
+			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
+			<div class="container">
+			<div class="footer-panel">
+			<div class="container mw-md">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
+					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
+						<div class="col-md-6">
+							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
+							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
+							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
+							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .footer-widgets-wrap end -->
+
+				<!-- Copyrights
+				============================================= -->
+				<div id="copyrights" class="bg-transparent border-top">
+					<div class="row g-3">
+						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
+							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+						</div>
+
+					</div>
+				</div><!-- #copyrights end -->
+
+			</div>
+			</div><!-- .footer-panel end -->
+			</div>
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- 分頁：一頁 15 則（共用 js/pagination.js） -->
+	<script src="js/pagination.js"></script>
+	<script>GlitchPagination('#posts', '.list-pagination', 15);</script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>

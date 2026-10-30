@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remix of CHAOS</title>
-  <!-- 漫畫倉庫 (manga.html) 封面背景動畫，用 iframe 嵌入。
+  <!-- 漫畫 (manga.html) 封面背景動畫，用 iframe 嵌入。
        與原始匯出檔的差異：
        1. 移除匯出工具的追蹤程式（會把頁面網址傳到 Wix / PostHog）
        2. 手機觸控只在按到字母時才攔截，其他時候可以正常捲動頁面 -->
@@ -310,7 +310,7 @@
 
     var controls = (function() {
       // 動畫設定：textContent 是文字，fillColor 字色，__sys_bg.color 背景色
-      var _v = {"textContent":"漫 MANGA 画","fontSize":429,"letterSpacing":0.55,"fontFamily":{"family":"Arial","style":"normal","weight":400,"url":null},"customFont":null,"bgImage":null,"animate":true,"animStyle":"drift","friction":0,"collisionEnabled":true,"floatSpeed":4.1,"rotationSpeed":0.005,"fillColor":"#CFF273","strokeColor":"#575757","echoOpacity":100,"fillOpacity":100,"echoDelay":3,"echoCount":38,"breakApart":100,"strokeWidth":1,"echoScale":1,"__sys_bg":{"mode":"solid","color":"#002FF0","image":null,"fit":"cover"}};
+      var _v = {"textContent":"漫 COMICS 画","fontSize":429,"letterSpacing":0.55,"fontFamily":{"family":"Arial","style":"normal","weight":400,"url":null},"customFont":null,"bgImage":null,"animate":true,"animStyle":"drift","friction":0,"collisionEnabled":true,"floatSpeed":4.1,"rotationSpeed":0.005,"fillColor":"#CFF273","strokeColor":"#575757","echoOpacity":100,"fillOpacity":100,"echoDelay":3,"echoCount":38,"breakApart":100,"strokeWidth":1,"echoScale":1,"__sys_bg":{"mode":"solid","color":"#002FF0","image":null,"fit":"cover"}};
       var _defaults = JSON.parse(JSON.stringify(_v));
       var _listeners = {};
       var _anyListeners = [];

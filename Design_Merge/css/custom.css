@@ -386,7 +386,7 @@
    whatsapp, .h-text-dark, .h-text-primary), all as :hover-only rules with
    !important. Scoped to #footer (an ID) so it wins over those regardless. */
 #footer a:hover {
-	color: #002FF0 !important;
+	color: #CFF273 !important;
 }
 /* Header button 找我 — Canvas "Shadow Button" (.button-shadow): brand
    yellow-green, square corners, solid black shadow; on hover it slides
@@ -533,7 +533,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	overflow-x: clip;
 }
 
-/* 漫畫倉庫 (manga.html) — portrait covers (3:4) instead of the template's
+/* 漫畫 (manga.html) — portrait covers (3:4) instead of the template's
    landscape thumbnails, cropped to fill so every card lines up. */
 .manga-grid .portfolio-image img {
 	aspect-ratio: 3 / 4;
@@ -541,7 +541,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	width: 100%;
 }
 
-/* 漫畫倉庫 封面 — animated canvas (assets/manga-hero-canvas.html) fills the
+/* 漫畫 封面 — animated canvas (assets/manga-hero-canvas.html) fills the
    box behind the title. The title ignores pointer events so the letters
    underneath can still be dragged. */
 .manga-hero {
@@ -562,7 +562,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	pointer-events: none;
 }
 
-/* 漫畫內頁 (manga-item.html) — portrait cover in the left half of the
+/* 漫畫內頁 (manga-post.html) — portrait cover in the left half of the
    main column, all text in the right half (stacks on phones). */
 .manga-item-cover img {
 	width: 100%;
@@ -582,14 +582,41 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .manga-item-sidebar .tagcloud a {
 	border-color: currentColor;
 }
+/* gray info box, same gray as the goods hero (goods-post.html) */
+.manga-item-sidebar.manga-item-sidebar-gray {
+	background-color: var(--bs-gray-400);
+}
+/* blue info box with white text (manga-post.html) */
+.manga-item-sidebar.manga-item-sidebar-blue {
+	background-color: #002FF0;
+	color: #fff;
+}
+.manga-item-sidebar-blue .widget h4,
+.manga-item-sidebar-blue .tagcloud span {
+	color: #fff;
+}
+.manga-item-sidebar-blue .widget + .widget {
+	border-top-color: rgba(255, 255, 255, 0.3);
+}
+/* plain-text tags (not links, e.g. publications-post.html) — same box as
+   Canvas's .tagcloud a, without the hover */
+.tagcloud span {
+	margin-right: 4px;
+	margin-bottom: 4px;
+	padding: 3px 6px;
+	border: 1px solid currentColor;
+	font-size: 13px;
+	color: var(--cnvs-contrast-700);
+	border-radius: 2px;
+}
 
-/* 毛刺出版品 (Publications.html) 封面 — colors flipped from 漫畫倉庫:
-   yellow-green background; the title stays white like 漫畫倉庫 */
+/* 毛刺出版品 (publications.html) 封面 — colors flipped from 漫畫:
+   yellow-green background; the title stays white like 漫畫 */
 .manga-hero.publications-hero {
 	background-color: #CFF273;
 }
 
-/* 周邊商品 (goods.html) — placeholder photos come in mixed sizes, so crop
+/* 周邊 (goods.html) — placeholder photos come in mixed sizes, so crop
    every product image to the same square to keep the grid rows even. */
 .goods-grid .product-image img {
 	aspect-ratio: 1 / 1;
@@ -648,24 +675,51 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	padding: 0.1em 0.3em;
 }
 
-/* Footer "Email Us" button — Shadow Button like the header 找我, but brand
-   blue with white text (sits on the yellow footer panel) */
-.button.footer-email-button {
-	--cnvs-btn-color: #002FF0;
-	--cnvs-btn-color-dark: #002FF0;
+/* Footer "Email Us" button — Shadow Button like the header 找我, brand
+   yellow with blue text (sits on the blue footer panel). Scoped to #footer
+   so it beats the panel's white link color below. */
+#footer .button.footer-email-button {
+	--cnvs-btn-color: #CFF273;
+	--cnvs-btn-color-dark: #CFF273;
 	--cnvs-btn-shadow-color: #000;
 	margin: 0;
 	border-radius: 0;
-	color: #fff;
+	color: #002FF0;
 }
-.button.footer-email-button:hover {
-	color: #fff;
+#footer .button.footer-email-button:hover {
+	color: #002FF0 !important;
 }
 
-/* Footer yellow-green panel — as wide as the page content's .container
-   (the footer text itself stays in the narrower .mw-md container inside) */
+/* Footer blue panel — as wide as the page content's .container
+   (the footer text itself stays in the narrower .mw-md container inside).
+   White text throughout; links hover yellow (see #footer a:hover above). */
 #footer .footer-panel {
-	background-color: #CFF273;
+	background-color: #002FF0;
+	color: #fff;
+}
+#footer .footer-panel h4,
+#footer .footer-panel a:not(.button),
+#footer .footer-panel .text-contrast-500 {
+	color: #fff !important;
+}
+#footer .footer-panel #copyrights {
+	border-top-color: rgba(255, 255, 255, 0.3) !important;
+}
+/* Footer background — two variants, picked per page by a class on
+   <footer id="footer"> to match the page's last section, so the blue panel
+   always sits on the same color as what's above it:
+     .footer-white — last section is white (default pages)
+     .footer-gray  — last section uses var(--bs-gray-300) (index, about)
+     .footer-blue  — the whole footer is brand blue, so the panel has no
+                     visible edge (explore) */
+#footer.footer-white {
+	--cnvs-footer-bg: #fff;
+}
+#footer.footer-gray {
+	--cnvs-footer-bg: var(--bs-gray-300);
+}
+#footer.footer-blue {
+	--cnvs-footer-bg: #002FF0;
 }
 
 /* 事件 section nav (事件 ✸ 最新消息 ✸ 媒體報導) in the page-title spot —
@@ -695,14 +749,43 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	}
 }
 
-/* news.html — run the timeline's center line all the way down to the
-   yellow footer: the content area's bottom padding is removed in the HTML
-   (.content-wrap.pb-0), and the -50px that .col-mb-50 puts under the list
-   is dropped so the line's box ends exactly where the footer starts. */
+/* news.html — the timeline's center line runs down to the top edge of
+   the pagination box: the -50px that .col-mb-50 puts under the list is
+   dropped, the timeline wrap gets 3rem of space below the last post (the
+   line keeps going through it), and the pagination right after the wrap
+   has no top padding, so the line ends exactly on the box. */
 .news-timeline-wrap .post-timeline {
 	margin-bottom: 0;
 }
+.news-timeline-wrap {
+	padding-bottom: 3rem;
+}
+.news-timeline-wrap + .list-pagination {
+	padding-top: 0;
+}
 
+/* Page title on brand yellow (publications-post.html) */
+.page-title.page-title-yellow {
+	background-color: #CFF273;
+}
+/* Page title on brand blue with white text (manga-post.html) */
+.page-title.page-title-blue {
+	background-color: #002FF0;
+	color: #fff;
+}
+.page-title-blue .breadcrumb {
+	--bs-breadcrumb-divider-color: rgba(255, 255, 255, 0.6);
+	--bs-breadcrumb-item-active-color: #fff;
+}
+.page-title-blue .page-title-content h1,
+.page-title-blue .breadcrumb a,
+.page-title-blue .breadcrumb a:hover {
+	color: #fff;
+}
+/* Page title on gray, same as the goods hero (goods-post.html) */
+.page-title.page-title-gray {
+	background-color: var(--bs-gray-400);
+}
 /* Page title with a flowing multi-point gradient (news.html) — four large,
    heavily blurred color blobs (brand blue ×2, brand yellow-green ×2, gray)
    each drift and scale on their own path and timing with ease-in-out
@@ -802,7 +885,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	}
 }
 
-/* 雜貨店 section nav (漫畫倉庫 ✸ 毛刺出版品 ✸ 周邊商品) under each page's
+/* 好ㄉ section nav (漫畫 ✸ 毛刺出版品 ✸ 周邊) under each page's
    title — same ✸ breadcrumb as .event-nav, but links, the current item and
    the ✸ all take the title's own color. */
 .breadcrumb.title-nav {
@@ -828,13 +911,13 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	pointer-events: auto;
 }
 
-/* 周邊商品 (goods.html) 封面 — same layout as 毛刺出版品, gray background
+/* 周邊 (goods.html) 封面 — same layout as 毛刺出版品, gray background
    matching the header bar; blue GOODS letters set in the animation file */
 .manga-hero.goods-hero {
 	background-color: var(--bs-gray-400);
 }
 
-/* Small boxed label above the 雜貨店 page titles (manga / Publications /
+/* Small boxed label above the 好ㄉ page titles (manga / Publications /
    goods) — thin border in the title's own color */
 .section-label {
 	display: inline-block;
@@ -847,7 +930,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	line-height: 1.5;
 }
 
-/* 雜貨店 nav items — on hover a black block (blue for the current page) fills the text box, sweeping
+/* 好ㄉ nav items — on hover a black block (blue for the current page) fills the text box, sweeping
    left → right; on leave it keeps going and exits to the right. */
 .breadcrumb.title-nav a,
 .breadcrumb.title-nav .active > span {
@@ -879,4 +962,1471 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	.breadcrumb.title-nav .active > span {
 		transition: none;
 	}
+}
+
+/* about.html 聯絡我們 (#contactus) — form laid out in ruled rows like
+   letude.group/contact: a vertical label on the left, fields on the right.
+   Uses Canvas's .form-widget / .border-form-control / .form-check; only the
+   brand blue ↔ yellow color swaps live here. */
+.contact-glitch {
+	--glitch-blue: #002FF0;
+	--glitch-yellow: #CFF273;
+	--cnvs-input-btn-border-color: var(--glitch-blue);
+	--cnvs-input-focus-border-color: var(--glitch-blue);
+	position: relative;
+	border: 1px solid var(--glitch-blue);
+	color: var(--glitch-blue);
+}
+.contact-glitch > form {
+	position: relative;
+	z-index: 1;
+}
+
+/* Glitch pattern decoration (after CIS pattern.svg): two long yellow bars
+   just inside the frame's top and bottom, with short sticks scattered across
+   them. Each stick is placed by inline vars — --x (% of the frame width, so
+   they spread with the screen), --y (px from the top / bottom edge), --w
+   (length), --r (angle). Sits behind the form; on phones the sticks shrink
+   and the smaller ones are hidden (d-none d-md-block in the HTML). */
+.contact-glitch-deco {
+	--s: 1;
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+}
+.contact-glitch-deco span {
+	position: absolute;
+	left: var(--x);
+	width: calc(var(--w) * var(--s));
+	height: 7px;
+	background-color: var(--glitch-yellow);
+}
+.contact-glitch-deco .is-top {
+	top: var(--y);
+	transform: translate(-50%, -50%) rotate(var(--r));
+}
+.contact-glitch-deco .is-bottom {
+	bottom: var(--y);
+	transform: translate(-50%, 50%) rotate(var(--r));
+}
+.contact-glitch-deco .deco-bar {
+	left: 4.5%;
+	right: 4.5%;
+	width: auto;
+	height: 8px;
+	transform: none;
+}
+.contact-glitch-deco .deco-bar.is-top {
+	top: 25px;
+}
+.contact-glitch-deco .deco-bar.is-bottom {
+	bottom: 13px;
+}
+.contact-glitch-row {
+	display: flex;
+	gap: 1.5rem;
+	padding: 1.25rem;
+	border-top: 1px solid var(--glitch-blue);
+}
+.contact-glitch-row.contact-glitch-head {
+	border-top: 0;
+}
+.contact-glitch-head {
+	min-height: 6rem;
+}
+.contact-glitch-title {
+	align-self: flex-start;
+	color: var(--glitch-blue);
+	font-size: clamp(2.5rem, 6vw, 4.5rem);
+	line-height: 1.2;
+}
+.contact-glitch-body {
+	flex: 1;
+	min-width: 0;
+}
+
+/* Vertical row labels — plain blue text */
+.contact-glitch-label {
+	flex-shrink: 0;
+	align-self: flex-start;
+	writing-mode: vertical-rl;
+	background: none;
+	color: var(--glitch-blue);
+	font-weight: 700;
+	letter-spacing: 0.15em;
+}
+
+/* Two columns: left 聯絡主題 + 你是誰, right 想說的話. The right column's
+   row fills the full height so the message box stretches and the submit
+   button sits in the bottom-right corner. */
+.contact-glitch-col-msg {
+	display: flex;
+}
+.contact-glitch-col-msg .contact-glitch-row {
+	flex: 1;
+}
+.contact-glitch-col-msg .contact-glitch-body {
+	display: flex;
+	flex-direction: column;
+}
+.contact-glitch-col-msg textarea {
+	flex: 1;
+	min-height: 8rem;
+	resize: vertical;
+}
+@media (min-width: 992px) {
+	.contact-glitch-col-msg {
+		border-left: 1px solid var(--glitch-blue);
+	}
+}
+/* Double the space between the last fields (Email / 送出訊息) and the
+   form's bottom border — both columns side by side, only the message
+   column once they stack */
+.contact-glitch-col-msg .contact-glitch-row {
+	padding-bottom: 2.5rem;
+}
+@media (min-width: 992px) {
+	.contact-glitch-col > .contact-glitch-row:last-child {
+		padding-bottom: 2.5rem;
+	}
+}
+
+/* Field labels: plain blue */
+.contact-glitch label {
+	color: var(--glitch-blue);
+	font-weight: 700;
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 1.125rem;
+}
+/* Required fields (名字 / Email / 訊息): yellow block that hugs the text only */
+.contact-glitch label.contact-glitch-required {
+	display: inline-block;
+	align-self: flex-start;
+	padding: 0 0.25em;
+	background-color: var(--glitch-yellow);
+}
+/* Always-on blue underline under every field (the theme re-declares the
+   border color on .form-control itself, so it's set here, not on the wrapper) */
+.contact-glitch .form-control {
+	--cnvs-input-btn-border-color: var(--glitch-blue);
+	--cnvs-input-focus-border-color: var(--glitch-blue);
+}
+.contact-glitch .form-control::placeholder {
+	color: var(--bs-gray-600);
+}
+
+/* 聯絡主題 radios — large blue circles that fill blue with a yellow dot */
+.contact-glitch .form-check {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding-left: 0;
+}
+.contact-glitch .form-check-input {
+	float: none;
+	width: 2rem;
+	height: 2rem;
+	margin: 0;
+	background-color: transparent;
+	border: 1px solid var(--glitch-blue);
+	cursor: pointer;
+}
+.contact-glitch .form-check-input:checked {
+	background-color: var(--glitch-blue);
+	border-color: var(--glitch-blue);
+	background-image: radial-gradient(circle, var(--glitch-yellow) 0 30%, transparent 31%);
+}
+.contact-glitch .form-check-input:focus {
+	box-shadow: 0 0 0 0.25rem rgba(0, 47, 240, 0.25);
+}
+.contact-glitch .form-check-label {
+	margin: 0;
+	padding: 0 0.25em;
+	cursor: pointer;
+}
+.contact-glitch .form-check-input:checked + .form-check-label {
+	background-color: var(--glitch-blue);
+	color: var(--glitch-yellow);
+}
+
+/* Submit — blue with yellow text, swaps on hover */
+/* (fallback colors so the same button also works outside the form, e.g.
+   the 購買連結 on goods-post.html) */
+.button.contact-glitch-submit {
+	--cnvs-btn-color: var(--glitch-blue, #002FF0);
+	--cnvs-btn-color-dark: var(--glitch-yellow, #CFF273);
+	border-radius: 0;
+	color: var(--glitch-yellow, #CFF273);
+}
+.button.contact-glitch-submit:hover {
+	color: var(--glitch-blue, #002FF0);
+}
+
+@media (max-width: 767.98px) {
+	.contact-glitch-deco {
+		--s: 0.6;
+	}
+	.contact-glitch-row {
+		gap: 1rem;
+		padding: 1rem;
+	}
+	.contact-glitch-head {
+		min-height: 0;
+	}
+}
+
+/* about.html Founder — card layout after Glitch_Dark's .testim-cards, with
+   the scroll effect from Canvas's block-misc-sticky-cards: the title and each
+   card stick (.sticky-section), every card a --sticky-top-gap lower than the
+   one before (set per card by the inline script in about.html).
+   Sticky needs every ancestor to not be a scroll box, so the founder section
+   is overflow: visible and the content-wrap uses overflow: clip — still
+   cuts off things that hang past the page edge, without breaking sticky. */
+.block-sticky-cards .content-wrap {
+	overflow: clip;
+}
+.block-sticky-cards .founder-section {
+	overflow: visible;
+}
+.block-sticky-cards .sticky-section + .sticky-section {
+	margin-top: 5vh;
+}
+@media (min-width: 992px) {
+	.block-sticky-cards .sticky-section {
+		--sticky-top-gap: 30px;
+		position: -webkit-sticky;
+		position: sticky;
+		z-index: 2;
+		top: calc(80px + var(--sticky-top-gap));
+	}
+	.block-sticky-cards .sticky-section + .sticky-section {
+		margin-top: 20vh;
+	}
+}
+
+/* Cards: brand blue, then black — white text, yellow buttons */
+.founder-card {
+	padding: 60px 35px;
+	background-color: #002FF0;
+	color: #fff;
+}
+.founder-card.founder-card-alt {
+	background-color: #000;
+}
+.founder-card h4,
+.founder-card h6 {
+	color: #fff;
+}
+.founder-info {
+	flex-shrink: 0;
+}
+/* Square-cornered, black & white photo */
+.founder-photo {
+	width: 200px;
+	height: 150px;
+	overflow: hidden;
+}
+.founder-photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: grayscale(1);
+}
+/* More — same block button as 送出訊息, in yellow */
+.button.founder-button {
+	--cnvs-btn-color: #CFF273;
+	--cnvs-btn-color-dark: #fff;
+	border-radius: 0;
+	color: #000;
+}
+.button.founder-button:hover {
+	color: #000;
+}
+/* Desktop: the info column is exactly the photo's width, and the divider
+   sits as far from the photo as the card's left padding (35px) */
+@media (min-width: 992px) {
+	.founder-info {
+		width: 200px;
+	}
+	.founder-bio {
+		margin-left: 35px;
+		padding-left: 30px;
+		border-left: 1px solid rgba(255, 255, 255, 0.3);
+	}
+}
+/* Phones / tablets: info above the bio */
+@media (max-width: 991.98px) {
+	.founder-card {
+		padding: 50px 15px;
+	}
+	.founder-info {
+		margin-bottom: 2rem;
+	}
+}
+
+
+/* news.html / press.html pagination (js/pagination.js) — Canvas
+   .pagination-inside-transparent, centered. On news the timeline's center
+   line ends on its top edge.
+   Square corners like the rest of the site; current page in brand blue. */
+.list-pagination {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	padding: 3rem 0 4rem;
+}
+.list-pagination .pagination {
+	--bs-pagination-bg: #fff;
+	--bs-pagination-border-radius: 0;
+	--bs-pagination-hover-color: #002FF0;
+	--bs-pagination-active-bg: #002FF0;
+	--bs-pagination-active-border-color: #002FF0;
+	--bs-pagination-disabled-bg: #fff;
+}
+
+/* press.html — link entries (.entry-link): on hover, brand blue frame on a
+   brand yellow fill (Canvas's default goes transparent with a theme-color
+   border). Square corners like the rest of the site. */
+.entry-link {
+	--cnvs-post-entry-link-border-radius: 0;
+}
+.entry-link:hover {
+	background-color: #CFF273;
+	border-color: #002FF0;
+}
+/* press.html — posts sit 3px apart: no theme divider line (.entry::after)
+   or its 50px margins, no space under the link box (.entry-image), and no
+   extra 30px row gutter (single column, so it only added vertical space) */
+.press-list {
+	--cnvs-custom-gutter: 0px;
+}
+.press-list .entry {
+	margin-bottom: 3px;
+}
+.press-list .entry::after {
+	display: none;
+}
+.press-list .entry-image {
+	margin-bottom: 0;
+}
+
+/* press.html — everything inside the link box (padding var is set on the
+   link itself: the theme re-declares it on every [class*=entry-] element): headline top-left,
+   「- 媒體名稱」 bottom-left, date / category (.entry-meta) bottom-right */
+.press-list .entry-link {
+	--cnvs-post-entry-link-bg: #fff;
+	--cnvs-post-entry-link-padding: 1.25rem 1.5rem;
+	text-align: left;
+}
+/* All text in the box (headline, media, date, category) is plain <p> at
+   the normal body size, instead of the theme's 1.75rem semibold heading
+   font for link entries and its 90% meta size */
+.press-list .entry-link p,
+.press-list .entry-meta li {
+	font-family: var(--cnvs-body-font);
+	font-size: 1rem;
+	font-weight: 400;
+	color: inherit;
+}
+.press-list .entry-meta li {
+	margin-bottom: 0;
+}
+/* Keep each date / category <p> on the same line as the theme's 「⁞」
+   separator (an inline ::before), drop the list's -0.75rem bottom offset
+   (it made up for the li margin removed above), and let the last item sit
+   flush against the right edge */
+.press-list .entry-meta li p {
+	display: inline;
+}
+.press-list .entry-meta ul {
+	margin-bottom: 0;
+}
+.press-list .entry-meta li:last-child {
+	margin-right: 0;
+}
+/* Bottom row (media / date / category) — same size as the footer copyright */
+.press-list .press-link-bottom p,
+.press-list .press-link-bottom .entry-meta li {
+	font-size: var(--cnvs-copyrights-font-size);
+}
+.press-list .press-link-bottom {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 0.5rem 1.5rem;
+	/* thin gray line between the headline and this row, inset from the
+	   frame by the box's side padding — same as the text */
+	margin-top: 1rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--bs-gray-400);
+}
+.press-list .press-link-bottom .entry-meta {
+	margin: 0 0 0 auto;
+}
+
+/* perspectives.html — 觀點 (was the Explore 計畫 list, classes kept as .explore-*)
+   A darkened about-hero.jpg fills the screen and stays put while scrolling
+   (.explore-bg is position: fixed, kept to this section by clip-path, which
+   also works on iOS unlike background-attachment: fixed). Over it, a grid of
+   blocks two across, each half a screen tall (so one screen = 4 blocks),
+   divided by thin yellow lines; the grid scrolls normally.
+   Each block: yellow title top-left; description at the bottom, black text
+   on a yellow fill behind the text only, blended with "difference".
+   Hover: the post's image (.explore-cell-img) fades in behind the text. */
+.explore {
+	--explore-yellow: #CFF273;
+	position: relative;
+	--explore-header: var(--cnvs-header-height-md);
+	clip-path: inset(0);
+	background-color: #000;
+}
+/* Desktop: the transparent header sits over the photo (.include-header), so
+   the grid starts below it. The header is .header-size-md (80px); its own
+   --cnvs-header-height is set on #header only, so the md size var is used. */
+.is-expanded-menu .explore.include-header {
+	padding-top: var(--explore-header);
+}
+.explore-bg {
+	position: fixed;
+	inset: 0;
+	background: url("../img/about-hero.jpg") center / cover no-repeat;
+}
+/* darkening layer over the photo */
+.explore-bg::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.275);
+}
+/* A page swaps the photo with an inline background-image on .explore-bg,
+   e.g. style="background-image: url('img/about-digital.jpg')" — inline, so
+   the path is relative to the page (a url() kept in a CSS variable would be
+   resolved relative to this css/ folder instead) */
+.explore-grid {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	border-top: 1px solid var(--explore-yellow);
+}
+.explore-cell {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: calc((100vh - var(--explore-header)) / 2);
+	border-bottom: 1px solid var(--explore-yellow);
+}
+.explore-cell:nth-child(odd) {
+	border-right: 1px solid var(--explore-yellow);
+}
+.explore-title {
+	margin: 0;
+	padding: 2rem;
+	color: var(--explore-yellow);
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 1.5;
+}
+/* Description: the yellow fill hugs each line of text only. Two copies of
+   the text are stacked in the same grid cell — the back one (.explore-desc-hl,
+   made by the script in perspectives.html) is just the yellow fill, blended with
+   "difference" over the photo; the front one is the black text. */
+/* margin-top: auto pins it to the bottom of the block, whatever else the
+   block holds (e.g. the empty full-block .stretched-link after it) */
+.explore-desc {
+	display: grid;
+	margin: auto 0 0;
+	padding: 0 2rem 2rem;
+	font-size: 0.875rem;
+	line-height: 1.9;
+}
+.explore-desc > span {
+	grid-area: 1 / 1;
+}
+.explore-desc > span > span {
+	padding: 0.15em 0.3em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+.explore-desc-hl > span {
+	background-color: var(--explore-yellow);
+	color: transparent;
+	mix-blend-mode: difference;
+}
+.explore-desc-text > span {
+	position: relative;
+	color: #000;
+}
+/* hover: the post's image fades in, filling the block behind its text.
+   Title and description are position: relative (no z-index) so they paint
+   above the image without isolating the description's difference blend. */
+.explore-cell-img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	pointer-events: none;
+}
+.explore-cell:hover .explore-cell-img {
+	opacity: 1;
+}
+/* over a bright poster the "difference" fill turns dark, so the
+   description text switches to white while hovering */
+.explore-desc-text > span {
+	transition: color 0.4s ease;
+}
+.explore-cell:hover .explore-desc-text > span {
+	color: #fff;
+}
+/* hover: the title gets a solid yellow fill behind its text (black text) */
+.explore-title > span {
+	padding: 0.1em 0.3em;
+	margin-left: -0.3em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+	transition: background-color 0.4s ease, color 0.4s ease;
+}
+.explore-cell:hover .explore-title > span {
+	background-color: var(--explore-yellow);
+	color: #000;
+}
+/* hover: the image keeps slowly zooming in and out */
+.explore-cell {
+	overflow: hidden;
+}
+.explore-cell:hover .explore-cell-img {
+	animation: explore-zoom 6s ease-in-out infinite alternate;
+}
+@keyframes explore-zoom {
+	from { transform: scale(1); }
+	to   { transform: scale(1.12); }
+}
+.explore-title,
+.explore-desc {
+	position: relative;
+}
+@media (prefers-reduced-motion: reduce) {
+	.explore-cell-img {
+		transition: none;
+	}
+	.explore-cell:hover .explore-cell-img {
+		animation: none;
+	}
+}
+/* Explore pagination sits over the photo — half-transparent white buttons
+   in yellow frames, like the grid lines (the current page stays solid
+   brand blue) */
+.explore .list-pagination .pagination {
+	--bs-pagination-bg: rgba(255, 255, 255, 0.5);
+	--bs-pagination-disabled-bg: rgba(255, 255, 255, 0.5);
+	--bs-pagination-border-color: var(--explore-yellow);
+	--bs-pagination-disabled-border-color: var(--explore-yellow);
+}
+/* full width, flush under the grid with no space above or below; the
+   buttons share the width equally (fewer pages = wider buttons) */
+.explore .list-pagination {
+	padding: 0;
+}
+.explore .list-pagination .pagination {
+	width: 100%;
+}
+.explore .list-pagination .page-item {
+	flex: 1;
+}
+.explore .list-pagination .page-link {
+	text-align: center;
+}
+/* Phones: one block per row */
+@media (max-width: 767.98px) {
+	.explore-grid {
+		grid-template-columns: 1fr;
+	}
+	.explore-cell:nth-child(odd) {
+		border-right: 0;
+	}
+	.explore-title {
+		padding: 1.5rem;
+	}
+	.explore-desc {
+		padding: 0 1.5rem 1.5rem;
+	}
+}
+
+/* perspectives-post.html — one 觀點 post (was explore-post.html) (layout after tpaddassoc.com's
+   event pages), in the Explore look: fixed photo + thin yellow lines.
+   Opening block: category label top-left, title + date・place at the bottom.
+   Body on white: text on the left, the yellow info sidebar on the right
+   (stays in view on desktop). Then "More" — the next projects as list
+   blocks, and a full-width BACK TO EXPLORE bar. */
+.explore-single-head {
+	grid-template-columns: 1fr;
+}
+.explore-single-head .explore-cell {
+	min-height: calc(100vh - var(--explore-header));
+	border-right: 0;
+}
+.explore-single-label {
+	display: inline-block;
+	padding: 0.2rem 0.75rem;
+	border: 1px solid var(--explore-yellow);
+	font-size: 0.875rem;
+	letter-spacing: 0.1em;
+}
+/* the label stays yellow text on 30% black — no yellow fill on hover */
+.explore-single-label,
+.explore-cell:hover .explore-title > .explore-single-label {
+	background-color: rgba(0, 0, 0, 0.3);
+	color: var(--explore-yellow);
+}
+/* date ・ place under the title — solid yellow fill hugging the text,
+   black text, no blending */
+.explore-single-meta {
+	margin: 0;
+	padding: 0 2rem 2rem;
+	font-size: 0.875rem;
+	line-height: 1.9;
+}
+.explore-single-meta > span {
+	padding: 0.15em 0.3em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+	background-color: var(--explore-yellow);
+	color: #000;
+}
+.explore-single-heading {
+	margin-top: auto;
+}
+.explore-single-title {
+	margin: 0;
+	padding: 0 2rem 1rem;
+	color: var(--explore-yellow);
+	font-size: clamp(2rem, 5vw, 4rem);
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+/* body */
+.explore-single-body {
+	padding: 5rem 0 6rem;
+	background-color: #fff;
+}
+/* info sidebar — the 漫畫 yellow box (.manga-item-sidebar), square
+   corners here, staying in view while the text scrolls on desktop */
+.explore-single-body .manga-item-sidebar {
+	border-radius: 0;
+}
+@media (min-width: 992px) {
+	.explore-single-body .manga-item-sidebar {
+		position: sticky;
+		top: 110px;
+	}
+}
+.explore-single-content {
+	font-size: 1.125rem;
+	line-height: 1.9;
+}
+.explore-single-content p {
+	margin-bottom: 1.5em;
+}
+.explore-single-figure {
+	margin: 2.5rem 0;
+}
+.explore-single-figure img {
+	display: block;
+	width: 100%;
+}
+.explore-single-figure figcaption {
+	margin-top: 0.5rem;
+	font-size: var(--cnvs-copyrights-font-size);
+	opacity: 0.6;
+}
+
+/* More */
+.explore-single-more-heading {
+	position: relative;
+	margin: 0;
+	padding: 2rem;
+	border-top: 1px solid var(--explore-yellow);
+	color: var(--explore-yellow);
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+.explore-single-seemore {
+	position: relative;
+	display: block;
+	padding: 1.25rem 2rem;
+	border-bottom: 1px solid var(--explore-yellow);
+	background-color: rgba(255, 255, 255, 0.5);
+	color: #000;
+	text-align: center;
+	letter-spacing: 0.1em;
+	transition: background-color 0.3s ease;
+}
+.explore-single-seemore:hover {
+	background-color: var(--explore-yellow);
+	color: #000;
+}
+@media (max-width: 767.98px) {
+	.explore-single-title {
+		padding: 0 1.5rem 1rem;
+	}
+	.explore-single-meta {
+		padding: 0 1.5rem 1.5rem;
+	}
+	.explore-single-body {
+		padding: 3rem 0 4rem;
+	}
+}
+
+/* events.html — calendar on the left stays in view while the masonry list
+   (Canvas portfolio-2-masonry) scrolls. Sticky needs the content area to
+   not be a scroll box, so it clips with overflow: clip instead of hidden. */
+.events-content .content-wrap {
+	overflow: clip;
+}
+/* three quick tabs here (Today / This Week / All Time) — let them wrap */
+.events-calendar-sticky .event-calendar-tabs {
+	flex-wrap: wrap;
+	row-gap: 0.5rem;
+}
+@media (min-width: 992px) {
+	.events-calendar-sticky {
+		position: sticky;
+		top: 110px;
+	}
+}
+/* no-results message */
+.events-empty {
+	padding: 3rem 0;
+	text-align: center;
+	opacity: 0.6;
+}
+/* date line above each event title, same small caps as the home page cards */
+.events-date {
+	display: block;
+	font-size: var(--cnvs-copyrights-font-size);
+	letter-spacing: 0.05em;
+	opacity: 0.5;
+}
+
+/* events-post.html hero — brand yellow with black text; the image starts on
+   the right third and, while the hero is pinned and you scroll, slides left
+   until it fills the screen. Text the image covers shows inverted: a copy
+   of the text (.event-hero-invert, made by js/event-post-hero.js) sits
+   inside the image layer, clipped to it, blended with "difference" (white
+   text → the negative of the photo under it).
+   --hero-edge = the image's left edge in % (66.67 → 0), set by the script. */
+.event-hero {
+	--hero-edge: 66.67;
+	position: relative;
+	height: 200vh; /* 100vh of pinned scrolling */
+	background-color: #CFF273;
+}
+.event-hero-stage {
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	overflow: hidden;
+}
+.event-hero-text {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: var(--cnvs-header-height-md) 4vw 4vw;
+	color: #000;
+}
+.event-hero-title {
+	margin: 0;
+	color: inherit;
+	font-size: clamp(3rem, 10vw, 11rem);
+	font-weight: 400;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+}
+.event-hero-info {
+	position: absolute;
+	left: 4vw;
+	bottom: 4vw;
+}
+.event-hero-info p {
+	margin: 0;
+	color: inherit;
+}
+.event-hero-subtitle {
+	font-size: clamp(1.25rem, 2.5vw, 2.25rem);
+	line-height: 1.3;
+}
+.event-hero-date {
+	margin-top: 0.75rem !important;
+	font-size: 1rem;
+}
+/* the image: full-size layer pushed right by --hero-edge; it clips its
+   contents to the part of the screen it covers */
+.event-hero-image {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	transform: translateX(calc(var(--hero-edge) * 1%));
+	will-change: transform;
+}
+.event-hero-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/* inverted text — inside the image layer so its "difference" blend mixes
+   with the photo, shifted back by the same amount so it lines up exactly
+   with the black text underneath */
+.event-hero-invert {
+	position: absolute;
+	inset: 0;
+	transform: translateX(calc(var(--hero-edge) * -1%));
+	pointer-events: none;
+}
+.event-hero-invert .event-hero-text {
+	color: #fff;
+	mix-blend-mode: difference;
+}
+@media (prefers-reduced-motion: reduce) {
+	.event-hero {
+		height: 100vh;
+	}
+}
+
+/* events-post.html body — images stacked on the left scroll by while the
+   text on the right stays in place (desktop). Sticky needs the content area
+   to not be a scroll box, so it clips with overflow: clip instead of hidden. */
+.event-body .content-wrap {
+	overflow: clip;
+}
+.event-body-images img {
+	display: block;
+	width: 100%;
+}
+.event-body-images img + img {
+	margin-top: 2rem;
+}
+.event-body-text {
+	font-size: 1.125rem;
+	line-height: 1.9;
+}
+.event-body-text p:last-child {
+	margin-bottom: 0;
+}
+@media (min-width: 992px) {
+	.event-body-text {
+		position: sticky;
+		top: 110px;
+	}
+}
+/* exhibition info — the 漫畫 yellow box at the top of the fixed text,
+   square corners like on explore-single */
+.event-body .event-info {
+	margin-bottom: 2.5rem;
+	border-radius: 0;
+}
+.event-body .event-info .iconlist li {
+	font-size: 1rem;
+}
+/* video below the images / text, then the closing statement in very
+   large type */
+.event-video {
+	margin-top: 3rem;
+}
+.event-slogan {
+	margin: 6rem 0 2rem;
+	color: #000;
+	font-size: clamp(2.75rem, 8vw, 8rem);
+	font-weight: 600;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+@media (max-width: 991.98px) {
+	.event-video {
+		margin-top: 2.5rem;
+	}
+	.event-slogan {
+		margin-top: 4rem;
+	}
+}
+/* events-post-2.html — 立即購票 button in the yellow info box: brand blue
+   block with white text, square corners; hover goes black */
+.button.event-ticket-button {
+	--cnvs-btn-color: #002FF0;
+	--cnvs-btn-color-dark: #000;
+	border-radius: 0;
+	color: #fff;
+}
+.button.event-ticket-button:hover {
+	color: #fff;
+}
+
+/* news-post.html — main image always cropped to 16:9, whatever its shape */
+.news-post .entry-image img {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+/* creators.html — portraits come in mixed shapes; crop every photo to the
+   same square so the 5-across rows (Canvas portfolio-5, fitRows) stay even */
+.creators-grid .portfolio-image img {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	/* black & white; full colour and a slight zoom while hovering the
+	   creator (Canvas's .portfolio-image clips the zoom to the square) */
+	filter: grayscale(1);
+	transition: filter 0.4s ease, transform 0.6s ease;
+}
+.creators-grid .portfolio-item:hover .portfolio-image img {
+	filter: grayscale(0);
+	transform: scale(1.08);
+}
+/* creators.html — three rows of creator names at the top of the page,
+   sliding left / right / left (Canvas ticker). Each row starts full (no
+   empty run-in) and loops seamlessly: the HTML holds the names twice and
+   the row slides by half its width. The left end fades out. */
+.creators-names {
+	padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.ticker-wrap.creators-names-row {
+	--cnvs-ticker-duration: 70s;
+	padding-left: 0;
+	padding-right: 0;
+	-webkit-mask-image: linear-gradient(to right, transparent, #000 12%);
+	mask-image: linear-gradient(to right, transparent, #000 12%);
+}
+.ticker-wrap.creators-names-row + .creators-names-row {
+	margin-top: clamp(2rem, 5vw, 4.5rem);
+}
+.ticker-wrap.creators-names-row .ticker {
+	padding-left: 0;
+	padding-right: 0;
+	animation-name: creatorsNamesLeft;
+}
+.ticker-wrap.creators-names-row.ticker-reverse .ticker {
+	animation-name: creatorsNamesRight;
+}
+.creators-names-row .ticker .ticker-item {
+	padding: 0 clamp(2rem, 4.5vw, 4rem);
+	font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+	letter-spacing: 0.08em;
+	color: var(--cnvs-contrast-900);
+}
+.creators-names-row .ticker a.ticker-item:hover {
+	color: #002FF0;
+}
+@keyframes creatorsNamesLeft {
+	0% {
+		transform: translate3d(0, 0, 0);
+		visibility: visible;
+	}
+	100% {
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+@keyframes creatorsNamesRight {
+	0% {
+		transform: translate3d(-50%, 0, 0);
+		visibility: visible;
+	}
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+/* 單元 list pages (tshuan / explore / collaboration) — blue strip down the
+   left edge of the content area (from the header to the footer) with the
+   title in yellow, read bottom to top (first made for creators.html). The
+   content area leaves room for the strip on the left so the list sits
+   beside it. */
+.creators-content .content-wrap {
+	--creators-strip: clamp(44px, 6vw, 88px);
+	position: relative;
+	padding-left: var(--creators-strip);
+}
+.creators-sidetitle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: var(--creators-strip);
+	overflow: hidden;
+	background-color: #002FF0;
+	pointer-events: none;
+	user-select: none;
+}
+.creators-sidetitle span {
+	display: block;
+	writing-mode: vertical-rl;
+	/* turned to read bottom to top; the extra shift centres the capitals
+	   (the line box keeps room for descenders on one side) */
+	transform: rotate(180deg) translateX(-0.07em);
+	/* cap height ≈ the strip width */
+	padding-bottom: 0.1em; /* = a little space under the header */
+	color: #CFF273;
+	font-family: var(--cnvs-primary-font);
+	font-size: calc(var(--creators-strip) * 1.3);
+	font-weight: 700;
+	line-height: 0.76;
+	letter-spacing: -0.03em;
+	white-space: nowrap;
+}
+/* 單元 list pages (tshuan / explore / collaboration) — strips with Chinese characters normally stand
+   upright in vertical text and would end up upside down after the turn, so
+   they're laid on their side like the Latin letters */
+.creators-sidetitle-cjk span {
+	text-orientation: sideways;
+}
+/* Strip colours other than the default blue strip / yellow text:
+   explore.html yellow / blue, collaboration.html gray / red */
+.creators-sidetitle.sidetitle-yellow {
+	background-color: #CFF273;
+}
+.creators-sidetitle.sidetitle-yellow span {
+	color: #002FF0;
+}
+.creators-sidetitle.sidetitle-gray {
+	background-color: var(--bs-gray-400);
+}
+.creators-sidetitle.sidetitle-gray span {
+	color: #dc3545;
+}
+/* 單元 list pages — the strip as a marquee. The strip still runs the
+   full height of the content area, but the text sits in a screen-tall box
+   that sticks to the top of the screen while the content scrolls by (it
+   only leaves when the footer comes up). The text is two identical halves
+   moving down by one half per loop, i.e. new text comes in at the top,
+   where the bottom-to-top reading ends. */
+/* overflow: hidden (Canvas puts it on .content-wrap) would stop the sticky
+   box from sticking; clip cuts off the same way without that side effect */
+.unit-content .content-wrap,
+.creators-sidetitle.sidetitle-marquee {
+	overflow: clip;
+}
+/* 單元 list pages — the portfolio starts right under the header */
+.unit-content .content-wrap {
+	padding-top: 0;
+}
+/* 單元 list pages — hovering an item: 50% yellow over the image and a slight
+   zoom (Canvas's .portfolio-image is relative and clips the zoom) */
+.unit-content .portfolio-image::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: rgba(207, 242, 115, 0.5);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	pointer-events: none;
+}
+.unit-content .portfolio-image img {
+	transition: transform 0.6s ease;
+}
+/* …and a big "CHECK" in the middle, on top of the yellow */
+.unit-content .portfolio-image::before {
+	content: "CHECK";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #002FF0;
+	font-family: var(--cnvs-primary-font);
+	font-size: clamp(3rem, 7vw, 7.5rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	pointer-events: none;
+}
+.unit-content .portfolio-item:hover .portfolio-image::before,
+.unit-content .portfolio-item:hover .portfolio-image::after {
+	opacity: 1;
+}
+.unit-content .portfolio-item:hover .portfolio-image img {
+	transform: scale(1.08);
+}
+/* Hover colours other than tshuan's yellow / blue CHECK:
+   explore.html blue / yellow, collaboration.html red / gray */
+.unit-explore .portfolio-image::after {
+	background-color: rgba(0, 47, 240, 0.5);
+}
+.unit-explore .portfolio-image::before {
+	color: #CFF273;
+}
+.unit-collab .portfolio-image::after {
+	background-color: rgba(220, 53, 69, 0.5);
+}
+.unit-collab .portfolio-image::before {
+	color: var(--bs-gray-400);
+}
+.sidetitle-marquee-view {
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	overflow: hidden;
+}
+.sidetitle-marquee-track {
+	animation: sidetitleMarquee 30s linear infinite;
+}
+.sidetitle-marquee .sidetitle-marquee-track span {
+	padding-bottom: 0; /* keeps the two halves exactly equal */
+}
+@keyframes sidetitleMarquee {
+	from { transform: translateY(-50%); }
+	to { transform: translateY(0); }
+}
+
+/* creators-post.html — profile section, 30 / 70 on desktop: title + yellow
+   contact box on the left, text on the right (Bootstrap's 12 columns can't
+   do 30 / 70, so the widths are set here) */
+@media (min-width: 992px) {
+	.creator-profile .creator-profile-side {
+		flex: 0 0 30%;
+		max-width: 30%;
+	}
+	.creator-profile .creator-profile-main {
+		flex: 0 0 70%;
+		max-width: 70%;
+	}
+}
+
+/* creators-post.html IG ticker — white background, yellow text; hover swaps
+   them (same idea as the blue/green ticker on index/about) */
+.glitch-ticker.ig-ticker {
+	background-color: #fff;
+}
+.glitch-ticker.ig-ticker .ticker-item {
+	color: #CFF273;
+}
+.glitch-ticker.ig-ticker:hover {
+	background-color: #CFF273;
+}
+.glitch-ticker.ig-ticker:hover .ticker-item {
+	color: #fff;
+}
+/* the IG icon is taller than the text and its top got cut off by the 60px
+   ticker — a bit smaller, centred on the text */
+.glitch-ticker.ig-ticker .ticker-item i {
+	font-size: 0.8em;
+	line-height: 1;
+	vertical-align: -0.05em;
+}
+/* the IG ticker starts full (no empty run-in from the right) and loops
+   seamlessly: the HTML holds the items twice and the strip slides by half
+   its width, so the second copy lands exactly where the first began */
+.glitch-ticker.ig-ticker {
+	--cnvs-ticker-duration: 36s;
+	padding-left: 0;
+}
+.glitch-ticker.ig-ticker .ticker {
+	padding-right: 0;
+	animation-name: igTickerLoop;
+}
+@keyframes igTickerLoop {
+	0% {
+		transform: translate3d(0, 0, 0);
+		visibility: visible;
+	}
+	100% {
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+
+/* creators-post.html — links section: six "title + list" groups in the
+   Find us frame (.contact-glitch: big title, yellow pattern, blue lines,
+   vertical titles). Each group is its own card, as tall as its content,
+   in a two-column masonry on desktop (Canvas Isotope, left to right). List items in black; an item is a
+   link when it has one (↗, blue on a yellow highlight on hover), otherwise
+   plain text. */
+/* cards sit edge to edge, against the frame: each card draws only its
+   right and bottom lines, and the cards area reaches 1px past the frame's
+   right and bottom edges so those lines land on the frame's own border
+   (no doubled lines) */
+.creator-links-cards {
+	margin: 0 -1px -1px 0;
+	border-top: 1px solid var(--glitch-blue);
+}
+.creator-links-col .contact-glitch-row {
+	padding: 0;
+	gap: 0;
+	border-top: 0;
+	border-right: 1px solid var(--glitch-blue);
+	border-bottom: 1px solid var(--glitch-blue);
+}
+/* blue line right of the vertical title, full height of the card; the
+   lines under the items run from it to the card's edge */
+.creator-links-col .contact-glitch-label {
+	align-self: stretch;
+	padding: 1.25rem;
+	border-right: 1px solid var(--glitch-blue);
+}
+/* content above the yellow pattern decoration (as the form is in Find us) */
+.creator-links > .contact-glitch-head,
+.creator-links > .creator-links-cards {
+	position: relative;
+	z-index: 1;
+}
+.creator-links-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 1.125rem;
+	line-height: 1.6;
+}
+.creator-links-list li {
+	padding: 0.5rem 1.25rem;
+	border-bottom: 1px solid var(--glitch-blue);
+	color: #000;
+}
+.creator-links-list li:first-child {
+	padding-top: 1.25rem;
+}
+/* the card's own border closes the last item */
+.creator-links-list li:last-child {
+	padding-bottom: 1.25rem;
+	border-bottom: 0;
+}
+.creator-links-list a {
+	color: inherit;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+.creator-links-list a:hover {
+	background-color: var(--glitch-yellow);
+	color: var(--glitch-blue);
+}
+
+/* tshuan-post.html — video hero (after the first slide of Canvas's
+   index-corporate.html): small spaced capitals, a big title between two
+   lines and a short description, centred over the video */
+.tshuan-hero-caps {
+	font-size: 1rem;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	color: #fff;
+}
+.tshuan-hero .tshuan-hero-title {
+	/* lines only as wide as the title */
+	width: fit-content;
+	margin: 1.25rem auto 1.5rem;
+	padding: 15px 20px;
+	border-top: 2px solid #CFF273;
+	border-bottom: 2px solid #CFF273;
+	color: #CFF273;
+	font-size: clamp(2.25rem, 5vw, 4rem);
+	font-weight: 700;
+	letter-spacing: -1px;
+	line-height: 1.1;
+}
+.tshuan-hero .tshuan-hero-desc {
+	max-width: 650px;
+	margin: 0 auto;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	color: #fff;
+}
+/* the video always fills the hero, whatever size the theme's script last
+   worked out (it sets width / height / left inline) */
+.tshuan-hero .video-wrap {
+	height: 100%;
+}
+/* black behind the video: any row the video doesn't paint (rounding at some
+   screen heights, or before the video fades in) showed the white page
+   through the dark overlay as a gray line */
+#slider.tshuan-hero {
+	background-color: #000;
+}
+.tshuan-hero .video-wrap video {
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
+}
+/* tshuan-post.html — full-width parallax image (Canvas .parallax), edge to
+   edge, no text; the section sets the height the image moves inside */
+.tshuan-post-fullimg {
+	isolation: isolate; /* keeps the image (z-index -1) inside the section */
+	height: clamp(360px, 70vh, 760px);
+	margin-top: clamp(3rem, 6vw, 5rem);
+	padding: 0;
+	background-color: transparent;
+}
+/* tshuan-post.html — the two centred text sections each take a full
+   screen height, with the text in the middle (the content area's own top
+   padding is dropped so the first one starts right under the hero) */
+.tshuan-post-dark .content-wrap {
+	padding-top: 0;
+}
+.tshuan-post-fulltext {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+.tshuan-post-fulltext > div {
+	width: 100%;
+}
+/* tshuan-post.html — all the reading text on the page at one size (the big
+   lines over the images keep their own size) */
+.tshuan-post-text,
+.event-body-text.tshuan-post-text {
+	font-size: 1.25rem;
+	line-height: 1.9;
+}
+/* tshuan-post.html — full-width parallax image (Canvas .parallax) with an
+   English line in the middle; a dark layer keeps the text readable */
+.tshuan-post-parallax {
+	isolation: isolate; /* keeps the image (z-index -1) inside the section */
+	margin-top: clamp(3rem, 6vw, 5rem);
+	padding: clamp(8rem, 18vw, 14rem) 0;
+	background-color: transparent;
+}
+.tshuan-post-parallax-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-color: rgba(0, 0, 0, 0.35);
+}
+.tshuan-post-slogan {
+	margin: 0;
+	text-align: center;
+	color: #CFF273;
+	font-size: clamp(2rem, 5vw, 4.5rem);
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+/* tshuan-post.html — image carousel: every photo cropped to the same
+   4:5 frame so the row stays even; square arrow buttons */
+.tshuan-post-carousel {
+	--cnvs-owl-nav-border-radius: 0;
+}
+.tshuan-post-carousel .oc-item img {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+/* tshuan-post.html — project credits over a full-width image: a dark layer
+   on the photo, then roles (bold) and names in two columns, centred */
+.tshuan-post-credits {
+	position: relative;
+	isolation: isolate;
+	margin-top: clamp(3rem, 6vw, 5rem);
+	margin-bottom: calc(var(--cnvs-content-padding) * -1); /* down to the footer */
+	padding: clamp(5rem, 10vw, 8rem) 0;
+}
+.tshuan-post-credits-bg {
+	position: absolute;
+	inset: 0;
+	z-index: -2;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.tshuan-post-credits::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+.tshuan-post-credits-list {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: center;
+	column-gap: 2.5rem;
+	row-gap: 0.35rem;
+	margin: 0;
+	color: #fff;
+	font-size: 1.25rem;
+	line-height: 1.6;
+}
+.tshuan-post-credits-list dt {
+	font-weight: 700;
+}
+.tshuan-post-credits-list dd {
+	margin: 0;
+}
+/* tshuan-post.html / perspectives-post.html — dark version: black page
+   (--post-bg), brand-yellow text (credits included), carousel arrows to
+   match. .post-bg-blue swaps the black for brand blue (tshuan-post.html) */
+#content.tshuan-post-dark { /* #content: the theme sets its background on the id */
+	--post-bg: #000;
+	background-color: var(--post-bg);
+	color: #CFF273;
+}
+#content.tshuan-post-dark.post-bg-blue {
+	--post-bg: #002FF0;
+}
+.tshuan-post-dark p,
+.tshuan-post-dark .tshuan-post-credits-list {
+	color: #CFF273;
+}
+.tshuan-post-dark .tshuan-post-carousel {
+	--cnvs-owl-nav-background: var(--post-bg);
+	--cnvs-owl-nav-color: #CFF273;
+	--cnvs-owl-nav-border: 1px solid #CFF273;
+}
+/* tshuan-post.html — stacking sections: scrolling down, each one-screen
+   section (.tshuan-stack-sticky: hero, the two full-screen texts, the two
+   parallax images) stops at the top of the screen and the next section
+   slides up over it. The images / text section and the carousel are taller
+   than a screen, so they just scroll (.tshuan-stack-pad gives them their
+   spacing). Every block is full width with a solid background, so the one
+   underneath is fully covered; later blocks paint over earlier ones. The
+   gaps between blocks are padding, not margins, so nothing shows through. */
+.tshuan-post-dark .content-wrap > * {
+	position: relative;
+	background-color: var(--post-bg);
+}
+.tshuan-post-dark .content-wrap > .tshuan-stack-sticky,
+#slider.tshuan-stack-sticky {
+	position: sticky;
+	top: 0;
+}
+.tshuan-stack-pad {
+	padding: clamp(3rem, 6vw, 5rem) 0;
+}
+.tshuan-post-dark .tshuan-post-fullimg,
+.tshuan-post-dark .tshuan-post-parallax,
+.tshuan-post-dark .tshuan-post-credits {
+	margin-top: 0;
+}
+/* tshuan-post.html — the two full-screen text blocks set big: the theme's
+   h1 size, in the page's yellow */
+.tshuan-post-dark .tshuan-post-lead {
+	color: #CFF273;
+	line-height: 1.5; /* same as the h1 (a .h1 paragraph inherits the text's taller one) */
+}
+
+/* events.html — hovering an event: the image zooms in slightly (no dark
+   overlay or icon; Canvas's .portfolio-image clips the zoom) */
+.events-content .portfolio-image img {
+	transition: transform 0.6s ease;
+}
+.events-content .portfolio-item:hover .portfolio-image img {
+	transform: scale(1.08);
+}
+
+/* 好ㄉ lists (manga.html / publications.html / goods.html) — hovering an
+   item: the cover / product photo zooms in slightly, clipped to its frame */
+.manga-grid .portfolio-image img,
+.goods-grid .product-image img {
+	transition: transform 0.6s ease;
+}
+.goods-grid .product-image {
+	overflow: hidden;
+}
+.manga-grid .portfolio-item:hover .portfolio-image img,
+.goods-grid .product:hover .product-image img {
+	transform: scale(1.08);
 }

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>@@川 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+		<!-- Content：@@川列表（左側直條藍底黃字跑馬燈；右邊作品一排 2 個、瀑布流）
+		     分頁由 js/pagination.js 處理；一頁 15 個
+		============================================= -->
+		<section id="content" class="creators-content unit-content">
+			<div class="content-wrap">
+
+				<!-- 左側藍色直條＋直排黃色大字跑馬燈（裝飾用）：捲動時固定在畫面左邊，只有右邊內容會動；
+				     樣式見 custom.css .creators-sidetitle / .sidetitle-marquee。
+				     文字重複 8 次＝前後兩半一模一樣，才能無縫循環；要改字就 8 段一起改 -->
+				<div class="creators-sidetitle creators-sidetitle-cjk sidetitle-marquee" aria-hidden="true">
+					<div class="sidetitle-marquee-view">
+						<div class="sidetitle-marquee-track"><span>@@ 川&nbsp;✸&nbsp;@@ 川&nbsp;✸&nbsp;@@ 川&nbsp;✸&nbsp;@@ 川&nbsp;✸&nbsp;@@ 川&nbsp;✸&nbsp;@@ 川&nbsp;✸&nbsp;@@ 川&nbsp;✸&nbsp;@@ 川&nbsp;✸&nbsp;</span></div>
+					</div>
+				</div>
+
+				<div class="container">
+
+					<!-- 項目列表：一個一個 .portfolio-item（圖片、標題、類型）；hover 黃色覆蓋＋放大見 custom.css
+					     ↓↓↓ 示意資料：16 個，讓分頁看得到；圖片先借用站內現有圖片
+					============================================= -->
+					<div id="portfolio" class="portfolio row grid-container gutter-30">
+
+						<article class="portfolio-item col-sm-6 col-12 pf-exhibition">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/about-1.jpg" alt="@@川 計畫名稱 1">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 1</a></h3>
+									<span>展覽</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-event">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/event1.png" alt="@@川 計畫名稱 2">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 2</a></h3>
+									<span>活動</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-space">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/event2.png" alt="@@川 計畫名稱 3">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 3</a></h3>
+									<span>空間</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-exhibition">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/about-act.jpg" alt="@@川 計畫名稱 4">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 4</a></h3>
+									<span>展覽</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-event">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/event5.png" alt="@@川 計畫名稱 5">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 5</a></h3>
+									<span>活動</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-space">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/about-2.jpg" alt="@@川 計畫名稱 6">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 6</a></h3>
+									<span>空間</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-exhibition">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/hero.jpg" alt="@@川 計畫名稱 7">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 7</a></h3>
+									<span>展覽</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-event">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/event3.png" alt="@@川 計畫名稱 8">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 8</a></h3>
+									<span>活動</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-space">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/about-manga.jpg" alt="@@川 計畫名稱 9">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 9</a></h3>
+									<span>空間</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-exhibition">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/event7.png" alt="@@川 計畫名稱 10">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 10</a></h3>
+									<span>展覽</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-event">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/about-4.jpg" alt="@@川 計畫名稱 11">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 11</a></h3>
+									<span>活動</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-space">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/about-digital.jpg" alt="@@川 計畫名稱 12">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 12</a></h3>
+									<span>空間</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-exhibition">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/event11.png" alt="@@川 計畫名稱 13">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 13</a></h3>
+									<span>展覽</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-event">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/hero2.jpg" alt="@@川 計畫名稱 14">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 14</a></h3>
+									<span>活動</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-space">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/event9.png" alt="@@川 計畫名稱 15">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 15</a></h3>
+									<span>空間</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item col-sm-6 col-12 pf-exhibition">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<a href="tshuan-post.html">
+										<img src="img/about-hero.jpg" alt="@@川 計畫名稱 16">
+									</a>
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="tshuan-post.html">@@川 計畫名稱 16</a></h3>
+									<span>展覽</span>
+								</div>
+							</div>
+						</article>
+
+					</div><!-- #portfolio end -->
+
+					<!-- 分頁選單：每頁 15 個，頁碼由 js/pagination.js 自動產生；只有一頁時不顯示 -->
+					<nav class="list-pagination d-none" aria-label="@@川分頁">
+						<ul class="pagination pagination-inside-transparent pagination-lg mb-0"></ul>
+					</nav>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="border-top-0 footer-blue">
+			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
+			<div class="container">
+			<div class="footer-panel">
+			<div class="container mw-md">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
+					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
+						<div class="col-md-6">
+							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
+							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
+							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
+							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="widget widget_links widget-li-noicon">
+										<ul>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- .footer-widgets-wrap end -->
+
+				<!-- Copyrights
+				============================================= -->
+				<div id="copyrights" class="bg-transparent border-top">
+					<div class="row g-3">
+						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
+							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+						</div>
+
+					</div>
+				</div><!-- #copyrights end -->
+
+			</div>
+			</div><!-- .footer-panel end -->
+			</div>
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- 分頁：一頁 15 個（共用 js/pagination.js） -->
+	<script src="js/pagination.js"></script>
+	<script>GlitchPagination('#portfolio', '.list-pagination', 15);</script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>
