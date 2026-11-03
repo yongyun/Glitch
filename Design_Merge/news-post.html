@@ -83,15 +83,8 @@
 
 		<!-- Page Title
 		============================================= -->
-		<section class="page-title mesh-title">
-			<!-- 流動漸層背景：5 個模糊色塊（藍 ×2 / 黃綠 ×2 / 灰）各自漂移，顏色在 custom.css 的 .mesh-bg 調整 -->
-			<div class="mesh-bg" aria-hidden="true">
-				<span class="mesh-blob mesh-blue"></span>
-				<span class="mesh-blob mesh-yellow"></span>
-				<span class="mesh-blob mesh-yellow-2"></span>
-				<span class="mesh-blob mesh-gray"></span>
-				<span class="mesh-blob mesh-blue-2"></span>
-			</div>
+		<!-- 白底標題（跟事件底下三個列表頁一樣） -->
+		<section class="page-title bg-white">
 			<div class="container">
 				<div class="page-title-row">
 
@@ -103,7 +96,7 @@
 					<!-- 事件分頁：用 ✸ 分隔；目前所在頁加 active -->
 					<nav aria-label="事件分頁">
 						<ol class="breadcrumb event-nav">
-							<li class="breadcrumb-item"><a href="events.html">事件</a></li>
+							<li class="breadcrumb-item"><a href="events.html">展覽</a></li>
 							<li class="breadcrumb-item active"><a href="news.html">最新消息</a></li>
 							<li class="breadcrumb-item"><a href="press.html">媒體報導</a></li>
 						</ol>
@@ -186,69 +179,14 @@
 			</div>
 		</section><!-- #content end -->
 
+		<!-- 回列表（滿版白底、上方灰線，hover 變黃綠；樣式 custom.css .back-to-list） -->
+		<a href="news.html" class="back-to-list">BACK TO NEWS<i class="bi-arrow-up-right ms-2"></i></a>
+
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="border-top-0 footer-white">
-			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
-			<div class="container">
-			<div class="footer-panel">
-			<div class="container mw-md">
-
-				<!-- Footer Widgets
-				============================================= -->
-				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
-					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
-						<div class="col-md-6">
-							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
-							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
-							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
-							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
-						</div>
-						<div class="col-md-6">
-							<div class="row">
-								<div class="col-6">
-									<div class="widget widget_links widget-li-noicon">
-										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-										</ul>
-
-									</div>
-								</div>
-
-								<div class="col-6">
-									<div class="widget widget_links widget-li-noicon">
-										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-										</ul>
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!-- .footer-widgets-wrap end -->
-
-				<!-- Copyrights
-				============================================= -->
-				<div id="copyrights" class="bg-transparent border-top">
-					<div class="row g-3">
-						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
-							Copyrights &copy; 2026 All Rights Reserved by Glitch.
-						</div>
-
-					</div>
-				</div><!-- #copyrights end -->
-
-			</div>
-			</div><!-- .footer-panel end -->
-			</div>
-		</footer><!-- #footer end -->
+		<!-- Footer 內容在 js/footer.js，改那個檔案即可 -->
+		<footer id="footer" class="border-top-0"></footer>
+		<script src="js/footer.js"></script>
 
 	</div><!-- #wrapper end -->
 

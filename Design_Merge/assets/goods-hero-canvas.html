@@ -402,11 +402,14 @@
         this.fontSize = fontSize;
         this.offsetX = offsetX; // Relative to word center
 
-        // Random initial velocity for independent flight
+        // Random direction, fixed slow speed (x floatSpeed = px per frame).
+        // It used to start at 3–8 and only slow down as collisions ate the
+        // energy, so the first seconds were a fast shake; now it's the same
+        // speed from the start, and update() keeps it there.
         const angle = Math.random() * Math.PI * 2;
-        const speed = 3 + Math.random() * 5;
-        this.vx = Math.cos(angle) * speed;
-        this.vy = Math.sin(angle) * speed;
+        this.cruise = 0.25 + Math.random() * 0.1;
+        this.vx = Math.cos(angle) * this.cruise;
+        this.vy = Math.sin(angle) * this.cruise;
 
         // Rotation
         this.wordRotation = 0;
@@ -444,6 +447,20 @@
             this.vx *= damping;
             this.vy *= damping;
             this.va *= damping;
+            // Keep the cruise speed: collisions only turn a letter, never
+            // speed it up or slow it down (a letter dropped after dragging
+            // has no direction, so it gets a new random one)
+            if (friction === 0) {
+                const v = Math.hypot(this.vx, this.vy);
+                if (v > 0) {
+                    this.vx *= this.cruise / v;
+                    this.vy *= this.cruise / v;
+                } else {
+                    const a = Math.random() * Math.PI * 2;
+                    this.vx = Math.cos(a) * this.cruise;
+                    this.vy = Math.sin(a) * this.cruise;
+                }
+            }
             this.freeX += this.vx * speedMult;
             this.freeY += this.vy * speedMult;
             this.freeRotation += this.va * rotMult * 10;
@@ -583,6 +600,14 @@
     }
 }
 
+// Font size actually used: the configured fontSize, shrunk on narrow or short
+// canvases (phones) so the letters have room to move. Each letter is kept
+// fontSize / 2 from the edges, so at the full 429 a 390-wide phone left no
+// room at all and the letters sat stuck in one column.
+function fitFontSize() {
+    return Math.min(controls.get('fontSize'), canvas.width * 0.35, canvas.height * 0.7);
+}
+
 let letters = [];
 let lastText = '';
 let wordPhysics = { x: 0, y: 0, vx: 2, vy: 2, rotation: 0, va: 0.02 };
@@ -644,7 +669,7 @@ controls.onChange('fontFamily', () => {
 
 function initLetters() {
     const text = controls.get('textContent') || '';
-    const fontSize = controls.get('fontSize');
+    const fontSize = fitFontSize();
     const spacing = controls.get('letterSpacing') || 0.6;
     const w = canvas.width;
     const h = canvas.height;
@@ -705,8 +730,11 @@ function resolveCollisions() {
                 const nx = dx / (distance || 1);
                 const ny = dy / (distance || 1);
 
-                const moveX = nx * overlap * 0.5;
-                const moveY = ny * overlap * 0.5;
+                // Ease overlapping letters apart a little each frame instead
+                // of snapping them apart in one go (that snap was the shake,
+                // worst when the canvas is too small for all the letters)
+                const moveX = nx * overlap * 0.02;
+                const moveY = ny * overlap * 0.02;
 
                 l1.freeX -= moveX;
                 l1.freeY -= moveY;
@@ -734,7 +762,7 @@ function resolveCollisions() {
 }
 
 function updateWord(w, h, speedMult, rotMult, breakFactor, animStyle) {
-    const fontSize = controls.get('fontSize');
+    const fontSize = fitFontSize();
 
     wordPhysics.x += wordPhysics.vx * speedMult;
     wordPhysics.y += wordPhysics.vy * speedMult;
@@ -804,7 +832,7 @@ function draw() {
     }
 
     const breakFactor = controls.get('breakApart') / 100;
-    const currentFontSize = controls.get('fontSize');
+    const currentFontSize = fitFontSize();
     const currentSpacing = controls.get('letterSpacing');
 
     if (controls.get('textContent') !== lastText || currentFontSize !== lastFontSize || currentSpacing !== lastSpacing) {
@@ -821,7 +849,7 @@ function draw() {
     }
 
     const fontObj = controls.get('fontFamily');
-    const fontSize = controls.get('fontSize');
+    const fontSize = fitFontSize();
     const activeFontFamily = customFontFamily || fontObj.family;
     const fontStr = `${fontObj.weight} ${fontSize}px "${activeFontFamily}", sans-serif`;
 
@@ -890,7 +918,7 @@ canvas.addEventListener('mousemove', (e) => {
 
 canvas.addEventListener('mousedown', (e) => {
     const pos = CanvasRuntimeAPI.getMousePos(e);
-    const fontSize = controls.get('fontSize');
+    const fontSize = fitFontSize();
     const hitRadius = fontSize * 0.5;
     // Find closest letter to click
     let closestIdx = -1;
@@ -925,7 +953,7 @@ canvas.addEventListener('mouseleave', () => {
 // letter is actually grabbed, so swiping elsewhere still scrolls the page.
 canvas.addEventListener('touchstart', (e) => {
     const pos = CanvasRuntimeAPI.getMousePos(e);
-    const fontSize = controls.get('fontSize');
+    const fontSize = fitFontSize();
     const hitRadius = fontSize * 0.5;
     let closestIdx = -1;
     let closestDist = Infinity;

@@ -1,10 +1,10 @@
 /* ----------------------------------------------------------------
-	List pagination — news.html / press.html / perspectives.html / creators.html / 單元 lists
+	List pagination — news.html / press.html / creators.html / 單元 lists
 	(events.html uses only the page buttons, see GlitchPagination.buttons)
 
 	GlitchPagination(list, nav, perPage, tabs)
 	  list    : the list element; every direct child is one item (news / press
-	            .entry, perspectives .explore-cell, creators / 單元 .portfolio-item)
+	            .entry, creators / 單元 .portfolio-item)
 	  nav     : the <nav> holding an empty <ul class="pagination">
 	  perPage : items per page
 	  tabs    : optional — a Canvas-style type filter (<ul class="grid-filter">

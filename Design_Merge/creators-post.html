@@ -12,6 +12,7 @@
 
 	<!-- Font Icons -->
 	<link rel="stylesheet" href="css/font-icons.css">
+	<link rel="stylesheet" href="css/swiper.css">
 
 	<!-- Niche Demos -->
 	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
@@ -164,60 +165,37 @@
 				</div>
 			</div>
 
-			<div class="container pb-lg-5">
-				<div class="row justify-content-center align-items-center">
+			<!-- 創作者照片 slideshow（參照 Canvas slider-canvas-pagination，不放文字）
+			     換照片：改每個 swiper-slide-bg 的 background-image；要增減張數就複製或刪掉一整個 swiper-slide -->
+			<div class="container pb-lg-5 creator-slider-wrap">
+				<div class="slider-element swiper_wrapper min-vh-60 min-vh-md-75" data-loop="true" data-autoplay="4000" data-autoplay-disable-on-interaction="false" data-speed="800">
+					<div class="slider-inner">
 
-					<div class="col-12 mb-sm-5">
-						<div class="position-relative row g-lg-0 row-cols-3 row-cols-sm-5 justify-content-md-center align-items-center">
-							<a href="#" data-bottom-top="transform: translate(0px, -30px)" data-top-center="transform: translate(0px, -140px)">
-								<img class="w-100" src="img/event11.png" alt="Image">
-								<div class="bg-overlay">
-									<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-										<div class="overlay-trigger-icon bg-light text-dark"><i class="bi-instagram"></i></div>
-									</div>
-									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+						<div class="swiper swiper-parent">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="swiper-slide-bg" style="background-image: url('img/event11.png');"></div>
 								</div>
-							</a>
-
-							<a href="#" data-bottom-top="transform: translate(20px, 70px)" data-top-center="transform: translate(20px, -100px)"><img class="w-100" src="img/event9.png" alt="Image">
-								<div class="bg-overlay">
-									<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-										<div class="overlay-trigger-icon bg-light text-dark"><i class="bi-instagram"></i></div>
-									</div>
-									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+								<div class="swiper-slide">
+									<div class="swiper-slide-bg" style="background-image: url('img/event9.png');"></div>
 								</div>
-							</a>
-
-							<a href="#" data-bottom-top="transform: translate(40px, 90px)" data-top-center="transform: translate(40px, 10px)"><img class="w-100" src="img/event7.png" alt="Image">
-								<div class="bg-overlay">
-									<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-										<div class="overlay-trigger-icon bg-light text-dark"><i class="bi-instagram"></i></div>
-									</div>
-									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+								<div class="swiper-slide">
+									<div class="swiper-slide-bg" style="background-image: url('img/event7.png');"></div>
 								</div>
-							</a>
-
-							<a href="#" data-bottom-top="transform: translate(60px, 130px)" data-top-center="transform: translate(60px, 100px)"><img class="w-100" src="img/event5.png" alt="Image">
-								<div class="bg-overlay">
-									<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-										<div class="overlay-trigger-icon bg-light text-dark"><i class="bi-instagram"></i></div>
-									</div>
-									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+								<div class="swiper-slide">
+									<div class="swiper-slide-bg" style="background-image: url('img/event5.png');"></div>
 								</div>
-							</a>
-
-							<a href="#" data-bottom-top="transform: translate(-30px, 80px)" data-top-center="transform: translate(-30px, -100px)"><img class="w-100" src="img/event3.png" alt="Image">
-								<div class="bg-overlay">
-									<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-										<div class="overlay-trigger-icon bg-light text-dark"><i class="bi-instagram"></i></div>
-									</div>
-									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+								<div class="swiper-slide">
+									<div class="swiper-slide-bg" style="background-image: url('img/event3.png');"></div>
 								</div>
-							</a>
-
+							</div>
+							<div class="slider-arrow-left"><i class="bi-chevron-left"></i></div>
+							<div class="slider-arrow-right"><i class="bi-chevron-right"></i></div>
+							<div class="slide-number"><div class="slide-number-current"></div><span>/</span><div class="slide-number-total"></div></div>
+							<div class="swiper-pagination"></div>
 						</div>
-					</div>
 
+					</div>
 				</div>
 			</div>
 		</section>
@@ -375,67 +353,9 @@
 
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="border-top-0 footer-blue">
-			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
-			<div class="container">
-			<div class="footer-panel">
-			<div class="container mw-md">
-
-				<!-- Footer Widgets
-				============================================= -->
-				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
-					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
-						<div class="col-md-6">
-							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
-							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
-							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
-							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
-						</div>
-						<div class="col-md-6">
-							<div class="row">
-								<div class="col-6">
-									<div class="widget widget_links widget-li-noicon">
-										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-										</ul>
-
-									</div>
-								</div>
-
-								<div class="col-6">
-									<div class="widget widget_links widget-li-noicon">
-										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-										</ul>
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!-- .footer-widgets-wrap end -->
-
-				<!-- Copyrights
-				============================================= -->
-				<div id="copyrights" class="bg-transparent border-top">
-					<div class="row g-3">
-						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
-							Copyrights &copy; 2026 All Rights Reserved by Glitch.
-						</div>
-
-					</div>
-				</div><!-- #copyrights end -->
-
-			</div>
-			</div><!-- .footer-panel end -->
-			</div>
-		</footer><!-- #footer end -->
+		<!-- Footer 內容在 js/footer.js，改那個檔案即可 -->
+		<footer id="footer" class="border-top-0"></footer>
+		<script src="js/footer.js"></script>
 
 	</div><!-- #wrapper end -->
 

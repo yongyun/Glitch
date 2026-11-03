@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>文章標題 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- ================================================================
+	     文章版型 B（post-designB）— 給工程師
+	     版型來源：Explore 計畫內頁 explore-post.html（固定底圖＋黃線框開頭，左上分類標籤、標題、日期・地點 →
+	     左欄正文（粗體小標、圖片與圖說）＋右欄資訊側欄（活動資訊、Credits、分類；桌機捲動時固定））。
+
+	     「單元」底下三個分類（@@川、Explore 計畫、合作）和「觀點」寫文章時，
+	     後台可以選「版型 A」（post-designA.html）或「版型 B」（這個檔案）。
+	     兩個版型的欄位不同，選了哪個版型，就顯示那個版型的欄位。
+
+	     套用到不同分類時，只換下面三個地方，其餘結構都一樣：
+	       分類           資訊側欄顏色（.manga-item-sidebar 的 class）  分類標籤連結（.tagcloud a）  最下方回列表（.back-to-list）
+	       @@川           不加（黃綠）＊                                tshuan.html                  tshuan.html ／ BACK TO @@川
+	       Explore 計畫   不加（黃綠）                                  explore.html                 explore.html ／ BACK TO EXPLORE
+	       合作           加 manga-item-sidebar-gray（灰）              collaboration.html           collaboration.html ／ BACK TO COLLABORATION
+	       觀點           不加（黃綠）＊                                perspectives.html            perspectives.html ／ BACK TO PERSPECTIVES
+	     ＊ @@川、觀點用版型 B 時的側欄顏色待設計確認，目前先用黃綠。
+
+	     這個檔案用「Explore 計畫」當示意。explore-post.html、collaboration-post.html 是已套好分類的範例。
+	================================================================ -->
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+
+		<!-- Content：Explore 計畫單篇文章
+		     1. 文章開頭：固定底圖 + 黃線框（底圖寫在 .explore-bg 的 style background-image，上下兩段都要改），左上分類標籤，下方標題與日期・地點
+		     2. 內文：左欄正文（粗體小標、圖片與圖說），右欄黃色資訊側欄（桌機捲動時固定）
+		     3. 最後一條 BACK TO …：回到所屬分類的列表（依分類換，見最上方說明）
+		     樣式在 custom.css 的 Explore single 段落
+		============================================= -->
+		<section id="content" class="explore include-header">
+			<div class="explore-bg" aria-hidden="true" style="background-image: url('img/about-digital.jpg')"></div>
+
+			<div class="explore-grid explore-single-head">
+				<div class="explore-cell">
+					<div class="explore-title">
+						<span class="explore-single-label">Talk</span>
+					</div>
+					<div class="explore-single-heading">
+						<h1 class="explore-single-title">共通性：同理 Commonality: Empathy</h1>
+						<p class="explore-single-meta"><span>2026.11.20 ・ 毛刺空間 Glitch Space, Taichung</span></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="explore-single-body">
+			<div class="container">
+				<div class="row gx-5">
+
+					<!-- 正文（左） -->
+					<article class="postcontent col-lg-8 explore-single-content">
+						<p>拓撲學裡有一個概念叫做<strong>同胚</strong>：外表看起來不同的兩個形狀，只要能透過連續變形互相轉換，就被視為本質相同。這場對談借用這個概念，討論創作者之間、作品與觀眾之間，那些看不見卻真實存在的共通性。</p>
+
+						<p><strong>外表不同，本質相同：</strong>數位藝術、當代藝術與漫畫看似屬於不同的場域，但三者都在處理「如何讓一個畫面被感受」這件事。我們邀請不同背景的創作者，一起拆解各自的工作方法。</p>
+
+						<p><strong>Outwardly similar but essentially distinct:</strong> two works may share the same tools, the same screen, even the same audience — and still ask completely different questions. This session looks at where those differences begin.</p>
+
+						<figure class="explore-single-figure">
+							<img src="img/about-digital.jpg" alt="吳承儒（PB）個展《繫》現場">
+							<figcaption>吳承儒（PB）個展 - 《繫》攝影｜陳昱伶 Mia Chen（藝術家提供）</figcaption>
+						</figure>
+
+						<p>本場活動延續毛刺過去在<em>《數位藝術實驗場》</em>系列中的討論，從技術介面回到敘事與展場本身，思考創作如何在不同媒材之間移動、轉譯，並在每一次轉換中保留原本的溫度。</p>
+
+						<p>The evening combines a talk with a live audiovisual performance. Seats are limited; please register in advance. 活動以中文進行，部分段落提供英文說明。</p>
+					</article>
+
+					<!-- 活動資訊（右）：黃色資訊側欄
+					============================================= -->
+					<aside class="sidebar col-lg-4">
+						<div class="sidebar-widgets-wrap manga-item-sidebar">
+
+							<!-- 活動資訊 -->
+							<div class="widget">
+								<h4>活動資訊</h4>
+								<ul class="iconlist mb-0">
+									<li>日期：2026.11.20</li>
+									<li>時間：19:30–21:30</li>
+									<li>地點：毛刺空間 Glitch Space, Taichung</li>
+									<li>主辦：毛刺 Glitch</li>
+								</ul>
+							</div>
+
+							<!-- Credits：角色：名單 -->
+							<div class="widget">
+								<h4>Credits</h4>
+								<ul class="iconlist mb-0">
+									<li><span>策劃 Co-ordination：<a href="creators-post.html" class="creator-link text-decoration-underline">張文豪 CHANG Wen-Hao</a>、<a href="creators-post-2.html" class="creator-link text-decoration-underline">賴詩涵 LAI Shih-Han</a></span></li>
+									<li>視覺演出 Visual performance：吳承儒（PB）、Artist Name</li>
+									<li>音樂演出 Musical performance：Musician Name、音樂人名稱</li>
+								</ul>
+							</div>
+
+							<!-- 分類 -->
+							<div class="widget">
+								<h4>分類</h4>
+								<div class="tagcloud">
+									<a href="explore.html">Talk</a>
+									<a href="explore.html">數位藝術</a>
+									<a href="explore.html">Performance</a>
+								</div>
+							</div>
+
+						</div>
+					</aside><!-- .sidebar end -->
+
+				</div>
+			</div>
+		</section>
+
+		<!-- 回列表（滿版白底、上方灰線，hover 變黃綠；樣式 custom.css .back-to-list） -->
+		<a href="explore.html" class="back-to-list">BACK TO EXPLORE<i class="bi-arrow-up-right ms-2"></i></a>
+
+		<!-- Footer
+		============================================= -->
+		<!-- Footer 內容在 js/footer.js，改那個檔案即可 -->
+		<footer id="footer" class="border-top-0"></footer>
+		<script src="js/footer.js"></script>
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- Explore 描述：複製一份文字當底色層（黃色 + difference 混合照片），
+	     原本的文字疊在上面維持黑色；HTML 只要寫一次文字 -->
+	<script>
+		jQuery('.explore-desc-text').each(function() {
+			jQuery(this).clone()
+				.removeClass('explore-desc-text').addClass('explore-desc-hl')
+				.attr('aria-hidden', 'true')
+				.insertBefore(this);
+		});
+	</script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>

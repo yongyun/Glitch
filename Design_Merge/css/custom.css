@@ -252,7 +252,8 @@
 /* The nav bar itself turns the same blue while a mega-menu item is hovered
    open — :has() lets the ancestor (#header-wrap) react to a descendant's
    :hover state, which plain CSS selectors can't otherwise express. */
-#header-wrap:has(.menu-item.mega-menu:hover) {
+#header-wrap:has(.menu-item.mega-menu:hover),
+.top-search-open #header-wrap {
 	background-color: #002FF0 !important;
 }
 
@@ -264,8 +265,13 @@
 }
 .primary-menu .menu-link,
 .primary-menu .menu-link i,
-#lang-switch-trigger {
+#lang-switch-trigger,
+#top-search-trigger,
+.top-search-form input {
 	color: #fff !important;
+}
+.top-search-form input::placeholder {
+	color: rgba(255, 255, 255, 0.6);
 }
 /* Mobile hamburger icon bars are drawn with background-color, not color */
 .cnvs-hamburger .cnvs-hamburger-inner,
@@ -388,14 +394,11 @@
 #footer a:hover {
 	color: #CFF273 !important;
 }
-/* Header button 找我 — Canvas "Shadow Button" (.button-shadow): brand
-   yellow-green, square corners, solid black shadow; on hover it slides
-   into its shadow (.button-shadow-effect) and stays yellow instead of
-   Canvas's default dark hover. Sized to half the header height like the logo. */
+/* Header button 找我 — flat brand yellow-green, square corners, no border or
+   shadow; on hover it turns white. Sized to half the header height like the logo. */
 .button.header-button {
 	--cnvs-btn-color: #CFF273;
-	--cnvs-btn-color-dark: #CFF273;
-	--cnvs-btn-shadow-color: #000;
+	--cnvs-btn-color-dark: #fff;
 	--cnvs-btn-fontsize: 0.875rem;
 	--cnvs-btn-padding-x: 1rem;
 	--cnvs-btn-padding-y: 0;
@@ -403,6 +406,7 @@
 	align-items: center;
 	height: calc(var(--cnvs-header-height) / 2);
 	margin: 0;
+	border: 0;
 	border-radius: 0;
 	color: #000;
 	font-weight: 700;
@@ -533,7 +537,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	overflow-x: clip;
 }
 
-/* 漫畫 (manga.html) — portrait covers (3:4) instead of the template's
+/* 漫畫 (comics.html) — portrait covers (3:4) instead of the template's
    landscape thumbnails, cropped to fill so every card lines up. */
 .manga-grid .portfolio-image img {
 	aspect-ratio: 3 / 4;
@@ -541,7 +545,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	width: 100%;
 }
 
-/* 漫畫 封面 — animated canvas (assets/manga-hero-canvas.html) fills the
+/* 漫畫 封面 — animated canvas (assets/comics-hero-canvas.html) fills the
    box behind the title. The title ignores pointer events so the letters
    underneath can still be dragged. */
 .manga-hero {
@@ -562,7 +566,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	pointer-events: none;
 }
 
-/* 漫畫內頁 (manga-post.html) — portrait cover in the left half of the
+/* 漫畫內頁 (comics-post.html) — portrait cover in the left half of the
    main column, all text in the right half (stacks on phones). */
 .manga-item-cover img {
 	width: 100%;
@@ -586,7 +590,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .manga-item-sidebar.manga-item-sidebar-gray {
 	background-color: var(--bs-gray-400);
 }
-/* blue info box with white text (manga-post.html) */
+/* blue info box with white text (comics-post.html) */
 .manga-item-sidebar.manga-item-sidebar-blue {
 	background-color: #002FF0;
 	color: #fff;
@@ -675,14 +679,14 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	padding: 0.1em 0.3em;
 }
 
-/* Footer "Email Us" button — Shadow Button like the header 找我, brand
-   yellow with blue text (sits on the blue footer panel). Scoped to #footer
-   so it beats the panel's white link color below. */
+/* Footer "Email Us" button — flat like the header 找我 (no border or shadow,
+   turns white on hover), brand yellow with blue text (sits on the blue footer
+   panel). Scoped to #footer so it beats the panel's white link color below. */
 #footer .button.footer-email-button {
 	--cnvs-btn-color: #CFF273;
-	--cnvs-btn-color-dark: #CFF273;
-	--cnvs-btn-shadow-color: #000;
+	--cnvs-btn-color-dark: #fff;
 	margin: 0;
+	border: 0;
 	border-radius: 0;
 	color: #002FF0;
 }
@@ -705,20 +709,9 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 #footer .footer-panel #copyrights {
 	border-top-color: rgba(255, 255, 255, 0.3) !important;
 }
-/* Footer background — two variants, picked per page by a class on
-   <footer id="footer"> to match the page's last section, so the blue panel
-   always sits on the same color as what's above it:
-     .footer-white — last section is white (default pages)
-     .footer-gray  — last section uses var(--bs-gray-300) (index, about)
-     .footer-blue  — the whole footer is brand blue, so the panel has no
-                     visible edge (explore) */
-#footer.footer-white {
-	--cnvs-footer-bg: #fff;
-}
-#footer.footer-gray {
-	--cnvs-footer-bg: var(--bs-gray-300);
-}
-#footer.footer-blue {
+/* Footer background — 全站統一滿版毛刺藍（不再依頁面最後一個區塊換底色），
+   藍色底框跟外圍同色，看起來就是一整片藍 */
+#footer {
 	--cnvs-footer-bg: #002FF0;
 }
 
@@ -768,7 +761,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .page-title.page-title-yellow {
 	background-color: #CFF273;
 }
-/* Page title on brand blue with white text (manga-post.html) */
+/* Page title on brand blue with white text (comics-post.html) */
 .page-title.page-title-blue {
 	background-color: #002FF0;
 	color: #fff;
@@ -786,105 +779,6 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .page-title.page-title-gray {
 	background-color: var(--bs-gray-400);
 }
-/* Page title with a flowing multi-point gradient (news.html) — four large,
-   heavily blurred color blobs (brand blue ×2, brand yellow-green ×2, gray)
-   each drift and scale on their own path and timing with ease-in-out
-   curves, so the colors keep blending into each other non-linearly. */
-.page-title.mesh-title {
-	position: relative;
-	overflow: hidden;
-	background-color: var(--bs-gray-400);
-}
-.page-title.mesh-title > .container {
-	position: relative;
-	z-index: 1;
-}
-.mesh-bg {
-	position: absolute;
-	inset: 0;
-	filter: blur(60px);
-	transform: translateZ(0);
-}
-.mesh-blob {
-	position: absolute;
-	width: 70vmax;
-	height: 70vmax;
-	border-radius: 50%;
-	will-change: transform;
-	animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-}
-.mesh-blue {
-	background: radial-gradient(circle, #002FF0 0%, rgba(0, 47, 240, 0) 65%);
-	top: -40vmax;
-	right: -20vmax;
-	animation-name: mesh-drift-a;
-	animation-duration: 8s;
-}
-.mesh-yellow {
-	width: 90vmax;
-	height: 90vmax;
-	background: radial-gradient(circle, #CFF273 0%, #CFF273 20%, rgba(207, 242, 115, 0) 70%);
-	bottom: -55vmax;
-	left: -20vmax;
-	animation-name: mesh-drift-b;
-	animation-duration: 10s;
-}
-.mesh-yellow-2 {
-	background: radial-gradient(circle, #CFF273 0%, rgba(207, 242, 115, 0) 65%);
-	top: -35vmax;
-	left: 25vw;
-	animation-name: mesh-drift-e;
-	animation-duration: 9s;
-}
-.mesh-gray {
-	background: radial-gradient(circle, #ced4da 0%, rgba(206, 212, 218, 0) 65%);
-	top: -30vmax;
-	left: -25vmax;
-	animation-name: mesh-drift-c;
-	animation-duration: 11s;
-}
-.mesh-blue-2 {
-	width: 45vmax;
-	height: 45vmax;
-	background: radial-gradient(circle, #002FF0 0%, rgba(0, 47, 240, 0) 65%);
-	bottom: -30vmax;
-	right: 10vmax;
-	animation-name: mesh-drift-d;
-	animation-duration: 12s;
-}
-@keyframes mesh-drift-a {
-	0%   { transform: translate(0, 0) scale(1); }
-	50%  { transform: translate(-25vw, 10vh) scale(1.25); }
-	100% { transform: translate(-10vw, 25vh) scale(0.9); }
-}
-@keyframes mesh-drift-b {
-	0%   { transform: translate(0, 0) scale(1); }
-	50%  { transform: translate(30vw, -15vh) scale(0.85); }
-	100% { transform: translate(15vw, -5vh) scale(1.2); }
-}
-@keyframes mesh-drift-c {
-	0%   { transform: translate(0, 0) scale(1.1); }
-	50%  { transform: translate(20vw, 20vh) scale(0.9); }
-	100% { transform: translate(40vw, 5vh) scale(1.15); }
-}
-@keyframes mesh-drift-d {
-	0%   { transform: translate(0, 0) scale(1); }
-	50%  { transform: translate(-30vw, -10vh) scale(1.3); }
-	100% { transform: translate(-15vw, -20vh) scale(0.8); }
-}
-@keyframes mesh-drift-e {
-	0%   { transform: translate(0, 0) scale(0.9); }
-	50%  { transform: translate(-20vw, 15vh) scale(1.2); }
-	100% { transform: translate(15vw, 20vh) scale(1); }
-}
-@media (prefers-reduced-motion: reduce) {
-	.mesh-blob {
-		animation: none;
-	}
-}
-
 /* 好ㄉ section nav (漫畫 ✸ 毛刺出版品 ✸ 周邊) under each page's
    title — same ✸ breadcrumb as .event-nav, but links, the current item and
    the ✸ all take the title's own color. */
@@ -1368,7 +1262,8 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	margin: 0 0 0 auto;
 }
 
-/* perspectives.html — 觀點 (was the Explore 計畫 list, classes kept as .explore-*)
+/* .explore — photo-backed yellow-grid blocks, now used by the detail pages
+   (explore-post / collaboration-post hero, creators-post MORE CREATORS)
    A darkened about-hero.jpg fills the screen and stays put while scrolling
    (.explore-bg is position: fixed, kept to this section by clip-path, which
    also works on iOS unlike background-attachment: fixed). Over it, a grid of
@@ -1432,7 +1327,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 }
 /* Description: the yellow fill hugs each line of text only. Two copies of
    the text are stacked in the same grid cell — the back one (.explore-desc-hl,
-   made by the script in perspectives.html) is just the yellow fill, blended with
+   made by the inline script at the bottom of each page that uses it) is just the yellow fill, blended with
    "difference" over the photo; the front one is the black text. */
 /* margin-top: auto pins it to the bottom of the block, whatever else the
    block holds (e.g. the empty full-block .stretched-link after it) */
@@ -1518,29 +1413,6 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	.explore-cell:hover .explore-cell-img {
 		animation: none;
 	}
-}
-/* Explore pagination sits over the photo — half-transparent white buttons
-   in yellow frames, like the grid lines (the current page stays solid
-   brand blue) */
-.explore .list-pagination .pagination {
-	--bs-pagination-bg: rgba(255, 255, 255, 0.5);
-	--bs-pagination-disabled-bg: rgba(255, 255, 255, 0.5);
-	--bs-pagination-border-color: var(--explore-yellow);
-	--bs-pagination-disabled-border-color: var(--explore-yellow);
-}
-/* full width, flush under the grid with no space above or below; the
-   buttons share the width equally (fewer pages = wider buttons) */
-.explore .list-pagination {
-	padding: 0;
-}
-.explore .list-pagination .pagination {
-	width: 100%;
-}
-.explore .list-pagination .page-item {
-	flex: 1;
-}
-.explore .list-pagination .page-link {
-	text-align: center;
 }
 /* Phones: one block per row */
 @media (max-width: 767.98px) {
@@ -2417,7 +2289,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	transform: scale(1.08);
 }
 
-/* 好ㄉ lists (manga.html / publications.html / goods.html) — hovering an
+/* 好ㄉ lists (comics.html / publications.html / goods.html) — hovering an
    item: the cover / product photo zooms in slightly, clipped to its frame */
 .manga-grid .portfolio-image img,
 .goods-grid .product-image img {
@@ -2429,4 +2301,292 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .manga-grid .portfolio-item:hover .portfolio-image img,
 .goods-grid .product:hover .product-image img {
 	transform: scale(1.08);
+}
+
+/* 創作者單頁 slideshow：上方（IG 跑馬燈到 slider）的距離 = 下方（slider 到 More Stories 表單）的距離
+   下方 = section 的 padding-bottom + 桌機 .pb-lg-5（3rem），所以上方用同樣的值 */
+.creator-slider-wrap {
+	padding-top: var(--cnvs-section-padding);
+}
+@media (min-width: 992px) {
+	.creator-slider-wrap {
+		padding-top: calc(var(--cnvs-section-padding) + 3rem);
+	}
+}
+
+/* search.html — 搜尋結果卡片的圖片統一裁成 4:3，不同來源的圖才會一樣高 */
+.search-results .entry-image img {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+/* search.html — Read More 用本站通用的 Shadow Button（跟 menu「找我」、Get in Touch「Email Us」同款）：
+   黃綠底、黑框、黑色實心陰影，hover 時滑進陰影 */
+.button.search-more-button {
+	--cnvs-btn-color: #CFF273;
+	--cnvs-btn-color-dark: #CFF273;
+	--cnvs-btn-shadow-color: #000;
+	margin: 0;
+	border-radius: 0;
+	color: #000;
+	font-weight: 700;
+}
+.button.search-more-button:hover {
+	color: #000;
+}
+
+/* search.html — 標題下方的搜尋列：滿版、下方一條細線（上方那條是 page-title 本身的底線）；
+   左邊放大鏡（可按）、右邊無框輸入欄，字色跟 placeholder 用淺灰 */
+.search-title-bar {
+	border-bottom: 1px solid var(--cnvs-contrast-200, #dee2e6);
+}
+.search-title-form {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	height: 82px;
+	margin: 0;
+}
+.search-title-form button {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: #999;
+	font-size: 1.375rem;
+	line-height: 1;
+	cursor: pointer;
+}
+.search-title-form button:hover {
+	color: #002FF0;
+}
+.search-title-form input {
+	flex: 1;
+	min-width: 0;
+	height: 100%;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	font-size: 1.125rem;
+	color: #333;
+}
+.search-title-form input::placeholder {
+	color: #999;
+}
+
+/* 全站按鈕一律方角（不要圓角）：
+   一般按鈕、Find us 這種 canvas-button、slider 左右箭頭、首頁輪播左右鍵、隨機排序鍵、回到頂端 */
+.button,
+.canvas-button,
+.slider-arrow-left,
+.slider-arrow-right,
+.owl-carousel .owl-nav [class*=owl-],
+.grid-shuffle,
+#gotoTop {
+	border-radius: 0 !important;
+}
+
+/* 藝術家名字連到創作者單頁（展覽資訊、展覽卡片、策劃名單…）：
+   底線提示可以點，hover 變毛刺藍。新增連結時加 class="creator-link text-decoration-underline"
+   （Canvas 會把所有連結的底線拿掉，只有帶 text-decoration-underline 的例外） */
+a.creator-link {
+	color: inherit;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+a.creator-link:hover {
+	color: #002FF0;
+}
+
+/* events-post — 展覽頁最下方的照片 slideshow：
+   跟上方標語的距離 = 標語跟影片的距離（桌機 6rem、手機 4rem） */
+.event-slider {
+	margin-top: 6rem;
+}
+@media (max-width: 991.98px) {
+	.event-slider {
+		margin-top: 4rem;
+	}
+}
+
+/* 內頁最下方「BACK TO …」回列表按鈕（展覽、Explore、合作、消息、@@川、好ㄉ、觀點內頁共用）：
+   滿版白底、上方一條灰線，跟創作者頁的 BACK TO CREATOR LIST 同樣的字距與高度，hover 變黃綠。
+   position: relative 讓它疊在 @@川／觀點內頁黏在後面的 hero 影片上面（不然會被蓋住） */
+.back-to-list {
+	position: relative;
+	display: block;
+	padding: 1.25rem 2rem;
+	border-top: 1px solid var(--cnvs-contrast-300, #dee2e6);
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+	letter-spacing: 0.1em;
+	transition: background-color 0.3s ease;
+}
+.back-to-list:hover {
+	background-color: #CFF273;
+	color: #000;
+}
+
+/* perspectives.html — 觀點列表（參照 Canvas block-content-gallery-parallax）
+   每段滿版一個畫面：左邊大標＋說明，右邊兩欄卡片，往下捲時左欄往下、右欄往上滑
+   （Canvas .scroll-detect 會給 --cnvs-scroll-end：0 → 1）。
+   背景色依序 藍 → 黃 → 灰 循環。 */
+.persp-section:nth-of-type(3n+1) {
+	background-color: #002FF0;
+	color: #fff;
+}
+.persp-section:nth-of-type(3n+1) h2 {
+	color: #fff;
+}
+.persp-section:nth-of-type(3n+2) {
+	background-color: #CFF273;
+}
+.persp-section:nth-of-type(3n) {
+	background-color: var(--bs-gray-300);
+}
+.persp-gallery {
+	height: 100vh;
+}
+/* 卡片輪播（Swiper）：桌機一頁 = 一個畫面高，上下切換 */
+.persp-swiper {
+	height: 100vh;
+}
+/* 切換鈕＋頁數（左欄說明下面）：方形線框按鈕，跟著段落文字顏色；
+   hover 黑底白字（藍底段落改白底藍字）；到頭／到尾的那顆變淡 */
+.persp-swiper-nav {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 2.5rem;
+}
+.persp-swiper-nav button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	padding: 0;
+	border: 1px solid currentColor;
+	background: transparent;
+	color: inherit;
+	font-size: 1.125rem;
+	transition: background-color .2s, color .2s, border-color .2s, opacity .2s;
+}
+.persp-swiper-nav button:hover {
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
+}
+.persp-section:nth-of-type(3n+1) .persp-swiper-nav button:hover {
+	background-color: #fff;
+	border-color: #fff;
+	color: #002FF0;
+}
+.persp-swiper-nav button.swiper-button-disabled {
+	opacity: .3;
+	pointer-events: none;
+}
+/* swiper.css 會把頁數設成 absolute、寬 100%，這裡改回跟按鈕排在同一行 */
+.persp-swiper-count.swiper-pagination-fraction {
+	position: static;
+	width: auto;
+	min-width: 4.5rem;
+	text-align: center;
+	letter-spacing: .1em;
+	font-variant-numeric: tabular-nums;
+}
+/* 卡片高度跟螢幕高度走：一欄 = 短 40vh + 長 54vh（含間距）= 94vh，
+   剩下 6vh 給滑動，所以整欄（含底部標題）任何時候都完整留在畫面內 */
+.persp-col-down {
+	--cnvs-transitions: .2s linear;
+	transform: translate3d(0, calc(6vh * var(--cnvs-scroll-end, 0)), 0);
+}
+.persp-col-up {
+	--cnvs-transitions: .2s linear;
+	transform: translate3d(0, calc(6vh - 6vh * var(--cnvs-scroll-end, 0)), 0);
+}
+.persp-card-sm {
+	height: calc(40vh - 1rem);
+}
+.persp-card-lg {
+	height: calc(54vh - 1rem);
+}
+
+/* 卡片（參照 block-content-gallery-9）：圖片鋪滿、下方漸層壓暗，白字日期＋標題；hover 圖片微放大 */
+.persp-card {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	color: #fff;
+}
+.persp-card img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.6s ease;
+}
+.persp-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0.9) 100%);
+}
+.persp-card:hover img {
+	transform: scale(1.05);
+}
+.persp-card-content {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	padding: 1.5rem 1.75rem;
+}
+.persp-card-date {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-size: 0.875rem;
+	opacity: 0.8;
+}
+.persp-card-title {
+	margin: 0;
+	color: #fff;
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: 0;
+	text-transform: none;
+}
+.persp-card:hover .persp-card-title {
+	color: #CFF273;
+}
+
+/* 手機／平板：不做滑動，卡片照順序排在說明文字下面，高度改短一點 */
+@media (max-width: 991.98px) {
+	.persp-gallery {
+		height: auto;
+		padding-bottom: 3rem;
+	}
+	.persp-col-down,
+	.persp-col-up {
+		transform: none;
+	}
+	/* 手機／平板：輪播改左右滑，高度跟著內容；切換鈕箭頭轉成左右 */
+	.persp-swiper {
+		height: auto;
+	}
+	.persp-swiper-nav {
+		margin-top: 2rem;
+	}
+	.persp-swiper-nav button i {
+		transform: rotate(-90deg);
+	}
+	.persp-card-sm,
+	.persp-card-lg {
+		height: 280px;
+	}
 }

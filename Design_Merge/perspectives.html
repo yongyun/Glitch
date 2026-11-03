@@ -13,6 +13,9 @@
 	<!-- Font Icons -->
 	<link rel="stylesheet" href="css/font-icons.css">
 
+	<!-- Swiper（右邊卡片輪播） -->
+	<link rel="stylesheet" href="css/swiper.css">
+
 	<!-- Niche Demos -->
 	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
 
@@ -80,229 +83,666 @@
 			<div class="header-wrap-clone"></div>
 		</header><!-- #header end -->
 
-
-		<!-- Content：觀點列表
-		     底圖固定不動（.explore-bg），上面的黃線格子跟文字照常捲動；一個畫面 = 2×2 四塊，
-		     往下捲就是一排排新的區塊。每塊：左上標題、下方描述（文字底下的黃色 difference 底色，由下方 script 自動產生）。
-		     滑鼠移到區塊上會淡入該則的圖片（.explore-cell-img，目前是示意假圖）。要新增內容就複製一個 .explore-cell；樣式在 custom.css 的 Explore 段落
+		<!-- Content：觀點列表（參照 Canvas block-content-gallery-parallax）
+		     六段，每段：左邊大標＋說明＋上下切換鈕，右邊卡片輪播（Swiper）。
+		     輪播每一頁 = 一個 swiper-slide = 4 篇（兩欄、一欄兩張），往下捲時兩欄反方向滑動；
+		     要多放文章就複製一整個 swiper-slide 改內容，只有一組時切換鈕會自動隱藏。
+		     桌機上下切換，手機／平板改左右滑。
+		     卡片參照 block-content-gallery-9：圖片＋日期＋標題，連到觀點內頁。
+		     背景色依序 藍 → 黃 → 灰 循環（custom.css .persp-section），新增一段就複製一整個 <section class="persp-section">。
+		     大標太長時用 <span class="d-inline-block"> 分段，換行才不會斷在詞中間（見第 5、6 段）。
+		     卡片高度用 persp-card-sm（短）／persp-card-lg（長），左右兩欄長短順序相反才有層次感；樣式在 custom.css「perspectives.html」段落
 		============================================= -->
-		<section id="content" class="explore include-header">
-			<div class="explore-bg" aria-hidden="true"></div>
+		<div id="content">
 
-			<div class="explore-grid">
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event1.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">核心精神</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>一個橫跨策展研究、創意企劃、藝術製作與空間經營的文化實踐團隊。我們關注藝術、文化與日常生活的交會，以敏銳的文化觀察與精準的內容企劃，發展兼具趣味、獨特品味與叛逆精神的美學內容，挑戰習以為常的觀看方式與文化經驗。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="核心精神"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event2.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Explore Program</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>An open call for artists, designers and engineers working with Unreal, Unity, TouchDesigner and AI tools.</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Explore Program"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event3.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">核心精神，致力撬動文化場景的多重</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>以策展思維為方法，製作實踐為核心。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="核心精神，致力撬動文化場景的多重"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event4.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Artist Residency &amp; Open Studio Programme</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>Explore 計畫邀請年輕創作者進駐毛刺空間，透過 open studio、talk 與 workshop，讓創作過程被看見，也讓觀眾參與其中。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Artist Residency &amp; Open Studio Programme"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event5.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">實驗、對話與交流</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>Talks, screenings and listening sessions that bring together practitioners from pop music, experimental sound and image.</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="實驗、對話與交流"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event6.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Glitch</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>實驗場。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Glitch"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event7.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">跨領域合作網絡：從展覽、出版到大型文化活動的複合型體驗製作</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>從藝術創作支持、展覽策劃，到大型文化活動與複合型體驗製作，我們不受單一形式或領域限制，結合鮮明的美學判斷與靈活的製作能力，讓超越想像的事情得以發生。Connecting independent publishers, bookshops and creators across Northeast and Southeast Asia.</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="跨領域合作網絡：從展覽、出版到大型文化活動的複合型體驗製作"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event8.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Independent Publishing, Zines and the Edges of Contemporary Comics</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>Zine fair、讀書會與創作者市集，每月一次在柳川畔。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Independent Publishing, Zines and the Edges of Contemporary Comics"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event9.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Open Studio</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>進駐藝術家每月最後一個週末開放工作室，與觀眾面對面聊創作。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Open Studio"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event10.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">數位藝術實驗場 Vol.3</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>Real-time graphics, generative sound and a room that listens back. 三位創作者以 TouchDesigner 與 Unity 打造可互動的空間裝置。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="數位藝術實驗場 Vol.3"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event11.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Night Market of Images</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>A one-night market of prints, zines and small-run objects.</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Night Market of Images"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event12.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">聲音與影像的現場</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>邀請流行音樂與實驗音像產業的工作者，一起開發每一檔展期獨特的節目形式，創造富有臨場感的觀眾體驗，開啟數位藝術與其他領域協作的更多可能。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="聲音與影像的現場"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event1.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Archive</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>整理。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Archive"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event2.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">從柳川出發：城市、河岸與日常生活</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>A walking programme along the Liuchuan riverbank, mapping small shops, studios and the stories in between.</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="從柳川出發：城市、河岸與日常生活"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event3.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Comics Warehouse Reading Room</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>亞洲漫畫倉庫閱覽室開放中，收藏東北亞與東南亞獨立漫畫、Zine 與藝術家書，歡迎預約參觀。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Comics Warehouse Reading Room"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event4.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">實習計劃</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>Six-month internships in curating, production and space management.</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="實習計劃"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event5.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Glitch Talks</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>每月一場對談，從策展、評論到文化研究，聊聊那些還沒有答案的問題。Bilingual sessions, open to everyone.</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Glitch Talks"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event6.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">叛逆精神</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>不依附體制的創作姿態。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="叛逆精神"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event7.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">Residency Call 2027: Image, Narrative and the Space In-Between</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>We are looking for young artists and curators with cultural awareness, an experimental outlook and a rebellious streak. 入選者將獲得展演空間、製作支持與長期的策展對話。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="Residency Call 2027: Image, Narrative and the Space In-Between"></a>
-					</div>
-
-					<div class="explore-cell">
-						<img class="explore-cell-img" src="img/event8.png" alt="">
-						<h2 class="explore-title"><span class="nocolor">週末工作坊</span></h2>
-						<p class="explore-desc"><span class="explore-desc-text"><span>Risograph printing, bookbinding and zine making — 從零開始做一本自己的刊物。</span></span></p>
-						<a href="perspectives-post.html" class="stretched-link" aria-label="週末工作坊"></a>
-					</div>
-
-			</div>
-
-			<!-- 分頁選單：每頁 15 則（兩欄排成 10 排），
-			     頁碼由 js/pagination.js 自動產生；只有一頁時不顯示 -->
-			<nav class="list-pagination d-none" aria-label="觀點分頁">
-				<ul class="pagination pagination-inside-transparent pagination-lg mb-0"></ul>
-			</nav>
-		</section><!-- #content end -->
-
-		<!-- Footer
-		============================================= -->
-		<footer id="footer" class="border-top-0 footer-blue">
-			<!-- 藍色底框：寬度跟上面內容的 container 一樣；外圍底色用 footer-white / footer-gray / footer-blue 對應頁面最後一個區塊（見 custom.css） -->
-			<div class="container">
-			<div class="footer-panel">
-			<div class="container mw-md">
-
-				<!-- Footer Widgets
-				============================================= -->
-				<div class="footer-widgets-wrap mb-lg-3 pt-lg-4">
-					<div class="row align-items-center justify-content-between gx-lg-5 gy-5">
-						<div class="col-md-6">
-							<h4 class="display-3 fw-semibold ls-n3">Get In Touch</h4>
-							<a href="#" class="button button-large button-shadow button-shadow-effect border border-width-2 border-dark footer-email-button px-4 py-4 w-100"><div class="d-flex "><span><strong>Email Us</strong>: Ingo@glitch.com</span><i class="bi bi-envelope-at fs-4 ms-auto"></i></div></a>
-							<h4 class="fs-5 fw-semibold mb-0 mt-4 ms-4">臺中市西區柳川東路二段58號</h4>
-							<h4 class="fs-5 fw-semibold mb-0 mt-2 ms-4">Ingo@glitch.com</h4>
+			<!-- 1. 藝術家視角 Artist’s Lens -->
+			<section class="persp-section">
+				<div class="container-fluid">
+					<div class="row min-vh-100 align-items-center justify-content-between overflow-hidden">
+						<div class="col-lg-4 offset-lg-1 p-4 py-5 py-lg-4">
+							<p class="text-uppercase ls-2 fw-medium op-07 mb-2">Artist’s Lens</p>
+							<h2 class="display-4 fw-bold">藝術家視角</h2>
+							<p class="mb-0">從創作者的位置出發，聽藝術家談作品背後的思考、工作方法與日常，看見作品之外的那個人。</p>
+							<div class="persp-swiper-nav">
+								<button type="button" class="persp-swiper-prev" aria-label="上一組文章"><i class="bi-arrow-up"></i></button>
+								<span class="persp-swiper-count"></span>
+								<button type="button" class="persp-swiper-next" aria-label="下一組文章"><i class="bi-arrow-down"></i></button>
+							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="row">
-								<div class="col-6">
-									<div class="widget widget_links widget-li-noicon">
-										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover h-color-facebook fw-medium" href="#"><span>事件<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-instagram" href="#"><span>最新消息<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-twitter" href="#"><span>媒體報導<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-linkedin" href="tshuan.html"><span>@@川<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-										</ul>
 
+						<div class="col-lg-6 persp-gallery scroll-detect">
+							<div class="swiper persp-swiper">
+								<div class="swiper-wrapper">
+									<!-- 第 1 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event3.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.10.20</span>
+																<h3 class="persp-card-title">藝術家的工作桌：林珈伃談《最遠的最短距離》</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-act.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.09.12</span>
+																<h3 class="persp-card-title">在搬家與搬家之間，記錄一個房間</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event9.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.08.03</span>
+																<h3 class="persp-card-title">吳承儒（PB）：數位影像裡的手感</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event5.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.07.15</span>
+																<h3 class="persp-card-title">陳曦與她的狗：日常就是創作現場</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
 									</div>
-								</div>
-
-								<div class="col-6">
-									<div class="widget widget_links widget-li-noicon">
-										<ul>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-dribbble" href="explore.html"><span>Explore計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-color-whatsapp" href="#"><span>實習計劃<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-dark" href="#"><span>關於毛刺<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-											<li class="mb-3"><a class="fs-4 magnetic-hover fw-medium h-text-primary" href="creators.html"><span>創作者<i class="bi-arrow-up-right ms-2 fs-5"></i></span></a></li>
-										</ul>
-
+									<!-- 第 2 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event10.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.08.30</span>
+																<h3 class="persp-card-title">工作室日常：一天從整理材料開始</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-2.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.09.12</span>
+																<h3 class="persp-card-title">把城市帶進展場：裝置作品的現場調整</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event6.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.08.16</span>
+																<h3 class="persp-card-title">從草圖到成品：一件作品的誕生</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/1.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.08.02</span>
+																<h3 class="persp-card-title">藝術家書單：影響創作的五本書</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div><!-- .footer-widgets-wrap end -->
+				</div>
+			</section>
 
-				<!-- Copyrights
-				============================================= -->
-				<div id="copyrights" class="bg-transparent border-top">
-					<div class="row g-3">
-						<div class="col-lg-6 text-center text-lg-start text-contrast-500">
-							Copyrights &copy; 2026 All Rights Reserved by Glitch.
+			<!-- 2. 威尼斯雙年展 Venice Biennale -->
+			<section class="persp-section">
+				<div class="container-fluid">
+					<div class="row min-vh-100 align-items-center justify-content-between overflow-hidden">
+						<div class="col-lg-4 offset-lg-1 p-4 py-5 py-lg-4">
+							<p class="text-uppercase ls-2 fw-medium op-07 mb-2">Venice Biennale</p>
+							<h2 class="display-4 fw-bold">威尼斯雙年展</h2>
+							<p class="mb-0">跟著毛刺走進威尼斯雙年展，從國家館、平行展到城市角落，整理現場觀察與值得記下的作品。</p>
+							<div class="persp-swiper-nav">
+								<button type="button" class="persp-swiper-prev" aria-label="上一組文章"><i class="bi-arrow-up"></i></button>
+								<span class="persp-swiper-count"></span>
+								<button type="button" class="persp-swiper-next" aria-label="下一組文章"><i class="bi-arrow-down"></i></button>
+							</div>
 						</div>
 
+						<div class="col-lg-6 persp-gallery scroll-detect">
+							<div class="swiper persp-swiper">
+								<div class="swiper-wrapper">
+									<!-- 第 1 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/hero2.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.05.10</span>
+																<h3 class="persp-card-title">第 61 屆威尼斯雙年展：現場第一手觀察</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-1.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.05.18</span>
+																<h3 class="persp-card-title">國家館巡禮：這一屆最值得停留的五個展間</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-2.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.05.26</span>
+																<h3 class="persp-card-title">平行展地圖：離開主展場之後</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event7.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.06.02</span>
+																<h3 class="persp-card-title">威尼斯的夜晚：開幕週筆記</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 第 2 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event12.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.04.20</span>
+																<h3 class="persp-card-title">雙年展之外：城市裡的小型空間</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-1.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.04.06</span>
+																<h3 class="persp-card-title">策展人筆記：主題展的閱讀路徑</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event2.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.03.22</span>
+																<h3 class="persp-card-title">威尼斯行前準備：看展動線與交通</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/hero.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.03.08</span>
+																<h3 class="persp-card-title">歷屆台灣館回顧</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div><!-- #copyrights end -->
+				</div>
+			</section>
 
-			</div>
-			</div><!-- .footer-panel end -->
-			</div>
-		</footer><!-- #footer end -->
+			<!-- 3. 議題與當下 Issues and Currents -->
+			<section class="persp-section">
+				<div class="container-fluid">
+					<div class="row min-vh-100 align-items-center justify-content-between overflow-hidden">
+						<div class="col-lg-4 offset-lg-1 p-4 py-5 py-lg-4">
+							<p class="text-uppercase ls-2 fw-medium op-07 mb-2">Issues and Currents</p>
+							<h2 class="display-4 fw-bold">議題與當下</h2>
+							<p class="mb-0">回應正在發生的事：藝術生態、文化政策與創作者處境，我們用文章與對談整理自己的觀點。</p>
+							<div class="persp-swiper-nav">
+								<button type="button" class="persp-swiper-prev" aria-label="上一組文章"><i class="bi-arrow-up"></i></button>
+								<span class="persp-swiper-count"></span>
+								<button type="button" class="persp-swiper-next" aria-label="下一組文章"><i class="bi-arrow-down"></i></button>
+							</div>
+						</div>
+
+						<div class="col-lg-6 persp-gallery scroll-detect">
+							<div class="swiper persp-swiper">
+								<div class="swiper-wrapper">
+									<!-- 第 1 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/about-digital.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.10.01</span>
+																<h3 class="persp-card-title">獨立空間還能怎麼活下去？</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event1.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.09.05</span>
+																<h3 class="persp-card-title">數位藝術的下一步：技術之外的敘事</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-manga.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.08.21</span>
+																<h3 class="persp-card-title">漫畫作為當代藝術：邊界在哪裡</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event11.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.07.30</span>
+																<h3 class="persp-card-title">創作者的勞動與報酬，從一張合約開始</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 第 2 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event8.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.09.20</span>
+																<h3 class="persp-card-title">展覽補助制度的十年變化</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-3.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.09.06</span>
+																<h3 class="persp-card-title">藝術教育的現場：從課堂到展場</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event4.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.08.23</span>
+																<h3 class="persp-card-title">社群時代的藝術評論</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/about-hero.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.08.09</span>
+																<h3 class="persp-card-title">空間租金與展演生態</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 4. 藝遊誌 Art Chase -->
+			<section class="persp-section">
+				<div class="container-fluid">
+					<div class="row min-vh-100 align-items-center justify-content-between overflow-hidden">
+						<div class="col-lg-4 offset-lg-1 p-4 py-5 py-lg-4">
+							<p class="text-uppercase ls-2 fw-medium op-07 mb-2">Art Chase</p>
+							<h2 class="display-4 fw-bold">藝遊誌</h2>
+							<p class="mb-0">追著展覽到處跑：國內外美術館、藝術博覽會與小型空間的看展紀錄，附上私心推薦路線。</p>
+							<div class="persp-swiper-nav">
+								<button type="button" class="persp-swiper-prev" aria-label="上一組文章"><i class="bi-arrow-up"></i></button>
+								<span class="persp-swiper-count"></span>
+								<button type="button" class="persp-swiper-next" aria-label="下一組文章"><i class="bi-arrow-down"></i></button>
+							</div>
+						</div>
+
+						<div class="col-lg-6 persp-gallery scroll-detect">
+							<div class="swiper persp-swiper">
+								<div class="swiper-wrapper">
+									<!-- 第 1 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/about-3.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.04.18</span>
+																<h3 class="persp-card-title">東京看展三日：從美術館到地下空間</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-4.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.03.30</span>
+																<h3 class="persp-card-title">巴塞爾藝術展香港展會：人潮之外的小攤位</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event2.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.02.14</span>
+																<h3 class="persp-card-title">台南小旅行：老屋裡的當代藝術</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event4.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2026.01.20</span>
+																<h3 class="persp-card-title">首爾畫廊街散步地圖</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 第 2 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event9.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.12.28</span>
+																<h3 class="persp-card-title">香港看展地圖：從中環到觀塘</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/2.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.12.14</span>
+																<h3 class="persp-card-title">大阪美術館巡禮</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event5.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.11.30</span>
+																<h3 class="persp-card-title">柏林獨立空間散步</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event11.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.11.16</span>
+																<h3 class="persp-card-title">花蓮藝術祭：山與海之間</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 5. 香港：場景之中，想像之外 Hong Kong as Mise-en-scène -->
+			<section class="persp-section">
+				<div class="container-fluid">
+					<div class="row min-vh-100 align-items-center justify-content-between overflow-hidden">
+						<div class="col-lg-4 offset-lg-1 p-4 py-5 py-lg-4">
+							<p class="text-uppercase ls-2 fw-medium op-07 mb-2">Hong Kong as Mise-en-scène</p>
+							<h2 class="display-4 fw-bold"><span class="d-inline-block">香港：</span><span class="d-inline-block">場景之中，</span><span class="d-inline-block">想像之外</span></h2>
+							<p class="mb-0">從電影取景、街道招牌到城市空間，看香港如何一再被拍攝、被想像，又在鏡頭之外留下什麼。</p>
+							<div class="persp-swiper-nav">
+								<button type="button" class="persp-swiper-prev" aria-label="上一組文章"><i class="bi-arrow-up"></i></button>
+								<span class="persp-swiper-count"></span>
+								<button type="button" class="persp-swiper-next" aria-label="下一組文章"><i class="bi-arrow-down"></i></button>
+							</div>
+						</div>
+
+						<div class="col-lg-6 persp-gallery scroll-detect">
+							<div class="swiper persp-swiper">
+								<div class="swiper-wrapper">
+									<!-- 第 1 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event6.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.12.20</span>
+																<h3 class="persp-card-title">重慶大廈：電影裡的迷宮與真實的日常</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-hero.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.12.05</span>
+																<h3 class="persp-card-title">霓虹退場之後：街道招牌的影像記憶</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event8.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.11.22</span>
+																<h3 class="persp-card-title">從王家衛到新世代導演：鏡頭下的香港</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/hero.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.11.08</span>
+																<h3 class="persp-card-title">走進取景地：一座城市的兩種時間</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 第 2 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event1.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.10.18</span>
+																<h3 class="persp-card-title">天台與後巷：被反覆拍攝的城市角落</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-digital.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.10.04</span>
+																<h3 class="persp-card-title">港產片海報裡的城市輪廓</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event3.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.09.20</span>
+																<h3 class="persp-card-title">攝影集裡的香港：五本必讀</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/about-act.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.09.06</span>
+																<h3 class="persp-card-title">電車窗外：移動中的城市影像</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 6. 廣東歌的影像與形象 Imaging Cantopop -->
+			<section class="persp-section">
+				<div class="container-fluid">
+					<div class="row min-vh-100 align-items-center justify-content-between overflow-hidden">
+						<div class="col-lg-4 offset-lg-1 p-4 py-5 py-lg-4">
+							<p class="text-uppercase ls-2 fw-medium op-07 mb-2">Imaging Cantopop</p>
+							<h2 class="display-4 fw-bold"><span class="d-inline-block">廣東歌的</span><span class="d-inline-block">影像與形象</span></h2>
+							<p class="mb-0">從唱片封面、MV 到演唱會舞台，整理廣東歌在影像裡塑造出的明星形象與時代風景。</p>
+							<div class="persp-swiper-nav">
+								<button type="button" class="persp-swiper-prev" aria-label="上一組文章"><i class="bi-arrow-up"></i></button>
+								<span class="persp-swiper-count"></span>
+								<button type="button" class="persp-swiper-next" aria-label="下一組文章"><i class="bi-arrow-down"></i></button>
+							</div>
+						</div>
+
+						<div class="col-lg-6 persp-gallery scroll-detect">
+							<div class="swiper persp-swiper">
+								<div class="swiper-wrapper">
+									<!-- 第 1 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event10.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.10.25</span>
+																<h3 class="persp-card-title">唱片封面考古：八〇年代的設計語言</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/event12.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.10.11</span>
+																<h3 class="persp-card-title">MV 裡的城市：廣東歌如何拍出香港</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/1.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.09.27</span>
+																<h3 class="persp-card-title">舞台、造型與形象：天王天后的視覺工程</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/2.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.09.13</span>
+																<h3 class="persp-card-title">新一代廣東歌：社群時代的影像策略</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 第 2 組（4 篇） -->
+									<div class="swiper-slide">
+										<div class="row gx-3 gy-0">
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-down">
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/event7.png" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.08.23</span>
+																<h3 class="persp-card-title">演唱會海報設計史</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/about-4.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.08.09</span>
+																<h3 class="persp-card-title">卡拉 OK 畫面裡的時代風景</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="all-ts persp-col-up">
+														<a href="perspectives-post.html" class="persp-card persp-card-lg mb-3">
+															<img src="img/hero2.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.07.26</span>
+																<h3 class="persp-card-title">電影主題曲與廣東歌的交會</h3>
+															</div>
+														</a>
+														<a href="perspectives-post.html" class="persp-card persp-card-sm mb-3">
+															<img src="img/about-manga.jpg" alt="">
+															<div class="persp-card-content">
+																<span class="persp-card-date">2025.07.12</span>
+																<h3 class="persp-card-title">歌詞本裡的影像：唱片內頁設計</h3>
+															</div>
+														</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div><!-- #content end -->
+		<!-- Footer
+		============================================= -->
+		<!-- Footer 內容在 js/footer.js，改那個檔案即可 -->
+		<footer id="footer" class="border-top-0"></footer>
+		<script src="js/footer.js"></script>
 
 	</div><!-- #wrapper end -->
 
@@ -315,20 +755,37 @@
 	<script src="js/plugins.min.js"></script>
 	<script src="js/functions.bundle.js"></script>
 
-	<!-- Explore 描述：複製一份文字當底色層（黃色 + difference 混合照片），
-	     原本的文字疊在上面維持黑色；HTML 只要寫一次文字 -->
+	<!-- 卡片輪播：每段一個 Swiper，桌機上下切換、手機／平板（< 992px）左右滑；
+	     切換鈕＋「01 / 02」在左欄說明文字下面 -->
 	<script>
-		jQuery('.explore-desc-text').each(function() {
-			jQuery(this).clone()
-				.removeClass('explore-desc-text').addClass('explore-desc-hl')
-				.attr('aria-hidden', 'true')
-				.insertBefore(this);
-		});
+		(function() {
+			var phone = window.matchMedia('(max-width: 991.98px)');
+			var pad = function(n) { return n < 10 ? '0' + n : n; };
+			document.querySelectorAll('.persp-section').forEach(function(section) {
+				var el = section.querySelector('.persp-swiper');
+				var nav = section.querySelector('.persp-swiper-nav');
+				if (el.querySelectorAll('.swiper-slide').length < 2) nav.classList.add('d-none');
+				var swiper = new Swiper(el, {
+					direction: phone.matches ? 'horizontal' : 'vertical',
+					speed: 800,
+					breakpoints: { 0: { spaceBetween: 16 }, 992: { spaceBetween: 0 } },
+					navigation: {
+						prevEl: nav.querySelector('.persp-swiper-prev'),
+						nextEl: nav.querySelector('.persp-swiper-next')
+					},
+					pagination: {
+						el: nav.querySelector('.persp-swiper-count'),
+						type: 'fraction',
+						formatFractionCurrent: pad,
+						formatFractionTotal: pad
+					}
+				});
+				phone.addEventListener('change', function() {
+					swiper.changeDirection(phone.matches ? 'horizontal' : 'vertical');
+				});
+			});
+		})();
 	</script>
-
-	<!-- 分頁：一頁 15 則（共用 js/pagination.js） -->
-	<script src="js/pagination.js"></script>
-	<script>GlitchPagination('.explore-grid', '.list-pagination', 15);</script>
 
 	<!-- Custom Scripts（header 捲動顯示等）
 	============================================= -->

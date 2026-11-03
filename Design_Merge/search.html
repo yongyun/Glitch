@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SemiColonWeb">
+	<meta name="description" content="毛刺 Glitch 為一專注於次文化、跨域實驗與創作推廣的文化藝術品牌 ·’.⋯‘·’。‘.。···能屈能伸 ✸ 軟硬兼施 ✸">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Icons -->
+	<link rel="stylesheet" href="css/font-icons.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Document Title
+	============================================= -->
+	<title>搜尋結果 | 毛刺Glitch</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="header-size-md transparent-header semi-transparent sticky-on-scrollup" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="index.html"><img class="logo-default" src="img/logo-light.svg" alt="Glitch Logo"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+
+							<!-- Header Button
+							============================================= -->
+							<!-- 按鈕內容在 js/menu.js -->
+							<div class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex" id="site-header-button"></div>
+
+							<!-- Language Switch
+							============================================= -->
+							<div id="lang-switch" class="header-misc-element ms-3 ms-lg-4 d-none d-lg-flex">
+								<a href="#" id="lang-switch-trigger" class="lang-switch-link">ENG</a>
+							</div><!-- #lang-switch end -->
+
+						</div>
+
+						<div class="primary-menu-trigger ms-1">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						<!-- 選單內容在 js/menu.js，改那個檔案即可 -->
+						<nav class="primary-menu me-lg-auto not-dark" id="site-menu"></nav>
+						<script src="js/menu.js"></script>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+
+		<!-- Page Title
+		============================================= -->
+		<!-- 參照 Canvas search.html：透明底、左邊標題、右邊麵包屑 -->
+		<section class="page-title bg-transparent">
+			<div class="container">
+				<div class="page-title-row">
+
+					<div class="page-title-content">
+						<h1>搜尋結果</h1>
+						<!-- 「關鍵字」共幾筆，由 js/search-page.js 填入 -->
+						<span id="search-summary">Search</span>
+					</div>
+
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+							<li class="breadcrumb-item active" aria-current="page">搜尋結果</li>
+						</ol>
+					</nav>
+
+				</div>
+			</div>
+		</section><!-- .page-title end -->
+
+		<!-- 標題下方的搜尋列：上下細線、放大鏡＋無框輸入欄；送出後一樣回到 search.html?q=… -->
+		<div class="search-title-bar">
+			<div class="container">
+				<form class="search-title-form" action="search.html" method="get" role="search">
+					<button type="submit" aria-label="搜尋"><i class="uil uil-search"></i></button>
+					<input type="text" name="q" placeholder="搜尋其他內容" autocomplete="off" aria-label="搜尋其他內容">
+				</form>
+			</div>
+		</div>
+
+		<!-- Content：搜尋結果（參照 Canvas blog-grid，一排 4 張）
+		     每張：圖片、標題、日期、摘要、Read More；內容來自 js/search-data.js，由 js/search-page.js 排出來
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div id="search-results" class="post-grid row gutter-30 search-results"></div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<!-- Footer 內容在 js/footer.js，改那個檔案即可 -->
+		<footer id="footer" class="border-top-0"></footer>
+		<script src="js/footer.js"></script>
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-double-up rounded-circle"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- 搜尋：資料在 js/search-data.js（新增內容改這個檔案），結果排版在 js/search-page.js -->
+	<script src="js/search-data.js"></script>
+	<script src="js/search-page.js"></script>
+
+	<!-- Custom Scripts（header 捲動顯示等）
+	============================================= -->
+	<script src="demos/glitch/js/custom.js"></script>
+
+</body>
+</html>

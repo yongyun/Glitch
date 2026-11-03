@@ -75,7 +75,8 @@ var initCursor = function() {
     requestAnimationFrame(render);
 };
 
-initCursor();
+// only pages that have the custom cursor element (index.html) run it
+if (innerCursor) initCursor();
 
 var circularText = document.getElementsByClassName("circular-text-rotate");
 

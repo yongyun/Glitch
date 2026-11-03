@@ -61,7 +61,7 @@ body:not(.top-search-open) #top-search a i:nth-child(2) {
 	padding: var(--cnvs-canvas-button-padding);
 	overflow: hidden;
 	color: #E2E2E2;
-	border-radius:  0.25rem;
+	border-radius: 0;
 }
 
 .canvas-button.canvas-button-sm {

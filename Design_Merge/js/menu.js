@@ -12,7 +12,7 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 							<div class="col-lg-6">
 								<ul class="mega-menu-links">
 									<li class="target-link-active" data-target="#target-all">
-										<a href="events.html">事件</a>
+										<a href="events.html">展覽</a>
 									</li>
 									<li data-target="#target-necklace">
 										<a href="news.html">最新消息</a>
@@ -93,7 +93,7 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 						<div class="d-flex justify-content-center align-items-md-center py-4">
 							<ul class="mega-menu-links">
 								<li>
-									<a href="manga.html">漫畫</a>
+									<a href="comics.html">漫畫</a>
 								</li>
 								<li>
 									<a href="publications.html">出版品</a>
@@ -118,7 +118,7 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 		<a class="menu-link" href="#"><div>事件 <i class="bi- uil uil-plus"></i></div></a>
 		<ul class="sub-menu-container">
 			<li class="menu-item">
-				<a href="events.html" class="menu-link">事件</a>
+				<a href="events.html" class="menu-link">展覽</a>
 			</li>
 			<li class="menu-item">
 				<a href="news.html" class="menu-link">最新消息</a>
@@ -157,10 +157,10 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 		<a class="menu-link" href="#"><div>好ㄉ <i class="bi- uil uil-plus"></i></div></a>
 		<ul class="sub-menu-container">
 			<li class="menu-item">
-				<a href="manga.html" class="menu-link">漫畫</a>
+				<a href="comics.html" class="menu-link">漫畫</a>
 			</li>
 			<li class="menu-item">
-				<a href="publications.html" class="menu-link">毛刺出版品</a>
+				<a href="publications.html" class="menu-link">出版品</a>
 			</li>
 			<li class="menu-item">
 				<a href="goods.html" class="menu-link">周邊</a>
@@ -183,9 +183,28 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 // 只改反引號 ` 中間的 HTML。「找我」是按鈕文字，href 是連結（連到 About 頁的 Find us 表單 #contactus）
 document.getElementById('site-header-button').innerHTML = /*html*/ `
 
-<a href="about.html#contactus" class="button button-shadow button-shadow-effect border border-width-2 border-dark header-button">找我</a>
+<a href="about.html#contactus" class="button header-button">找我</a>
 
 `;
+
+// ===== 搜尋（右上角最右邊的放大鏡）=====
+// 用 Canvas 內建的 top search：按放大鏡 → 選單淡出、同一排變成輸入欄位；按 X 或點旁邊就關掉
+// action 是按 Enter 後要去的頁面，關鍵字會帶在網址 ?q=…
+document.querySelector('#header .header-misc').insertAdjacentHTML('beforeend', /*html*/ `
+
+<div id="top-search" class="header-misc-icon ms-3 ms-lg-4">
+	<a href="#" id="top-search-trigger" aria-label="搜尋"><i class="uil uil-search"></i><i class="bi-x-lg"></i></a>
+</div>
+
+`);
+
+document.querySelector('#header .header-row').insertAdjacentHTML('beforeend', /*html*/ `
+
+<form class="top-search-form" action="search.html" method="get">
+	<input type="text" name="q" class="form-control" value="" placeholder="輸入關鍵字後按 Enter…" autocomplete="off">
+</form>
+
+`);
 
 // 手機版選單最下方也放一顆一樣的「找我」（自動複製上面那顆，不用另外改）
 document.querySelector('.mobile-menu-footer').prepend(
