@@ -42,10 +42,10 @@
 					'<div class="entry-title">' +
 						'<h2><a href="' + url + '">' + escapeHTML(item.title) + '</a></h2>' +
 					'</div>' +
-					(item.date ? '<div class="entry-meta"><ul><li><i class="uil uil-schedule"></i> ' + escapeHTML(item.date) + '</li></ul></div>' : '') +
+					(item.date ? '<div class="entry-meta"><ul><li>' + escapeHTML(item.date) + '</li></ul></div>' : '') +
 					'<div class="entry-content">' +
 						'<p>' + escapeHTML(truncate(item.excerpt)) + '</p>' +
-						'<a href="' + url + '" class="button button-shadow button-shadow-effect border border-width-2 border-dark search-more-button">Read More<i class="bi-arrow-up-right ms-2"></i></a>' +
+						'<a href="' + url + '" class="button m-0 search-more-button">Read More<i class="bi-arrow-up-right ms-2"></i></a>' +
 					'</div>' +
 				'</div>' +
 			'</div>';

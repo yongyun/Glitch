@@ -12,6 +12,7 @@
 
 	<!-- Font Icons -->
 	<link rel="stylesheet" href="css/font-icons.css">
+	<link rel="stylesheet" href="css/swiper.css">
 
 	<!-- Niche Demos -->
 	<link rel="stylesheet" href="demos/glitch/glitch.css"> <!-- Custom Css -->
@@ -175,17 +176,38 @@
 					</div>
 				</div>
 
-				<!-- 第六段：圖片輪播（左右箭頭切換；點圖片放大看，可左右切換）
-				     一次顯示：手機 1 張、平板 2 張、桌機 3 張；每 4 秒自動換下一張（data-autoplay，毫秒），滑鼠移上去暫停；要加圖就複製一個 .oc-item -->
+				<!-- 第六段：照片 slider（跟 events-post.html 同款：一次一張、照片完整不裁切、autoplay 4 秒、左右箭頭、下方圓點）
+				     換照片：改每個 swiper-slide-bg 的 background-image；要增減張數就複製或刪掉一整個 swiper-slide -->
 				<div class="tshuan-stack tshuan-stack-pad">
-					<div class="container">
-						<div class="owl-carousel image-carousel carousel-widget tshuan-post-carousel" data-margin="20" data-nav="true" data-pagi="false" data-loop="true" data-autoplay="4000" data-items-xs="1" data-items-sm="2" data-items-md="2" data-items-lg="3" data-items-xl="3" data-lightbox="gallery">
-							<div class="oc-item"><a href="img/about-1.jpg" data-lightbox="gallery-item"><img src="img/about-1.jpg" alt="觀點 活動照片 1"></a></div>
-							<div class="oc-item"><a href="img/about-act.jpg" data-lightbox="gallery-item"><img src="img/about-act.jpg" alt="觀點 展場照片"></a></div>
-							<div class="oc-item"><a href="img/event5.png" data-lightbox="gallery-item"><img src="img/event5.png" alt="觀點 活動主視覺"></a></div>
-							<div class="oc-item"><a href="img/about-manga.jpg" data-lightbox="gallery-item"><img src="img/about-manga.jpg" alt="觀點 空間照片"></a></div>
-							<div class="oc-item"><a href="img/about-4.jpg" data-lightbox="gallery-item"><img src="img/about-4.jpg" alt="觀點 活動照片 2"></a></div>
-							<div class="oc-item"><a href="img/event11.png" data-lightbox="gallery-item"><img src="img/event11.png" alt="觀點 展覽主視覺"></a></div>
+					<div class="container event-slider mt-0">
+						<div class="slider-element swiper_wrapper min-vh-60 min-vh-md-75" data-loop="true" data-autoplay="4000" data-autoplay-disable-on-interaction="false" data-speed="800">
+							<div class="slider-inner">
+								<div class="swiper swiper-parent">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<div class="swiper-slide-bg" role="img" aria-label="觀點 活動照片 1" style="background-image: url('img/about-1.jpg');"></div>
+										</div>
+										<div class="swiper-slide">
+											<div class="swiper-slide-bg" role="img" aria-label="觀點 展場照片" style="background-image: url('img/about-act.jpg');"></div>
+										</div>
+										<div class="swiper-slide">
+											<div class="swiper-slide-bg" role="img" aria-label="觀點 活動主視覺" style="background-image: url('img/event5.png');"></div>
+										</div>
+										<div class="swiper-slide">
+											<div class="swiper-slide-bg" role="img" aria-label="觀點 空間照片" style="background-image: url('img/about-manga.jpg');"></div>
+										</div>
+										<div class="swiper-slide">
+											<div class="swiper-slide-bg" role="img" aria-label="觀點 活動照片 2" style="background-image: url('img/about-4.jpg');"></div>
+										</div>
+										<div class="swiper-slide">
+											<div class="swiper-slide-bg" role="img" aria-label="觀點 展覽主視覺" style="background-image: url('img/event11.png');"></div>
+										</div>
+									</div>
+									<div class="slider-arrow-left"><i class="bi-chevron-left"></i></div>
+									<div class="slider-arrow-right"><i class="bi-chevron-right"></i></div>
+									<div class="swiper-pagination"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

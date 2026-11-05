@@ -394,30 +394,27 @@
 #footer a:hover {
 	color: #CFF273 !important;
 }
-/* Header button 找我 — flat brand yellow-green, square corners, no border or
-   shadow; on hover it turns white. Sized to half the header height like the logo. */
-.button.header-button {
-	--cnvs-btn-color: #CFF273;
-	--cnvs-btn-color-dark: #fff;
-	--cnvs-btn-fontsize: 0.875rem;
-	--cnvs-btn-padding-x: 1rem;
-	--cnvs-btn-padding-y: 0;
+/* Desktop header: thin full-height line between the menu and the right-hand
+   tools (找我 / ENG / search), like Canvas's full-header divider — only the
+   line, the rest of our header stays as is. 找我 already has ms-lg-4 for
+   the gap on the line's right side */
+.is-expanded-menu #header .header-misc {
+	align-self: stretch;
+	margin-left: 1.5rem;
+	border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Header 找我 — plain text like the ENG switch next to it (same size,
+   weight and white color), no background, border or shadow */
+.header-button {
 	display: inline-flex;
 	align-items: center;
-	height: calc(var(--cnvs-header-height) / 2);
-	margin: 0;
-	border: 0;
-	border-radius: 0;
-	color: #000;
+	height: 100%;
+	font-size: 0.875rem;
 	font-weight: 700;
-	line-height: 1;
+	letter-spacing: 0.5px;
+	color: #fff !important;
 	white-space: nowrap;
-}
-.button.header-button:hover {
-	color: #000;
-}
-.is-expanded-menu #header.sticky-header-shrink .button.header-button {
-	height: calc(var(--cnvs-sticky-header-height) / 2);
 }
 
 /* Mobile menu — full-screen brand blue overlay, like the desktop mega menu.
@@ -462,8 +459,8 @@ body.primary-menu-open:not(.is-expanded-menu) .mobile-primary-menu .sub-menu-tri
 	color: #fff;
 }
 
-/* Bottom of the mobile menu: 找我 as wide as the menu list lines above
-   (same 1rem side padding as .mobile-primary-menu), 中文 centered below it */
+/* Bottom of the mobile menu: 找我 and 中文 as plain text, centered,
+   one above the other */
 .mobile-menu-footer {
 	display: none;
 }
@@ -481,13 +478,8 @@ body.primary-menu-open:not(.is-expanded-menu) .mobile-menu-footer {
 	color: #fff !important;
 	height: auto;
 }
-.mobile-menu-footer .button.header-button {
-	--cnvs-btn-fontsize: 1rem;
-	display: flex;
-	justify-content: center;
-	align-self: stretch;
-	width: 100%;
-	height: 3.5rem;
+.mobile-menu-footer .header-button {
+	height: auto;
 }
 
 /* Mobile logo — smaller and left-aligned (desktop keeps half the header height) */
@@ -537,11 +529,13 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	overflow-x: clip;
 }
 
-/* 漫畫 (comics.html) — portrait covers (3:4) instead of the template's
-   landscape thumbnails, cropped to fill so every card lines up. */
+/* 漫畫 / 出版品 (comics.html, publications.html) — every card keeps the same
+   portrait 3:4 frame so the grid lines up, but the cover is never cropped:
+   it fits the frame whole (height or width, whichever fills first) and
+   sits in the middle */
 .manga-grid .portfolio-image img {
 	aspect-ratio: 3 / 4;
-	object-fit: cover;
+	object-fit: contain;
 	width: 100%;
 }
 
@@ -620,11 +614,11 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	background-color: #CFF273;
 }
 
-/* 周邊 (goods.html) — placeholder photos come in mixed sizes, so crop
-   every product image to the same square to keep the grid rows even. */
+/* 周邊 (goods.html) — same square frame on every product so the rows stay
+   even; the photo fits inside whole (never cropped), centred */
 .goods-grid .product-image img {
 	aspect-ratio: 1 / 1;
-	object-fit: cover;
+	object-fit: contain;
 	width: 100%;
 }
 /* goods.html ticker — red background, yellow-green text; hover swaps them
@@ -679,7 +673,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	padding: 0.1em 0.3em;
 }
 
-/* Footer "Email Us" button — flat like the header 找我 (no border or shadow,
+/* Footer "Email Us" button — flat (no border or shadow,
    turns white on hover), brand yellow with blue text (sits on the blue footer
    panel). Scoped to #footer so it beats the panel's white link color below. */
 #footer .button.footer-email-button {
@@ -1209,13 +1203,13 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 
 /* press.html — everything inside the link box (padding var is set on the
    link itself: the theme re-declares it on every [class*=entry-] element): headline top-left,
-   「- 媒體名稱」 bottom-left, date / category (.entry-meta) bottom-right */
+   「- 媒體名稱」 bottom-left, date (.entry-meta) bottom-right */
 .press-list .entry-link {
 	--cnvs-post-entry-link-bg: #fff;
 	--cnvs-post-entry-link-padding: 1.25rem 1.5rem;
 	text-align: left;
 }
-/* All text in the box (headline, media, date, category) is plain <p> at
+/* All text in the box (headline, media, date) is plain <p> at
    the normal body size, instead of the theme's 1.75rem semibold heading
    font for link entries and its 90% meta size */
 .press-list .entry-link p,
@@ -1228,7 +1222,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .press-list .entry-meta li {
 	margin-bottom: 0;
 }
-/* Keep each date / category <p> on the same line as the theme's 「⁞」
+/* Keep each date <p> on the same line as the theme's 「⁞」
    separator (an inline ::before), drop the list's -0.75rem bottom offset
    (it made up for the li margin removed above), and let the last item sit
    flush against the right edge */
@@ -1241,7 +1235,7 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .press-list .entry-meta li:last-child {
 	margin-right: 0;
 }
-/* Bottom row (media / date / category) — same size as the footer copyright */
+/* Bottom row (media / date) — same size as the footer copyright */
 .press-list .press-link-bottom p,
 .press-list .press-link-bottom .entry-meta li {
 	font-size: var(--cnvs-copyrights-font-size);
@@ -1512,6 +1506,10 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .explore-single-figure img {
 	display: block;
 	width: 100%;
+	/* same as news-post: 16:9 frame, whole photo, aligned left */
+	aspect-ratio: 16 / 9;
+	object-fit: contain;
+	object-position: left center;
 }
 .explore-single-figure figcaption {
 	margin-top: 0.5rem;
@@ -1708,6 +1706,26 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .event-body .event-info .iconlist li {
 	font-size: 1rem;
 }
+/* plain text block between the images / text and the video — same type
+   as the fixed text; gray rules above and below (same gray as
+   .back-to-list) run the full container width like the video, while the
+   paragraphs stay centred at a readable line length */
+.event-text-block {
+	margin-top: 5rem;
+	padding: 3rem 0;
+	border-top: 1px solid var(--cnvs-contrast-300, #dee2e6);
+	border-bottom: 1px solid var(--cnvs-contrast-300, #dee2e6);
+	font-size: 1.125rem;
+	line-height: 1.9;
+}
+.event-text-block p {
+	max-width: 48rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+.event-text-block p:last-child {
+	margin-bottom: 0;
+}
 /* video below the images / text, then the closing statement in very
    large type */
 .event-video {
@@ -1722,6 +1740,10 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	letter-spacing: -0.02em;
 }
 @media (max-width: 991.98px) {
+	.event-text-block {
+		margin-top: 3rem;
+		padding: 2rem 0;
+	}
 	.event-video {
 		margin-top: 2.5rem;
 	}
@@ -1741,11 +1763,14 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	color: #fff;
 }
 
-/* news-post.html — main image always cropped to 16:9, whatever its shape */
+/* news-post.html — main image in a 16:9 frame, never cropped: it fits the
+   frame's height (or width if it is wider), aligned left — a portrait photo
+   leaves blank space on its right */
 .news-post .entry-image img {
 	width: 100%;
 	aspect-ratio: 16 / 9;
-	object-fit: cover;
+	object-fit: contain;
+	object-position: left center;
 }
 
 /* creators.html — portraits come in mixed shapes; crop every photo to the
@@ -1973,6 +1998,21 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	}
 }
 
+/* yellow contact box title 「聯絡 ⤵」 — the arrow sits towards the right,
+   about a fifth of the box width in from the edge, dropped slightly below
+   the text */
+.creator-contact-title {
+	display: flex;
+	align-items: flex-start;
+}
+.creator-contact-arrow {
+	margin: 0 20% 0 auto;
+	font-size: 1.4em;
+	font-weight: 400;
+	line-height: 1;
+	transform: translateY(0.2em);
+}
+
 /* creators-post.html IG ticker — white background, yellow text; hover swaps
    them (same idea as the blue/green ticker on index/about) */
 .glitch-ticker.ig-ticker {
@@ -2180,13 +2220,6 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 }
 /* tshuan-post.html — image carousel: every photo cropped to the same
    4:5 frame so the row stays even; square arrow buttons */
-.tshuan-post-carousel {
-	--cnvs-owl-nav-border-radius: 0;
-}
-.tshuan-post-carousel .oc-item img {
-	aspect-ratio: 4 / 5;
-	object-fit: cover;
-}
 /* tshuan-post.html — project credits over a full-width image: a dark layer
    on the photo, then roles (bold) and names in two columns, centred */
 .tshuan-post-credits {
@@ -2242,11 +2275,6 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 .tshuan-post-dark p,
 .tshuan-post-dark .tshuan-post-credits-list {
 	color: #CFF273;
-}
-.tshuan-post-dark .tshuan-post-carousel {
-	--cnvs-owl-nav-background: var(--post-bg);
-	--cnvs-owl-nav-color: #CFF273;
-	--cnvs-owl-nav-border: 1px solid #CFF273;
 }
 /* tshuan-post.html — stacking sections: scrolling down, each one-screen
    section (.tshuan-stack-sticky: hero, the two full-screen texts, the two
@@ -2321,19 +2349,18 @@ body:not(.is-expanded-menu) #header-wrap #logo img {
 	object-fit: cover;
 }
 
-/* search.html — Read More 用本站通用的 Shadow Button（跟 menu「找我」、Get in Touch「Email Us」同款）：
-   黃綠底、黑框、黑色實心陰影，hover 時滑進陰影 */
+/* search.html — Read More 扁平按鈕（跟 footer「Email Us」同樣扁平）：
+   黃綠底黑字、直角、無框無陰影；hover 變黑底黃綠字（白底頁面上變白會看不見） */
 .button.search-more-button {
 	--cnvs-btn-color: #CFF273;
-	--cnvs-btn-color-dark: #CFF273;
-	--cnvs-btn-shadow-color: #000;
-	margin: 0;
+	--cnvs-btn-color-dark: #000;
+	border: 0;
 	border-radius: 0;
 	color: #000;
 	font-weight: 700;
 }
 .button.search-more-button:hover {
-	color: #000;
+	color: #CFF273;
 }
 
 /* search.html — 標題下方的搜尋列：滿版、下方一條細線（上方那條是 page-title 本身的底線）；
@@ -2403,6 +2430,14 @@ a.creator-link:hover {
    跟上方標語的距離 = 標語跟影片的距離（桌機 6rem、手機 4rem） */
 .event-slider {
 	margin-top: 6rem;
+}
+/* 照片 slider（展覽、創作者、@@川／觀點內頁）完整呈現不裁切：高度固定（slider 本身的高度），
+   寬度依照片比例；直的照片左右會留白，橫的太寬時改以寬度為準。一次一張 */
+.event-slider .swiper-slide-bg,
+.creator-slider-wrap .swiper-slide-bg {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 @media (max-width: 991.98px) {
 	.event-slider {

@@ -183,7 +183,7 @@ document.getElementById('site-menu').innerHTML = /*html*/ `
 // 只改反引號 ` 中間的 HTML。「找我」是按鈕文字，href 是連結（連到 About 頁的 Find us 表單 #contactus）
 document.getElementById('site-header-button').innerHTML = /*html*/ `
 
-<a href="about.html#contactus" class="button header-button">找我</a>
+<a href="about.html#contactus" class="header-button">找我</a>
 
 `;
 
