@@ -394,16 +394,6 @@
 #footer a:hover {
 	color: #CFF273 !important;
 }
-/* Desktop header: thin full-height line between the menu and the right-hand
-   tools (找我 / ENG / search), like Canvas's full-header divider — only the
-   line, the rest of our header stays as is. 找我 already has ms-lg-4 for
-   the gap on the line's right side */
-.is-expanded-menu #header .header-misc {
-	align-self: stretch;
-	margin-left: 1.5rem;
-	border-left: 1px solid rgba(255, 255, 255, 0.5);
-}
-
 /* Header 找我 — plain text like the ENG switch next to it (same size,
    weight and white color), no background, border or shadow */
 .header-button {
